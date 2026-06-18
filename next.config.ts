@@ -5,9 +5,7 @@ import createNextIntlPlugin from 'next-intl/plugin'
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig: NextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['sharp', 'payload', '@payloadcms/richtext-lexical'],
-  },
+  serverExternalPackages: ['sharp', 'payload', '@payloadcms/richtext-lexical', 'drizzle-kit', '@payloadcms/drizzle', '@payloadcms/db-postgres'],
 }
 
 export default withPayload(withNextIntl(nextConfig))

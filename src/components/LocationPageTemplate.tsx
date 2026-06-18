@@ -2,10 +2,9 @@ import EstimateWidget from './EstimateWidget'
 
 interface LocationPageTemplateProps {
   city: string
-  locale: string
 }
 
-export default function LocationPageTemplate({ city, locale }: LocationPageTemplateProps) {
+export default function LocationPageTemplate({ city }: LocationPageTemplateProps) {
   return (
     <div>
       <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-16 px-4">
@@ -19,7 +18,7 @@ export default function LocationPageTemplate({ city, locale }: LocationPageTempl
         </div>
       </section>
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <EstimateWidget lang={locale} />
+        <EstimateWidget />
       </div>
     </div>
   )

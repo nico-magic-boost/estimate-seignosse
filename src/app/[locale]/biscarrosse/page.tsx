@@ -1,7 +1,6 @@
-import { getLocale } from 'next-intl/server'
+
 import LocationPageTemplate from '@/components/LocationPageTemplate'
 
-export default async function Page() {
-  const locale = await getLocale()
-  return <LocationPageTemplate city="Biscarrosse" locale={locale} />
+export default function Page() {
+  return <LocationPageTemplate city="Biscarrosse" />
 }
