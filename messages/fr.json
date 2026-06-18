@@ -1,51 +1,67 @@
 {
   "nav": {
-    "estimator": "L'estimateur",
-    "install": "Intégrer",
-    "about": "Qui sommes-nous ?",
+    "home": "Accueil",
+    "estimator": "Estimateur",
     "pricing": "Tarifs",
-    "demo": "Demander une démo",
-    "news": "Actualités"
+    "blog": "Blog",
+    "about": "À propos",
+    "demo": "Démo",
+    "install": "Installer"
   },
-  "home": {
-    "hero_title": "L'estimateur en ligne pour les professionnels de la location saisonnière",
-    "hero_subtitle": "Offrez à vos clients propriétaires une estimation instantanée et fiable de leurs revenus locatifs potentiels.",
-    "cta_estimate": "Essayer l'estimateur",
-    "cta_demo": "Demander une démo",
-    "feature1_title": "Estimation instantanée",
-    "feature1_desc": "Générez une estimation précise en quelques secondes grâce à notre algorithme basé sur les données du marché.",
-    "feature2_title": "Intégrable sur votre site",
-    "feature2_desc": "Ajoutez facilement l'estimateur sur votre site web en quelques lignes de code.",
-    "feature3_title": "Augmentez vos mandats",
-    "feature3_desc": "Convainquez plus facilement les propriétaires avec des projections chiffrées et professionnelles."
+  "hero": {
+    "title": "L'estimateur en ligne pour les professionnels de la location saisonnière",
+    "subtitle": "Offrez à vos propriétaires une estimation instantanée et précise de leurs revenus potentiels",
+    "cta": "Essayez gratuitement",
+    "ctaInstall": "Intégrer sur mon site"
+  },
+  "features": {
+    "title": "Pourquoi choisir Estimate Rentals ?",
+    "feature1Title": "Précision algorithmique",
+    "feature1Desc": "Notre algorithme analyse les données du marché en temps réel pour fournir des estimations précises.",
+    "feature2Title": "Intégration facile",
+    "feature2Desc": "Intégrez notre widget en quelques minutes sur votre site existant avec une simple balise HTML.",
+    "feature3Title": "Multilingue",
+    "feature3Desc": "Disponible en français, anglais et espagnol pour toucher vos clients internationaux."
+  },
+  "estimate": {
+    "title": "Estimez vos revenus",
+    "subtitle": "Obtenez une estimation gratuite et instantanée de vos revenus locatifs potentiels."
+  },
+  "install": {
+    "title": "Intégrez l'estimateur sur votre site",
+    "subtitle": "En quelques étapes simples, ajoutez notre widget à votre site web."
+  },
+  "about": {
+    "title": "Qui sommes-nous ?",
+    "content": "Estimate Rentals est une solution SaaS dédiée aux professionnels de la location saisonnière. Nous aidons les agences et gestionnaires à convertir plus de propriétaires grâce à notre estimateur en ligne."
+  },
+  "pricing": {
+    "title": "Nos tarifs",
+    "subtitle": "Des formules adaptées à votre activité"
+  },
+  "demo": {
+    "title": "Demander une démo",
+    "subtitle": "Découvrez Estimate Rentals en action avec nos experts",
+    "name": "Nom",
+    "email": "Email",
+    "company": "Société",
+    "phone": "Téléphone",
+    "submit": "Envoyer ma demande",
+    "success": "Votre demande a bien été envoyée !"
+  },
+  "blog": {
+    "title": "Actualités",
+    "subtitle": "Les dernières nouvelles de la location saisonnière"
+  },
+  "legal": {
+    "title": "Mentions légales"
+  },
+  "cookies": {
+    "title": "Politique de cookies"
   },
   "footer": {
+    "copyright": "© 2025 Estimate Rentals. Tous droits réservés.",
     "legal": "Mentions légales",
-    "cookies": "Politique de cookies",
-    "rights": "Tous droits réservés"
-  },
-  "estimate_page": {
-    "title": "Estimez gratuitement votre location saisonnière",
-    "subtitle": "Découvrez le potentiel locatif de votre bien en quelques secondes."
-  },
-  "pricing_page": {
-    "title": "Nos tarifs",
-    "subtitle": "Choisissez l'offre adaptée à votre activité."
-  },
-  "install_page": {
-    "title": "Installer l'estimateur sur votre site",
-    "subtitle": "Intégrez notre widget en quelques minutes."
-  },
-  "about_page": {
-    "title": "Qui sommes-nous ?",
-    "subtitle": "Une équipe dédiée aux professionnels de la location saisonnière."
-  },
-  "demo_page": {
-    "title": "Demander une démo",
-    "subtitle": "Nous vous présentons l'outil en 30 minutes."
-  },
-  "news_page": {
-    "title": "Actualités",
-    "subtitle": "Conseils et actualités pour les pros de la location saisonnière."
+    "cookies": "Politique de cookies"
   }
 }

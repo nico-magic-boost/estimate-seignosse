@@ -1,11 +1,11 @@
 import { useTranslations } from 'next-intl'
 
 const posts = [
-  { slug: 'tendances-location-2025', title: 'Les tendances de la location saisonnière en 2025', date: '2025-01-15', excerpt: 'Découvrez les grandes tendances qui vont façonner le marché.' },
-  { slug: 'pourquoi-estimateur', title: 'Pourquoi un estimateur en ligne booste vos conversions', date: '2025-02-01', excerpt: 'Un estimateur bien intégré peut doubler votre taux de conversion propriétaire.' },
+  { slug: 'tendencias-alquiler-2025', title: 'Las tendencias del alquiler vacacional en 2025', date: '2025-01-15', excerpt: 'Descubra las grandes tendencias que darán forma al mercado.' },
+  { slug: 'por-que-estimador', title: 'Por qué un estimador en línea aumenta sus conversiones', date: '2025-02-01', excerpt: 'Un estimador bien integrado puede doblar su tasa de conversión de propietarios.' },
 ]
 
-export default function BlogPage() {
+export default function ActualidadPage() {
   const t = useTranslations('blog')
   return (
     <div className="py-16 px-4">

@@ -1,51 +1,67 @@
 {
   "nav": {
-    "estimator": "The estimator",
-    "install": "Integrate",
-    "about": "Who are we?",
+    "home": "Home",
+    "estimator": "Estimator",
     "pricing": "Pricing",
-    "demo": "Request a demo",
-    "news": "News"
+    "blog": "Blog",
+    "about": "About",
+    "demo": "Demo",
+    "install": "Install"
   },
-  "home": {
-    "hero_title": "The online estimator for vacation rental professionals",
-    "hero_subtitle": "Give your property owner clients an instant, reliable estimate of their potential rental income.",
-    "cta_estimate": "Try the estimator",
-    "cta_demo": "Request a demo",
-    "feature1_title": "Instant estimation",
-    "feature1_desc": "Generate an accurate estimate in seconds using our market data-based algorithm.",
-    "feature2_title": "Embeddable on your site",
-    "feature2_desc": "Easily add the estimator to your website with just a few lines of code.",
-    "feature3_title": "Increase your mandates",
-    "feature3_desc": "Convince more property owners with professional, data-driven projections."
+  "hero": {
+    "title": "The online estimator for vacation rental professionals",
+    "subtitle": "Give your property owners an instant and accurate estimate of their potential revenue",
+    "cta": "Try for free",
+    "ctaInstall": "Add to my website"
+  },
+  "features": {
+    "title": "Why choose Estimate Rentals?",
+    "feature1Title": "Algorithmic precision",
+    "feature1Desc": "Our algorithm analyzes market data in real time to provide accurate estimates.",
+    "feature2Title": "Easy integration",
+    "feature2Desc": "Integrate our widget in minutes on your existing site with a simple HTML tag.",
+    "feature3Title": "Multilingual",
+    "feature3Desc": "Available in French, English and Spanish to reach your international clients."
+  },
+  "estimate": {
+    "title": "Estimate your revenue",
+    "subtitle": "Get a free and instant estimate of your potential rental income."
+  },
+  "install": {
+    "title": "Integrate the estimator on your site",
+    "subtitle": "In a few simple steps, add our widget to your website."
+  },
+  "about": {
+    "title": "Who are we?",
+    "content": "Estimate Rentals is a SaaS solution dedicated to vacation rental professionals. We help agencies and managers convert more property owners with our online estimator."
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Plans tailored to your business"
+  },
+  "demo": {
+    "title": "Request a demo",
+    "subtitle": "Discover Estimate Rentals in action with our experts",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "phone": "Phone",
+    "submit": "Send my request",
+    "success": "Your request has been sent!"
+  },
+  "blog": {
+    "title": "News",
+    "subtitle": "The latest from vacation rentals"
+  },
+  "legal": {
+    "title": "Legal notices"
+  },
+  "cookies": {
+    "title": "Cookie policy"
   },
   "footer": {
+    "copyright": "© 2025 Estimate Rentals. All rights reserved.",
     "legal": "Legal notices",
-    "cookies": "Cookie policy",
-    "rights": "All rights reserved"
-  },
-  "estimate_page": {
-    "title": "Estimate your vacation rental for free",
-    "subtitle": "Discover the rental potential of your property in seconds."
-  },
-  "pricing_page": {
-    "title": "Pricing",
-    "subtitle": "Choose the plan that fits your business."
-  },
-  "install_page": {
-    "title": "Install the estimator on your website",
-    "subtitle": "Integrate our widget in minutes."
-  },
-  "about_page": {
-    "title": "Who are we?",
-    "subtitle": "A team dedicated to vacation rental professionals."
-  },
-  "demo_page": {
-    "title": "Request a demo",
-    "subtitle": "We'll walk you through the tool in 30 minutes."
-  },
-  "news_page": {
-    "title": "News",
-    "subtitle": "Tips and news for vacation rental professionals."
+    "cookies": "Cookie policy"
   }
 }

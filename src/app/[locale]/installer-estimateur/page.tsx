@@ -1,26 +1,22 @@
 import { useTranslations } from 'next-intl'
 
 export default function InstallPage() {
-  const t = useTranslations('install_page')
+  const t = useTranslations('install')
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('title')}</h1>
-        <p className="text-lg text-gray-600">{t('subtitle')}</p>
-      </div>
-      <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Code d&apos;intégration</h2>
-        <pre className="bg-gray-900 text-green-400 p-6 rounded-xl overflow-x-auto text-sm">
-          {`<estimate-wc
-  agency-ids="VOTRE_ID"
-  primary-color="007caa"
-  secondary-color="17a3b5"
-  lang="fr">
-</estimate-wc>
-<script type="module"
-  src="https://form.estimate.rentals/estimateWebComponent.js">
-</script>`}
-        </pre>
+    <div className="py-16 px-4">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{t('title')}</h1>
+        <p className="text-gray-600 text-center mb-10">{t('subtitle')}</p>
+        <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+          <h2 className="text-xl font-semibold mb-4">Étape 1 — Ajoutez le script</h2>
+          <pre className="bg-gray-800 text-green-400 rounded-lg p-4 overflow-x-auto text-sm mb-6">
+            {`<script type="module" src="https://form.estimate.rentals/estimateWebComponent.js"></script>`}
+          </pre>
+          <h2 className="text-xl font-semibold mb-4">Étape 2 — Placez la balise</h2>
+          <pre className="bg-gray-800 text-green-400 rounded-lg p-4 overflow-x-auto text-sm">
+            {`<estimate-wc\n  agency-ids="VOTRE_ID"\n  primary-color="007caa"\n  secondary-color="17a3b5"\n  lang="fr"\n/>`}
+          </pre>
+        </div>
       </div>
     </div>
   )

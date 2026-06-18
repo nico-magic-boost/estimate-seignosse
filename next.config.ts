@@ -1,6 +1,13 @@
-import type { NextConfig } from 'next'
 import { withPayload } from '@payloadcms/next/withPayload'
+import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin'
 
-const nextConfig: NextConfig = {}
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
-export default withPayload(nextConfig)
+const nextConfig: NextConfig = {
+  experimental: {
+    serverComponentsExternalPackages: ['sharp', 'payload', '@payloadcms/richtext-lexical'],
+  },
+}
+
+export default withPayload(withNextIntl(nextConfig))

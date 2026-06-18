@@ -1,13 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --brand-primary: #007caa;
-  --brand-secondary: #17a3b5;
-  --font-sans: var(--font-geist);
-}
-
-body {
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  color: #111827;
-  background: #ffffff;
+  --color-primary: #007caa;
+  --color-secondary: #17a3b5;
+  --color-primary-dark: #005f85;
+  --color-secondary-dark: #128a9a;
 }

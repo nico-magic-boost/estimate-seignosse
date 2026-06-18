@@ -1,51 +1,67 @@
 {
   "nav": {
-    "estimator": "El estimador",
-    "install": "Integrar",
-    "about": "¿Quiénes somos?",
+    "home": "Inicio",
+    "estimator": "Estimador",
     "pricing": "Precios",
-    "demo": "Solicitar una demo",
-    "news": "Actualidad"
+    "blog": "Blog",
+    "about": "Nosotros",
+    "demo": "Demo",
+    "install": "Instalar"
   },
-  "home": {
-    "hero_title": "El estimador en línea para los profesionales del alquiler vacacional",
-    "hero_subtitle": "Ofrezca a sus clientes propietarios una estimación instantánea y fiable de sus ingresos potenciales.",
-    "cta_estimate": "Probar el estimador",
-    "cta_demo": "Solicitar una demo",
-    "feature1_title": "Estimación instantánea",
-    "feature1_desc": "Genere una estimación precisa en segundos gracias a nuestro algoritmo basado en datos del mercado.",
-    "feature2_title": "Integrable en su sitio web",
-    "feature2_desc": "Añada fácilmente el estimador a su sitio web con unas pocas líneas de código.",
-    "feature3_title": "Aumente sus mandatos",
-    "feature3_desc": "Convenza a más propietarios con proyecciones profesionales y basadas en datos."
+  "hero": {
+    "title": "El estimador en línea para profesionales del alquiler vacacional",
+    "subtitle": "Ofrezca a sus propietarios una estimación instantánea y precisa de sus ingresos potenciales",
+    "cta": "Prueba gratuita",
+    "ctaInstall": "Añadir a mi web"
+  },
+  "features": {
+    "title": "¿Por qué elegir Estimate Rentals?",
+    "feature1Title": "Precisión algorítmica",
+    "feature1Desc": "Nuestro algoritmo analiza los datos del mercado en tiempo real para proporcionar estimaciones precisas.",
+    "feature2Title": "Integración sencilla",
+    "feature2Desc": "Integre nuestro widget en minutos en su sitio existente con una simple etiqueta HTML.",
+    "feature3Title": "Multilingüe",
+    "feature3Desc": "Disponible en francés, inglés y español para llegar a sus clientes internacionales."
+  },
+  "estimate": {
+    "title": "Estime sus ingresos",
+    "subtitle": "Obtenga una estimación gratuita e instantánea de sus ingresos potenciales por alquiler."
+  },
+  "install": {
+    "title": "Integre el estimador en su sitio",
+    "subtitle": "En unos sencillos pasos, añada nuestro widget a su sitio web."
+  },
+  "about": {
+    "title": "¿Quiénes somos?",
+    "content": "Estimate Rentals es una solución SaaS dedicada a los profesionales del alquiler vacacional. Ayudamos a las agencias y gestores a convertir más propietarios con nuestro estimador en línea."
+  },
+  "pricing": {
+    "title": "Precios",
+    "subtitle": "Planes adaptados a su negocio"
+  },
+  "demo": {
+    "title": "Solicitar una demo",
+    "subtitle": "Descubra Estimate Rentals en acción con nuestros expertos",
+    "name": "Nombre",
+    "email": "Email",
+    "company": "Empresa",
+    "phone": "Teléfono",
+    "submit": "Enviar mi solicitud",
+    "success": "¡Su solicitud ha sido enviada!"
+  },
+  "blog": {
+    "title": "Actualidad",
+    "subtitle": "Las últimas noticias del alquiler vacacional"
+  },
+  "legal": {
+    "title": "Aviso legal"
+  },
+  "cookies": {
+    "title": "Política de cookies"
   },
   "footer": {
+    "copyright": "© 2025 Estimate Rentals. Todos los derechos reservados.",
     "legal": "Aviso legal",
-    "cookies": "Política de cookies",
-    "rights": "Todos los derechos reservados"
-  },
-  "estimate_page": {
-    "title": "Estime gratis su alquiler vacacional",
-    "subtitle": "Descubra el potencial de alquiler de su propiedad en segundos."
-  },
-  "pricing_page": {
-    "title": "Precios",
-    "subtitle": "Elija el plan que se adapte a su negocio."
-  },
-  "install_page": {
-    "title": "Instalar el estimador en su sitio web",
-    "subtitle": "Integre nuestro widget en minutos."
-  },
-  "about_page": {
-    "title": "¿Quiénes somos?",
-    "subtitle": "Un equipo dedicado a los profesionales del alquiler vacacional."
-  },
-  "demo_page": {
-    "title": "Solicitar una demostración",
-    "subtitle": "Le presentamos la herramienta en 30 minutos."
-  },
-  "news_page": {
-    "title": "Actualidad",
-    "subtitle": "Consejos y noticias para los profesionales del alquiler vacacional."
+    "cookies": "Política de cookies"
   }
 }

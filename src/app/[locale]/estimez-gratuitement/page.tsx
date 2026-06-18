@@ -1,21 +1,15 @@
 import { useTranslations } from 'next-intl'
-import { getLocale } from 'next-intl/server'
 import EstimateWidget from '@/components/EstimateWidget'
 
-function PageContent({ locale }: { locale: string }) {
-  const t = useTranslations('estimate_page')
+export default function EstimatePage() {
+  const t = useTranslations('estimate')
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('title')}</h1>
-        <p className="text-lg text-gray-600">{t('subtitle')}</p>
+    <div className="py-16 px-4">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{t('title')}</h1>
+        <p className="text-gray-600 text-center mb-10">{t('subtitle')}</p>
+        <EstimateWidget />
       </div>
-      <EstimateWidget lang={locale} />
     </div>
   )
-}
-
-export default async function EstimatePage() {
-  const locale = await getLocale()
-  return <PageContent locale={locale} />
 }
