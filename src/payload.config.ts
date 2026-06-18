@@ -9,6 +9,9 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     user: 'users',
+    importMap: {
+      autoGenerate: false,
+    },
   },
   collections: [
     {
