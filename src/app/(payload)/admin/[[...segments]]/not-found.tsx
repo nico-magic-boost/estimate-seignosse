@@ -1,4 +1,9 @@
 import { NotFoundPage, generatePageMetadata } from '@payloadcms/next/views'
+import config from '@payload-config'
+import { importMap } from '../importMap.js'
 
 export { generatePageMetadata as generateMetadata }
-export default NotFoundPage
+
+export default function NotFound() {
+  return NotFoundPage({ config, importMap })
+}
