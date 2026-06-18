@@ -1,12 +1,16 @@
 import { RootPage, generatePageMetadata } from '@payloadcms/next/views'
 import config from '@payload-config'
-import { importMap } from '../importMap.js'
-import type { AdminViewProps } from 'payload'
+import { importMap } from '../importMap'
 
 export const dynamic = 'force-dynamic'
 
 export { generatePageMetadata as generateMetadata }
 
-export default function Page(args: AdminViewProps) {
-  return RootPage({ ...args, config, importMap })
+type Args = {
+  params: Promise<{ segments: string[] }>
+  searchParams: Promise<Record<string, string | string[]>>
+}
+
+export default function Page({ params, searchParams }: Args) {
+  return RootPage({ config, importMap, params, searchParams })
 }
