@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "estimator": "L'estimateur",
+    "install": "Intégrer",
+    "about": "Qui sommes-nous ?",
+    "pricing": "Tarifs",
+    "demo": "Demander une démo",
+    "news": "Actualités"
+  },
+  "home": {
+    "hero_title": "L'estimateur en ligne pour les professionnels de la location saisonnière",
+    "hero_subtitle": "Offrez à vos clients propriétaires une estimation instantanée et fiable de leurs revenus locatifs potentiels.",
+    "cta_estimate": "Essayer l'estimateur",
+    "cta_demo": "Demander une démo",
+    "feature1_title": "Estimation instantanée",
+    "feature1_desc": "Générez une estimation précise en quelques secondes grâce à notre algorithme basé sur les données du marché.",
+    "feature2_title": "Intégrable sur votre site",
+    "feature2_desc": "Ajoutez facilement l'estimateur sur votre site web en quelques lignes de code.",
+    "feature3_title": "Augmentez vos mandats",
+    "feature3_desc": "Convainquez plus facilement les propriétaires avec des projections chiffrées et professionnelles."
+  },
+  "footer": {
+    "legal": "Mentions légales",
+    "cookies": "Politique de cookies",
+    "rights": "Tous droits réservés"
+  },
+  "estimate_page": {
+    "title": "Estimez gratuitement votre location saisonnière",
+    "subtitle": "Découvrez le potentiel locatif de votre bien en quelques secondes."
+  },
+  "pricing_page": {
+    "title": "Nos tarifs",
+    "subtitle": "Choisissez l'offre adaptée à votre activité."
+  },
+  "install_page": {
+    "title": "Installer l'estimateur sur votre site",
+    "subtitle": "Intégrez notre widget en quelques minutes."
+  },
+  "about_page": {
+    "title": "Qui sommes-nous ?",
+    "subtitle": "Une équipe dédiée aux professionnels de la location saisonnière."
+  },
+  "demo_page": {
+    "title": "Demander une démo",
+    "subtitle": "Nous vous présentons l'outil en 30 minutes."
+  },
+  "news_page": {
+    "title": "Actualités",
+    "subtitle": "Conseils et actualités pour les pros de la location saisonnière."
+  }
+}

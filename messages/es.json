@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "estimator": "El estimador",
+    "install": "Integrar",
+    "about": "¿Quiénes somos?",
+    "pricing": "Precios",
+    "demo": "Solicitar una demo",
+    "news": "Actualidad"
+  },
+  "home": {
+    "hero_title": "El estimador en línea para los profesionales del alquiler vacacional",
+    "hero_subtitle": "Ofrezca a sus clientes propietarios una estimación instantánea y fiable de sus ingresos potenciales.",
+    "cta_estimate": "Probar el estimador",
+    "cta_demo": "Solicitar una demo",
+    "feature1_title": "Estimación instantánea",
+    "feature1_desc": "Genere una estimación precisa en segundos gracias a nuestro algoritmo basado en datos del mercado.",
+    "feature2_title": "Integrable en su sitio web",
+    "feature2_desc": "Añada fácilmente el estimador a su sitio web con unas pocas líneas de código.",
+    "feature3_title": "Aumente sus mandatos",
+    "feature3_desc": "Convenza a más propietarios con proyecciones profesionales y basadas en datos."
+  },
+  "footer": {
+    "legal": "Aviso legal",
+    "cookies": "Política de cookies",
+    "rights": "Todos los derechos reservados"
+  },
+  "estimate_page": {
+    "title": "Estime gratis su alquiler vacacional",
+    "subtitle": "Descubra el potencial de alquiler de su propiedad en segundos."
+  },
+  "pricing_page": {
+    "title": "Precios",
+    "subtitle": "Elija el plan que se adapte a su negocio."
+  },
+  "install_page": {
+    "title": "Instalar el estimador en su sitio web",
+    "subtitle": "Integre nuestro widget en minutos."
+  },
+  "about_page": {
+    "title": "¿Quiénes somos?",
+    "subtitle": "Un equipo dedicado a los profesionales del alquiler vacacional."
+  },
+  "demo_page": {
+    "title": "Solicitar una demostración",
+    "subtitle": "Le presentamos la herramienta en 30 minutos."
+  },
+  "news_page": {
+    "title": "Actualidad",
+    "subtitle": "Consejos y noticias para los profesionales del alquiler vacacional."
+  }
+}

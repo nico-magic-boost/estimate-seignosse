@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --brand-primary: #007caa;
+  --brand-secondary: #17a3b5;
+  --font-sans: var(--font-geist);
+}
+
+body {
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  color: #111827;
+  background: #ffffff;
+}

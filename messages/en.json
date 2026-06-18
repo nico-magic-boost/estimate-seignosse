@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "estimator": "The estimator",
+    "install": "Integrate",
+    "about": "Who are we?",
+    "pricing": "Pricing",
+    "demo": "Request a demo",
+    "news": "News"
+  },
+  "home": {
+    "hero_title": "The online estimator for vacation rental professionals",
+    "hero_subtitle": "Give your property owner clients an instant, reliable estimate of their potential rental income.",
+    "cta_estimate": "Try the estimator",
+    "cta_demo": "Request a demo",
+    "feature1_title": "Instant estimation",
+    "feature1_desc": "Generate an accurate estimate in seconds using our market data-based algorithm.",
+    "feature2_title": "Embeddable on your site",
+    "feature2_desc": "Easily add the estimator to your website with just a few lines of code.",
+    "feature3_title": "Increase your mandates",
+    "feature3_desc": "Convince more property owners with professional, data-driven projections."
+  },
+  "footer": {
+    "legal": "Legal notices",
+    "cookies": "Cookie policy",
+    "rights": "All rights reserved"
+  },
+  "estimate_page": {
+    "title": "Estimate your vacation rental for free",
+    "subtitle": "Discover the rental potential of your property in seconds."
+  },
+  "pricing_page": {
+    "title": "Pricing",
+    "subtitle": "Choose the plan that fits your business."
+  },
+  "install_page": {
+    "title": "Install the estimator on your website",
+    "subtitle": "Integrate our widget in minutes."
+  },
+  "about_page": {
+    "title": "Who are we?",
+    "subtitle": "A team dedicated to vacation rental professionals."
+  },
+  "demo_page": {
+    "title": "Request a demo",
+    "subtitle": "We'll walk you through the tool in 30 minutes."
+  },
+  "news_page": {
+    "title": "News",
+    "subtitle": "Tips and news for vacation rental professionals."
+  }
+}
