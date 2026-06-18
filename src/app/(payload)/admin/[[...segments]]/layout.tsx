@@ -7,6 +7,6 @@ type Args = {
   children: React.ReactNode
 }
 
-export default function Layout({ children }: Args) {
+export default async function Layout({ children }: Args) {
   return RootLayout({ children, config, importMap })
 }

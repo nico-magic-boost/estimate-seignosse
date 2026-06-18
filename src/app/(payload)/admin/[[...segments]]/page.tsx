@@ -11,6 +11,6 @@ type Args = {
   searchParams: Promise<Record<string, string | string[]>>
 }
 
-export default function Page({ params, searchParams }: Args) {
+export default async function Page({ params, searchParams }: Args) {
   return RootPage({ config, importMap, params, searchParams })
 }
