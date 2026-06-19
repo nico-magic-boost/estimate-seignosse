@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Link } from '@/i18n/navigation'
+import type { ComponentProps } from 'react'
 
 type Post = {
   title: string
@@ -134,7 +135,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="mt-14 bg-gradient-to-br from-[#007caa] to-[#17a3b5] rounded-2xl p-8 text-center text-white">
         <p className="font-semibold text-lg mb-4">Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?</p>
         <Link
-          href={post.cta.href}
+          href={post.cta.href as ComponentProps<typeof Link>['href']}
           className="inline-block bg-white text-[#007caa] font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
         >
           {post.cta.text}

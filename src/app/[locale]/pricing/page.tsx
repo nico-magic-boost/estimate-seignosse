@@ -148,7 +148,7 @@ export default function PricingPage() {
         <div className="mt-16 text-center">
           <p className="text-gray-500 mb-4">Need a custom quote or specific integration?</p>
           <Link
-            href="/request-a-demo"
+            href="/demander-une-demo"
             className="inline-block bg-[#007caa] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#005f85] transition-colors"
           >
             Talk to an expert

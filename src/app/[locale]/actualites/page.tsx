@@ -36,7 +36,7 @@ export default function BlogPage() {
               <h2 className="text-xl font-semibold text-gray-800 mt-1 mb-2">{post.title}</h2>
               <p className="text-gray-600 mb-4">{post.excerpt}</p>
               <Link
-                href={`/actualites/${post.slug}`}
+                href={{ pathname: '/actualites/[slug]', params: { slug: post.slug } }}
                 className="text-[#007caa] font-semibold text-sm hover:underline"
               >
                 {t('readMore')} →

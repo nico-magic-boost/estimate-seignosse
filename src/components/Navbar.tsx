@@ -13,7 +13,8 @@ export default function Navbar() {
   const pathname = usePathname()
 
   const switchLocale = (newLocale: string) => {
-    router.replace(pathname, { locale: newLocale })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    router.replace(pathname as any, { locale: newLocale })
   }
 
   const navLinks = [
