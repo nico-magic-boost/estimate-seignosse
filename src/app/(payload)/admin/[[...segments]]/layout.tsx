@@ -3,6 +3,8 @@ import config from '@payload-config'
 import { importMap } from '../importMap'
 import React from 'react'
 
+export const dynamic = 'force-dynamic'
+
 type Args = {
   children: React.ReactNode
 }
@@ -14,5 +16,9 @@ export default async function Layout({ children }: Args) {
     return handleServerFunctions({ ...args, config, importMap })
   }
 
-  return RootLayout({ children, config, importMap, serverFunction })
+  return (
+    <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+      {children}
+    </RootLayout>
+  )
 }
