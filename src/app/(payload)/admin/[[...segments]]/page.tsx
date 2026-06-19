@@ -4,11 +4,13 @@ import { importMap } from '../importMap'
 
 export const dynamic = 'force-dynamic'
 
-export { generatePageMetadata as generateMetadata }
-
 type Args = {
   params: Promise<{ segments: string[] }>
   searchParams: Promise<Record<string, string | string[]>>
+}
+
+export async function generateMetadata({ params, searchParams }: Args) {
+  return generatePageMetadata({ config, params, searchParams })
 }
 
 export default async function Page({ params, searchParams }: Args) {
