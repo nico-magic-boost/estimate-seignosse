@@ -10,18 +10,18 @@
   },
   "hero": {
     "title": "The online estimator for vacation rental professionals",
-    "subtitle": "Give your property owners an instant and accurate estimate of their potential revenue",
+    "subtitle": "Give your property owners an instant, accurate estimate of their potential revenue — and convert more management mandates.",
     "cta": "Try for free",
     "ctaInstall": "Add to my website"
   },
   "features": {
     "title": "Why choose Estimate Rentals?",
     "feature1Title": "Algorithmic precision",
-    "feature1Desc": "Our algorithm analyzes market data in real time to provide accurate estimates.",
-    "feature2Title": "Easy integration",
-    "feature2Desc": "Integrate our widget in minutes on your existing site with a simple HTML tag.",
-    "feature3Title": "Multilingual",
-    "feature3Desc": "Available in French, English and Spanish to reach your international clients."
+    "feature1Desc": "Our algorithm analyzes real local market data to deliver reliable estimates, including seasonal variations.",
+    "feature2Title": "2-minute integration",
+    "feature2Desc": "Copy two lines of code and our widget is live on your site — no technical skills required.",
+    "feature3Title": "Multilingual FR / EN / ES / PT",
+    "feature3Desc": "Reach your international clients in their language, with estimates tailored to each local market."
   },
   "estimate": {
     "title": "Estimate your revenue",
@@ -29,15 +29,36 @@
   },
   "install": {
     "title": "Integrate the estimator on your site",
-    "subtitle": "In a few simple steps, add our widget to your website."
+    "subtitle": "Two steps are enough to add our widget to your site and start capturing qualified owner leads.",
+    "step1Title": "Step 1 — Add the script",
+    "step2Title": "Step 2 — Place the tag",
+    "step3Title": "Step 3 — Customize",
+    "step3Desc": "Replace YOUR_ID with your agency identifier and adjust the colors to match your branding."
   },
   "about": {
     "title": "Who are we?",
-    "content": "Estimate Rentals is a SaaS solution dedicated to vacation rental professionals. We help agencies and managers convert more property owners with our online estimator."
+    "intro": "Estimate.rentals is a brand of Popconnect, based in Biarritz in the Basque Country. It brings together a team of enthusiasts: data experts, real estate professionals, and developers.",
+    "mission": "Help vacation rental professionals convert more property owners with reliable, instant estimates.",
+    "vision": "Become the reference tool for seasonal rental revenue estimation in Europe.",
+    "value1Title": "Precision",
+    "value1Desc": "Our algorithms rely on real market data — not national averages — for each destination.",
+    "value2Title": "Transparency",
+    "value2Desc": "Each estimate is calculated with explicit criteria: area, location, seasonality, average occupancy rate.",
+    "value3Title": "Simplicity",
+    "value3Desc": "One widget, two lines of code, zero friction. You're up and running in under 5 minutes.",
+    "value4Title": "Innovation",
+    "value4Desc": "Opportunity score, CRM/PMS integration, public API — we build tomorrow's tools for today's professionals."
   },
   "pricing": {
     "title": "Pricing",
-    "subtitle": "Plans tailored to your business"
+    "subtitle": "Plans tailored to your business, no commitment on Free.",
+    "free": "Free",
+    "month": "/ month",
+    "mostPopular": "Most popular",
+    "trial": "14-day trial",
+    "freeTrial": "Free trial",
+    "getStarted": "Get started",
+    "contactUs": "Contact us"
   },
   "demo": {
     "title": "Request a demo",
@@ -51,7 +72,8 @@
   },
   "blog": {
     "title": "News",
-    "subtitle": "The latest from vacation rentals"
+    "subtitle": "Tips and best practices for vacation rental professionals",
+    "readMore": "Read article"
   },
   "legal": {
     "title": "Legal notices"
@@ -60,7 +82,7 @@
     "title": "Cookie policy"
   },
   "footer": {
-    "copyright": "© 2025 Estimate Rentals. All rights reserved.",
+    "copyright": "© 2025 Estimate Rentals — a Popconnect brand. All rights reserved.",
     "legal": "Legal notices",
     "cookies": "Cookie policy"
   }

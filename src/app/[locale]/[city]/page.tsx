@@ -2,6 +2,7 @@ import EstimateWidget from '@/components/EstimateWidget'
 import { notFound } from 'next/navigation'
 
 const CITIES = [
+  { slug: 'seignosse', name: 'Seignosse', region: 'Landes' },
   { slug: 'arcachon', name: 'Arcachon', region: 'Bassin d\'Arcachon' },
   { slug: 'biscarrosse', name: 'Biscarrosse', region: 'Landes' },
   { slug: 'argeles-sur-mer', name: 'Argelès-sur-Mer', region: 'Pyrénées-Orientales' },

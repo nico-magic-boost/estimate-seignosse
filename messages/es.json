@@ -10,18 +10,18 @@
   },
   "hero": {
     "title": "El estimador en línea para profesionales del alquiler vacacional",
-    "subtitle": "Ofrezca a sus propietarios una estimación instantánea y precisa de sus ingresos potenciales",
+    "subtitle": "Ofrezca a sus propietarios una estimación instantánea y precisa de sus ingresos potenciales — y convierta más mandatos de gestión.",
     "cta": "Prueba gratuita",
     "ctaInstall": "Añadir a mi web"
   },
   "features": {
     "title": "¿Por qué elegir Estimate Rentals?",
     "feature1Title": "Precisión algorítmica",
-    "feature1Desc": "Nuestro algoritmo analiza los datos del mercado en tiempo real para proporcionar estimaciones precisas.",
-    "feature2Title": "Integración sencilla",
-    "feature2Desc": "Integre nuestro widget en minutos en su sitio existente con una simple etiqueta HTML.",
-    "feature3Title": "Multilingüe",
-    "feature3Desc": "Disponible en francés, inglés y español para llegar a sus clientes internacionales."
+    "feature1Desc": "Nuestro algoritmo analiza datos reales del mercado local para ofrecer estimaciones fiables, incluyendo variaciones estacionales.",
+    "feature2Title": "Integración en 2 minutos",
+    "feature2Desc": "Copie dos líneas de código y nuestro widget estará activo en su sitio — sin conocimientos técnicos.",
+    "feature3Title": "Multilingüe FR / EN / ES / PT",
+    "feature3Desc": "Llegue a sus clientes internacionales en su idioma, con estimaciones adaptadas a cada mercado local."
   },
   "estimate": {
     "title": "Estime sus ingresos",
@@ -29,15 +29,36 @@
   },
   "install": {
     "title": "Integre el estimador en su sitio",
-    "subtitle": "En unos sencillos pasos, añada nuestro widget a su sitio web."
+    "subtitle": "Dos pasos son suficientes para añadir nuestro widget y empezar a captar propietarios cualificados.",
+    "step1Title": "Paso 1 — Añadir el script",
+    "step2Title": "Paso 2 — Colocar la etiqueta",
+    "step3Title": "Paso 3 — Personalizar",
+    "step3Desc": "Reemplace SU_ID por su identificador de agencia y ajuste los colores para que coincidan con su imagen de marca."
   },
   "about": {
     "title": "¿Quiénes somos?",
-    "content": "Estimate Rentals es una solución SaaS dedicada a los profesionales del alquiler vacacional. Ayudamos a las agencias y gestores a convertir más propietarios con nuestro estimador en línea."
+    "intro": "Estimate.rentals es una marca de Popconnect, con sede en Biarritz, en el País Vasco francés. Reúne un equipo apasionado: expertos en datos, profesionales del sector inmobiliario y desarrolladores.",
+    "mission": "Ayudar a los profesionales del alquiler vacacional a convertir más propietarios con estimaciones fiables e instantáneas.",
+    "vision": "Convertirse en la herramienta de referencia para la estimación de ingresos por alquiler vacacional en Europa.",
+    "value1Title": "Precisión",
+    "value1Desc": "Nuestros algoritmos se basan en datos reales del mercado, no en medias nacionales, para cada destino.",
+    "value2Title": "Transparencia",
+    "value2Desc": "Cada estimación se calcula con criterios explícitos: superficie, ubicación, estacionalidad, tasa de ocupación media.",
+    "value3Title": "Simplicidad",
+    "value3Desc": "Un widget, dos líneas de código, cero fricción. Estará operativo en menos de 5 minutos.",
+    "value4Title": "Innovación",
+    "value4Desc": "Puntuación de oportunidad, integración CRM/PMS, API pública — construimos las herramientas del mañana para los profesionales de hoy."
   },
   "pricing": {
     "title": "Precios",
-    "subtitle": "Planes adaptados a su negocio"
+    "subtitle": "Planes adaptados a su negocio, sin compromiso en el plan Free.",
+    "free": "Gratis",
+    "month": "/ mes",
+    "mostPopular": "Más popular",
+    "trial": "14 días de prueba",
+    "freeTrial": "Prueba gratuita",
+    "getStarted": "Empezar",
+    "contactUs": "Contáctenos"
   },
   "demo": {
     "title": "Solicitar una demo",
@@ -51,7 +72,8 @@
   },
   "blog": {
     "title": "Actualidad",
-    "subtitle": "Las últimas noticias del alquiler vacacional"
+    "subtitle": "Consejos y buenas prácticas para profesionales del alquiler vacacional",
+    "readMore": "Leer el artículo"
   },
   "legal": {
     "title": "Aviso legal"
@@ -60,7 +82,7 @@
     "title": "Política de cookies"
   },
   "footer": {
-    "copyright": "© 2025 Estimate Rentals. Todos los derechos reservados.",
+    "copyright": "© 2025 Estimate Rentals — una marca Popconnect. Todos los derechos reservados.",
     "legal": "Aviso legal",
     "cookies": "Política de cookies"
   }
