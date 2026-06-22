@@ -93,7 +93,7 @@ export default async function EstimatePage() {
           </div>
           <div className="flex-1">
             <Image
-              src={`${WP}/2025/09/Pourquoi-utiliser-estimate.rentals-quand-on-est-proprietaire.webp`}
+              src={`${WP}/2025/09/Votre-estimation-Airbnb-et-location-saisonniere-en-quelques-clics.webp`}
               alt="Professionnels de l'immobilier"
               width={520}
               height={380}
