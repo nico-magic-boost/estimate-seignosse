@@ -1,15 +1,279 @@
-import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
 import EstimateWidget from '@/components/EstimateWidget'
+import { getLocale } from 'next-intl/server'
 
-export default function EstimatePage() {
-  const t = useTranslations('estimate')
+const WP = 'https://estimate.rentals/wp-content/uploads'
+
+const cities = [
+  { slug: 'arcachon', name: 'Arcachon', img: `${WP}/2026/02/estimateur-location-vacances-arcachon.webp` },
+  { slug: 'biscarrosse', name: 'Biscarrosse', img: `${WP}/2026/02/estimateur-location-vacances-biscarrosse.webp` },
+  { slug: 'argeles-sur-mer', name: 'Argelès-sur-Mer', img: `${WP}/2026/02/estimation-location-Argeles-sur-Mer.webp` },
+  { slug: 'les-sables-dolonne', name: 'Les Sables-d\'Olonne', img: `${WP}/2026/02/Les-sables-dOlonne.webp` },
+  { slug: 'lavandou', name: 'Le Lavandou', img: `${WP}/2026/02/Le-Lavandou.webp` },
+  { slug: 'menton', name: 'Menton', img: `${WP}/2026/04/Image-Estimate.rentals.webp` },
+]
+
+const faq = [
+  {
+    q: "L'estimation est-elle vraiment gratuite ?",
+    a: "Oui, l'estimation est totalement gratuite et sans engagement ni obligation. Vous pouvez l'utiliser aussi souvent que vous le souhaitez.",
+  },
+  {
+    q: "À quoi sert une estimation d'une location saisonnière pour un professionnel ?",
+    a: "Elle permet d'appuyer un conseil immobilier, de structurer une analyse et de fournir une projection chiffrée cohérente à un client ou partenaire.",
+  },
+  {
+    q: "Sur quelles données repose l'estimation ?",
+    a: "Nous utilisons des données de marché : prix moyens pratiqués sur Airbnb, Booking, Abritel, taux d'occupation dans votre ville, saisonnalité et caractéristiques de votre bien.",
+  },
+  {
+    q: "Combien de temps prend l'estimation ?",
+    a: "Moins de 2 minutes : vous renseignez les infos de votre bien, et vous obtenez une estimation instantanée.",
+  },
+]
+
+export default async function EstimatePage() {
+  const locale = await getLocale()
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{t('title')}</h1>
-        <p className="text-gray-600 text-center mb-10">{t('subtitle')}</p>
-        <EstimateWidget />
-      </div>
+    <div>
+      {/* ── Hero ──────────────────────────────────────────── */}
+      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-20 px-4">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+          <div className="flex-1">
+            <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
+              L&apos;outil d&apos;estimation des revenus locatifs pour les professionnels de l&apos;immobilier
+            </h1>
+            <p className="text-base opacity-90 mb-8 leading-relaxed">
+              Renforcez votre expertise et facilitez la prise de mandat : grâce à des données de marché actualisées,
+              vous obtenez en quelques secondes une estimation des revenus locatifs saisonniers réaliste,
+              exploitable en rendez-vous ou en prospection.
+            </p>
+            <Link
+              href="/estimez-gratuitement"
+              className="inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
+            >
+              Je teste l&apos;estimateur gratuitement
+            </Link>
+          </div>
+          <div className="flex-1">
+            <Image
+              src={`${WP}/2025/09/Pourquoi-utiliser-estimate.rentals-quand-on-est-proprietaire.webp`}
+              alt="Professionnels de l'immobilier"
+              width={520}
+              height={380}
+              className="rounded-2xl w-full object-cover shadow-xl"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Tagline ───────────────────────────────────────── */}
+      <section className="bg-[#17a3b5] text-white py-5 px-4 text-center">
+        <p className="text-lg font-semibold">
+          Vous êtes à quelques clics de découvrir le potentiel commercial de vos logements.
+        </p>
+      </section>
+
+      {/* ── Upsell banner ─────────────────────────────────── */}
+      <section className="bg-gray-50 border-b border-gray-200 py-4 px-4">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-700 text-sm">
+            <strong>Envie d&apos;aller plus loin ?</strong> Obtenez plus de leads, gagnez plus de mandats,
+            accédez à vos estimations et bien plus encore.
+          </p>
+          <Link
+            href="/tarifs"
+            className="flex-shrink-0 bg-[#007caa] text-white text-sm font-semibold px-6 py-2 rounded-full hover:bg-[#005f85] transition-colors"
+          >
+            Voir les tarifs
+          </Link>
+        </div>
+      </section>
+
+      {/* ── Widget ────────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto text-center mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">Votre estimation de location saisonnière</h2>
+          <p className="text-gray-600 text-sm leading-relaxed max-w-2xl mx-auto">
+            Grâce à notre simulateur en ligne, vous obtenez une <strong>estimation fiable et structurée</strong> des
+            revenus locatifs saisonniers, conçue pour un <strong>usage professionnel</strong> et fondée sur les données du marché.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-10 text-sm">
+            {[
+              { icon: '🆓', text: 'Gratuit, instantané et sans engagement' },
+              { icon: '📊', text: 'Basé sur des données de marché locales (taux d\'occupation, prix moyens, concurrence).' },
+              { icon: '🏢', text: 'Un outil conçu pour accompagner les agences immobilières dans l\'évaluation du potentiel de revenus d\'un bien en location saisonnière.' },
+            ].map((f) => (
+              <div key={f.text} className="flex flex-col items-center gap-2 text-gray-600">
+                <span className="text-2xl">{f.icon}</span>
+                <p className="leading-snug">{f.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="max-w-4xl mx-auto">
+          <EstimateWidget />
+        </div>
+      </section>
+
+      {/* ── Pourquoi ──────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold text-gray-900 mb-5 leading-tight">
+              Pourquoi utiliser un outil d&apos;estimation de location saisonnière professionnel ?
+            </h2>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              L&apos;estimation d&apos;un bien destiné à la location saisonnière nécessite une approche différente
+              d&apos;une estimation locative classique. Les revenus dépendent de multiples paramètres :{' '}
+              <strong>période de mise en location</strong>, <strong>attractivité locale</strong>,{' '}
+              <strong>typologie du bien</strong> et <strong>positionnement sur le marché</strong>.
+            </p>
+            <p className="text-gray-700 text-sm font-semibold mb-4">L&apos;estimation permet de :</p>
+            <ul className="space-y-3">
+              {[
+                'Structurer une estimation cohérente et argumentée',
+                'Objectiver les projections de revenus locatifs saisonniers',
+                'Faciliter les échanges avec les propriétaires',
+                "Gagner en efficacité lors des phases d'étude ou de conseil",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
+                  <span className="text-[#007caa] mt-0.5 flex-shrink-0">✔</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex-1">
+            <Image
+              src={`${WP}/2025/09/Pourquoi-utiliser-estimate.rentals-quand-on-est-proprietaire.webp`}
+              alt="Clés d'un logement"
+              width={500}
+              height={380}
+              className="rounded-2xl w-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Comment est calculée ──────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-12">
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold text-gray-900 mb-5 leading-tight">
+              Comment est calculée l&apos;estimation d&apos;une location saisonnière ?
+            </h2>
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+              L&apos;estimation d&apos;une location saisonnière repose sur une analyse combinée de données de marché
+              et de caractéristiques du bien, parmi lesquelles :
+            </p>
+            <ul className="space-y-3">
+              {[
+                "la localisation et l'environnement du logement,",
+                "la surface, la capacité d'accueil et les équipements,",
+                "les niveaux de prix observés sur le marché local,",
+                "la saisonnalité de la demande,",
+                "le potentiel de mise en location sur l'année.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
+                  <span className="text-[#007caa] mt-0.5 flex-shrink-0">✔</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="text-gray-500 text-sm mt-5 leading-relaxed">
+              Ces éléments permettent d&apos;établir une projection des revenus locatifs saisonniers,
+              présentée sous forme de fourchette, afin de refléter la réalité du marché.
+            </p>
+          </div>
+          <div className="flex-1">
+            <Image
+              src={`${WP}/2026/02/calcul-location-saisonniere.webp`}
+              alt="Calcul location saisonnière"
+              width={500}
+              height={380}
+              className="rounded-2xl w-full object-cover shadow-lg"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Airbnb section ────────────────────────────────── */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Estimation de revenus pour une location saisonnière sur Airbnb
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Airbnb constitue aujourd&apos;hui une <strong>référence majeure du marché de la location saisonnière</strong>.
+            L&apos;estimation proposée par Estimate Rentals permet d&apos;<strong>évaluer le potentiel de revenus d&apos;un bien destiné
+            à une diffusion sur Airbnb</strong>, en s&apos;appuyant sur les niveaux de prix observés, la saisonnalité
+            de la demande et le positionnement des annonces comparables sur la plateforme.
+            Cette approche offre une <strong>projection réaliste des revenus locatifs Airbnb</strong>,
+            utile dans un cadre d&apos;analyse, de conseil ou de prise de décision immobilière.
+          </p>
+        </div>
+      </section>
+
+      {/* ── City grid ─────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">
+            Estimez le potentiel locatif saisonnier selon la destination
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+            {cities.map((city) => (
+              <a key={city.slug} href={`/${locale}/${city.slug}`}>
+                <div className="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <Image
+                    src={city.img}
+                    alt={city.name}
+                    width={320}
+                    height={200}
+                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <p className="absolute bottom-0 left-0 right-0 text-white text-xs font-semibold text-center pb-3 px-2 leading-snug">
+                    Estimation de location de vacances à {city.name}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ───────────────────────────────────────────── */}
+      <section className="py-12 px-4 bg-gray-50">
+        <div className="max-w-3xl mx-auto space-y-3">
+          {faq.map((item) => (
+            <details key={item.q} className="border border-gray-200 rounded-xl bg-white">
+              <summary className="flex items-center gap-3 px-5 py-4 cursor-pointer font-medium text-gray-800 text-sm list-none">
+                <span className="text-[#007caa] flex-shrink-0">✔</span>
+                {item.q}
+              </summary>
+              <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────────── */}
+      <section className="bg-[#007caa] py-14 px-4">
+        <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <h2 className="text-2xl font-bold text-white text-center md:text-left leading-snug">
+            Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?
+          </h2>
+          <Link
+            href="/demander-une-demo"
+            className="flex-shrink-0 bg-white text-[#007caa] font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+          >
+            Demander une démo
+          </Link>
+        </div>
+      </section>
     </div>
   )
 }
