@@ -78,7 +78,7 @@ export default function InstallPage() {
           </div>
           <div className="flex-1">
             <Image
-              src={`${WP}/2025/09/estimateur-image.webp`}
+              src={`${WP}/2025/08/Design-sans-titre-2025-08-06T141849.462.png`}
               alt="Estimateur sur desktop et tablette"
               width={560}
               height={380}
