@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter, usePathname, Link } from '@/i18n/navigation'
 import { useLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
+import Image from 'next/image'
 
 export default function Navbar() {
   const t = useTranslations('nav')
@@ -32,9 +33,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-[#007caa]">Estimate</span>
-            <span className="text-xl font-bold text-[#17a3b5]">Rentals</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="https://estimate.rentals/wp-content/uploads/2025/07/logo-estimate-rentals_Plan-de-travail-1.webp"
+              alt="Estimate Rentals"
+              width={160}
+              height={40}
+              className="h-9 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 export default function AboutPage() {
   const t = useTranslations('about')
@@ -35,9 +36,16 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <div className="mt-14 bg-gray-50 rounded-xl p-8 text-center border border-gray-200">
-          <p className="text-gray-500 text-sm">
-            Estimate.rentals es una marca de <strong className="text-gray-700">Popconnect</strong>, con sede en Biarritz, País Vasco francés.
+        <div className="mt-14">
+          <Image
+            src="https://estimate.rentals/wp-content/uploads/2025/09/equie-estimate-rentals-2025-.webp"
+            alt="El equipo de Estimate Rentals"
+            width={900}
+            height={500}
+            className="rounded-2xl w-full object-cover"
+          />
+          <p className="text-center text-gray-400 text-sm mt-3">
+            El equipo de Estimate Rentals — Biarritz, País Vasco francés
           </p>
         </div>
       </div>
