@@ -1,94 +1,191 @@
-import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 
-const benefits = [
-  { img: `${WP}/2025/08/house-rental_white.png`, label: 'Transformer vos visiteurs en prospects propriétaires' },
-  { img: `${WP}/2025/08/key-person_white.png`, label: 'Générer des leads qualifiés automatiquement' },
-  { img: `${WP}/2025/08/professional_white.png`, label: 'Valoriser votre expertise auprès des propriétaires' },
-  { img: `${WP}/2025/08/vocational_white.png`, label: 'Vous différencier de la concurrence locale' },
+const steps = [
+  {
+    n: 1,
+    title: "L'estimateur à votre image",
+    text: "Adaptez l'outil à votre charte graphique : choisissez vos couleurs, ajoutez votre logo et offrez une expérience cohérente et professionnelle à vos prospects.\n\nL'estimateur devient une extension de votre marque.",
+    img: `${WP}/2025/09/estimateur-image.webp`,
+    imgAlt: 'Personnalisation couleurs et logo',
+  },
+  {
+    n: 2,
+    title: 'Choisissez le contenu de vos emails d\'estimation',
+    text: "Chaque prospect reçoit une estimation claire et professionnelle, automatiquement.\n\n• Mettez en avant le volume annuel et les statistiques clés.\n• Partagez des données pertinentes comme le revenu brut mensuel, le prix moyen par nuitée, la valeur estimée des revenus locatifs...\n• Choisissez entre volume brut ou revenu net propriétaire.\n\nAvec Estimate.rentals vous partagerez des e-mails bien présentés pour plus de crédibilité et plus de mandats.",
+    img: `${WP}/2025/09/email.webp`,
+    imgAlt: 'Personnalisation email estimation',
+  },
+  {
+    n: 3,
+    title: 'Définissez vos propres règles de calcul',
+    text: "Estimate.rentals vous donne la possibilité de paramétrer vos frais de gestion, de commercialisation et la stratégie commerciale globale pratiquée dans vos mandats.\n\nNotre outil calcule automatiquement et affiche l'impact financier pour donner une estimation transparente et réaliste.\n\nVous devenez l'expert de la rentabilité locative.",
+    img: `${WP}/2025/09/calcul.webp`,
+    imgAlt: 'Règles de calcul personnalisées',
+  },
+  {
+    n: 4,
+    title: 'Intégrez facilement l\'estimateur sur votre site',
+    text: "Afficher l'estimateur sur votre site internet à partir d'une ligne de code (iframe) seulement. Disponible dans un CMS (comme WordPress, Wix...) ou directement dans un fichier .html pour les sites développés sur mesure.\n\nEn quelques minutes, votre site propose un simulateur moderne et interactif qui capte des leads propriétaires.",
+    img: `${WP}/2025/09/integration.webp`,
+    imgAlt: 'Intégration sur votre site',
+  },
 ]
 
-const screenshots = [
-  { img: `${WP}/2025/09/estimateur-image.webp`, label: 'L\'estimateur en action' },
-  { img: `${WP}/2025/09/calcul.webp`, label: 'Calcul personnalisé' },
-  { img: `${WP}/2025/09/email.webp`, label: 'Récupération du lead' },
-  { img: `${WP}/2025/09/integration.webp`, label: 'Intégration sur votre site' },
+const whyItems = [
+  { img: `${WP}/2025/08/house-rental_white.png`, label: 'Générer plus de leads propriétaires' },
+  { img: `${WP}/2025/08/key-person_white.png`, label: 'Transformer plus de propriétaire en mandats' },
+  { img: `${WP}/2025/08/professional_white.png`, label: 'Proposer un outil professionnel et personnalisé' },
+  { img: `${WP}/2025/08/vocational_white.png`, label: 'Se démarquer de la concurrence' },
+]
+
+const testimonials = [
+  {
+    quote: '« L\'estimateur en ligne a changé notre façon de capter des prospects. En quelques mois, il nous a permis de générer plus de 100 leads propriétaires qualifiés et de concrétiser + de 20 mandats. Nos clients apprécient la transparence de l\'outil et nous, nous gagnons en efficacité commerciale. »',
+    name: 'Pascal L.',
+    role: "Directeur d'une agence immobilière",
+  },
+  {
+    quote: '« En tant que dirigeante d\'agence, je cherchais un outil simple pour capter plus de propriétaires. L\'estimateur d\'Estimate.rentals a dépassé mes attentes. C\'est devenu un vrai atout dans notre stratégie digitale et nos propriétaires apprécient la clarté de l\'expérience. »',
+    name: 'Emilie P.',
+    role: "Directrice d'une agence immobilière",
+  },
 ]
 
 export default function InstallPage() {
-  const t = useTranslations('install')
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{t('title')}</h1>
-        <p className="text-gray-600 text-center mb-14">{t('subtitle')}</p>
-
-        {/* Benefits */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {benefits.map((b) => (
-            <div key={b.label} className="bg-[#007caa] rounded-xl p-5 text-center text-white">
-              <Image src={b.img} alt="" width={48} height={48} className="mx-auto mb-3 h-12 w-12 object-contain brightness-0 invert" />
-              <p className="text-xs font-medium leading-snug">{b.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Code steps */}
-        <div className="space-y-6 mb-16">
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="bg-[#007caa] text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">1</span>
-              <h2 className="text-xl font-semibold text-gray-800">{t('step1Title')}</h2>
-            </div>
-            <pre className="bg-gray-800 text-green-400 rounded-lg p-4 overflow-x-auto text-sm">
-              {`<script type="module" src="https://form.estimate.rentals/estimateWebComponent.js"></script>`}
-            </pre>
+    <div>
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-16 px-4">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+          <div className="flex-1">
+            <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
+              Intégrer un estimateur de revenus locatifs sur votre site internet
+            </h1>
+            <p className="text-base opacity-90 mb-8 leading-relaxed">
+              Générez des leads propriétaires en intégrant notre estimateur de revenus locatifs
+              sur votre propre site web. Un outil simple, moderne et personnalisable qui valorise
+              votre expertise.
+            </p>
+            <Link
+              href="/demander-une-demo"
+              className="inline-flex items-center gap-2 bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
+            >
+              <span>⚙</span> J&apos;installe l&apos;estimateur sur mon site
+            </Link>
           </div>
-
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="bg-[#007caa] text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">2</span>
-              <h2 className="text-xl font-semibold text-gray-800">{t('step2Title')}</h2>
-            </div>
-            <pre className="bg-gray-800 text-green-400 rounded-lg p-4 overflow-x-auto text-sm">
-              {`<estimate-wc\n  agency-ids="VOTRE_ID"\n  primary-color="007caa"\n  secondary-color="17a3b5"\n  lang="fr"\n/>`}
-            </pre>
-          </div>
-
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="bg-[#17a3b5] text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">3</span>
-              <h2 className="text-xl font-semibold text-gray-800">{t('step3Title')}</h2>
-            </div>
-            <p className="text-gray-600 text-sm">{t('step3Desc')}</p>
+          <div className="flex-1">
+            <Image
+              src={`${WP}/2025/09/estimateur-image.webp`}
+              alt="Estimateur sur desktop et tablette"
+              width={560}
+              height={380}
+              className="w-full object-contain drop-shadow-2xl"
+              priority
+            />
           </div>
         </div>
+      </section>
 
-        {/* Screenshots */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Le widget en action</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-14">
-          {screenshots.map((s) => (
-            <div key={s.label}>
-              <Image src={s.img} alt={s.label} width={600} height={350} className="rounded-xl w-full object-cover border border-gray-200" />
-              <p className="text-center text-gray-500 text-sm mt-2">{s.label}</p>
-            </div>
-          ))}
+      {/* 4 étapes */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#007caa] text-center mb-12">
+            Un estimateur sur votre site en 4 étapes
+          </h2>
+          <div className="space-y-6">
+            {steps.map((step, i) => (
+              <div
+                key={step.n}
+                className={`bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col ${
+                  i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}
+              >
+                <div className="flex-1 p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="bg-[#007caa] text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                      {step.n}
+                    </span>
+                    <h3 className="text-lg font-bold text-gray-800">{step.title}</h3>
+                  </div>
+                  <div className="text-sm text-gray-600 leading-relaxed space-y-2">
+                    {step.text.split('\n').map((line, j) => (
+                      <p key={j}>{line}</p>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex-1 bg-white flex items-center justify-center p-6">
+                  <Image
+                    src={step.img}
+                    alt={step.imgAlt}
+                    width={480}
+                    height={300}
+                    className="w-full rounded-xl object-cover border border-gray-100"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div className="text-center">
-          <p className="text-gray-500 mb-5">Besoin d&apos;aide ou d&apos;un identifiant agence ?</p>
+      {/* Pourquoi intégrer */}
+      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+            Pourquoi intégrer un estimateur de revenus locatifs sur son site ?
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {whyItems.map((item) => (
+              <div key={item.label} className="flex flex-col items-center text-center gap-4">
+                <Image
+                  src={item.img}
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 object-contain brightness-0 invert"
+                />
+                <p className="text-sm font-medium leading-snug">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Témoignages */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#007caa] text-center mb-10">
+            Des résultats impactants pour les professionnels
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-gray-50 rounded-2xl border border-gray-200 p-8">
+                <p className="text-gray-700 text-sm leading-relaxed italic mb-6">{t.quote}</p>
+                <p className="text-gray-900 font-semibold text-sm">{t.name}</p>
+                <p className="text-gray-500 text-xs">{t.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] py-14 px-4">
+        <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <h2 className="text-2xl font-bold text-white text-center md:text-left leading-snug">
+            Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?
+          </h2>
           <Link
             href="/demander-une-demo"
-            className="inline-block bg-[#007caa] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#005f85] transition-colors"
+            className="flex-shrink-0 bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
           >
             Demander une démo
           </Link>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
