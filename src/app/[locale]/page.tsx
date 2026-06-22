@@ -51,34 +51,51 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats bar ─────────────────────────────────────────── */}
-      <section className="bg-[#2b8ab5] text-white py-6 px-4">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center items-center">
-          {/* Bar chart stat */}
-          <div className="flex flex-col items-center gap-2">
-            <svg className="w-8 h-8 opacity-90" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M3 3v18h18M9 17V9m4 8V5m4 12v-6"/>
-              <rect x="7" y="9" width="4" height="8" rx="1"/>
-              <rect x="11" y="5" width="4" height="12" rx="1"/>
-              <rect x="15" y="11" width="4" height="6" rx="1"/>
+      <section className="bg-gradient-to-r from-[#007caa] to-[#17a3b5] text-white py-8 px-4">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+          {/* Bar chart */}
+          <div className="flex items-center gap-4">
+            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.5V19a1 1 0 001 1h3V13.5M3 13.5V9a1 1 0 011-1h3a1 1 0 011 1v4.5M3 13.5h6m3 6V8a1 1 0 011-1h3a1 1 0 011 1v11m-5 0h6"/>
             </svg>
             <div>
-              <div className="text-2xl font-bold leading-tight">800 000+</div>
-              <div className="text-sm opacity-85">locations analysées</div>
+              <div className="text-xl font-bold leading-tight">800 000+</div>
+              <div className="text-xs opacity-80 leading-snug">locations analysées</div>
             </div>
           </div>
-          {/* Check stats */}
-          {[
-            'Réglementations locales intégrées',
-            'Leads qualifiés email + tél vérifiés',
-            'Installation en 1 clic',
-          ].map((label) => (
-            <div key={label} className="flex flex-col items-center gap-2">
-              <svg className="w-8 h-8 text-violet-300" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 2a10 10 0 100 20A10 10 0 0012 2zm4.707 8.707a1 1 0 00-1.414-1.414L10 14.586l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l6-6z" clipRule="evenodd"/>
-              </svg>
-              <div className="text-sm opacity-85 leading-snug">{label}</div>
+          {/* Circle check */}
+          <div className="flex items-center gap-4">
+            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" strokeLinecap="round"/>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 12.5l2.5 2.5 4.5-5"/>
+            </svg>
+            <div>
+              <div className="text-sm font-bold leading-snug">Réglementations</div>
+              <div className="text-xs opacity-80">locales intégrées</div>
             </div>
-          ))}
+          </div>
+          {/* ID card / leads */}
+          <div className="flex items-center gap-4">
+            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <rect x="2" y="6" width="20" height="14" rx="2" strokeLinecap="round"/>
+              <circle cx="8" cy="13" r="2"/>
+              <path strokeLinecap="round" d="M13 11h5M13 15h3"/>
+            </svg>
+            <div>
+              <div className="text-sm font-bold leading-snug">Leads qualifiés</div>
+              <div className="text-xs opacity-80">email + tél vérifiés</div>
+            </div>
+          </div>
+          {/* Thumbs up */}
+          <div className="flex items-center gap-4">
+            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715l.053-.13c.29-.72.29-1.516 0-2.236A1.5 1.5 0 0011.79 2h-.001A1.5 1.5 0 0010.29 3.5v.5c0 .982-.578 1.891-1.532 2.463L6 8l.001 10H18a2 2 0 001.94-1.515l1-4A2 2 0 0019 10h-6.369M6 8H3.5A1.5 1.5 0 002 9.5v7A1.5 1.5 0 003.5 18H6V8z"/>
+            </svg>
+            <div>
+              <div className="text-sm font-bold leading-snug">Installation</div>
+              <div className="text-xs opacity-80">en 1 clic</div>
+            </div>
+          </div>
         </div>
       </section>
 
