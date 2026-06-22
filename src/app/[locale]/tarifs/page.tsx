@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/navigation'
+import SubscriptionWidget from '@/components/SubscriptionWidget'
 
 const plans = [
   {
@@ -98,64 +99,12 @@ export default function PricingPage() {
         </p>
       </section>
 
-      {/* Plans */}
-      <section className="pb-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          {plans.map((plan) => (
-            <div
-              key={plan.key}
-              className={`relative rounded-2xl flex flex-col ${
-                plan.highlight
-                  ? 'bg-gray-900 text-white shadow-2xl'
-                  : 'bg-white border border-gray-200 shadow-sm text-gray-800'
-              }`}
-            >
-              {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-[#007caa] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-                    Le plus populaire
-                  </span>
-                </div>
-              )}
-              <div className="p-8 pt-10 flex flex-col flex-1">
-                <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${plan.highlight ? 'text-white' : 'text-gray-500'}`}>
-                  {plan.key}
-                </p>
-                <p className={`text-sm mb-5 ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>{plan.desc}</p>
-                <div className="mb-6">
-                  <span className="text-5xl font-extrabold">{plan.price}</span>
-                  <span className={`text-base font-medium ml-1 ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>€/mois</span>
-                </div>
-                <a
-                  href={plan.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block text-center font-semibold py-3 rounded-full transition-colors mb-6 ${
-                    plan.highlight
-                      ? 'bg-white text-gray-900 hover:bg-gray-100'
-                      : 'bg-[#007caa] text-white hover:bg-[#005f85]'
-                  }`}
-                >
-                  {plan.cta}
-                </a>
-                {'featuresPrefix' in plan && plan.featuresPrefix && (
-                  <p className={`text-xs font-semibold mb-3 ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>
-                    {plan.featuresPrefix}
-                  </p>
-                )}
-                <ul className="space-y-3 flex-1">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm">
-                      <span className={`mt-0.5 flex-shrink-0 ${plan.highlight ? 'text-[#17a3b5]' : 'text-[#007caa]'}`}>✓</span>
-                      <span className={plan.highlight ? 'text-gray-200' : 'text-gray-600'}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
+      {/* Plans — web component */}
+      <section className="pb-4 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <SubscriptionWidget />
         </div>
-        <p className="text-center text-gray-400 text-xs mt-8">
+        <p className="text-center text-gray-400 text-xs mt-6">
           Tarifs HT · Paiement sécurisé par Stripe · Annulation à tout moment depuis votre espace
         </p>
       </section>
