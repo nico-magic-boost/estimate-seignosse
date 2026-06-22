@@ -1,163 +1,243 @@
-import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 
 const plans = [
   {
-    key: 'free',
-    price: '0€',
-    estimations: '10 estim/mois',
+    key: 'FREE',
+    desc: 'Pour démarrer et générer vos premiers leads.',
+    price: 0,
     highlight: false,
-    trial: 'Essai gratuit illimité',
-    features: [
-      'Widget personnalisé (logo + couleurs)',
-      'PDF estimation automatique',
-      'Multilingue FR / EN / ES / PT',
-      'Support email',
-    ],
     cta: 'Commencer gratuitement',
     href: 'https://form.estimate.rentals',
+    features: [
+      "Widget d'estimation installable en 1 clic",
+      'Personnalisation logo + couleurs',
+      'Estimation complète + PDF automatique',
+      '10 leads qualifiés / mois inclus',
+      'Affichage du potentiel de revenus',
+    ],
   },
   {
-    key: 'growth',
-    price: '49€',
-    estimations: '100 estim/mois',
+    key: 'GROWTH',
+    desc: 'Pour transformer vos leads en mandats.',
+    price: 129,
     highlight: true,
-    trial: '14 jours d\'essai',
-    features: [
-      'Tout le plan Free',
-      'Pack 50 estimations supplémentaires',
-      'Score d\'opportunité Basique',
-      'Historique & suivi des leads',
-      'Export CSV des leads',
-      'Support prioritaire',
-    ],
-    cta: 'Démarrer l\'essai',
+    cta: "S'abonner",
     href: 'https://form.estimate.rentals',
+    featuresPrefix: 'Tout Free, et en plus :',
+    features: [
+      '100 leads qualifiés / mois inclus',
+      "Score d'opportunité (priorisation des leads)",
+      'Historique et suivi des leads',
+      'Export CSV + Webhook (CRM, Zapier, Make)',
+      'Branding estimate réduit (logo + couleurs sur le widget et le PDF)',
+    ],
   },
   {
-    key: 'pro',
-    price: '119€',
-    estimations: '300 estim/mois',
+    key: 'PRO',
+    desc: 'Pour scaler votre acquisition et automatiser.',
+    price: 349,
     highlight: false,
-    trial: '14 jours d\'essai',
-    features: [
-      'Tout le plan Growth',
-      'Score Avancé + auto-priorisation',
-      'Dashboard performance',
-      'API estimation publique',
-      'Intégration CRM / PMS',
-      'Marque blanche widget + PDF',
-    ],
-    cta: 'Démarrer l\'essai',
+    cta: "S'abonner",
     href: 'https://form.estimate.rentals',
+    featuresPrefix: 'Tout Growth, et en plus :',
+    features: [
+      '300 leads qualifiés / mois inclus',
+      'Scoring avancé + priorisation automatique',
+      'Marque blanche complète',
+      'API estimation + intégration CRM/PMS',
+      'Dashboard de performance',
+    ],
   },
+]
+
+const tableRows: { label: string; free: string; growth: string; pro: string }[] = [
+  { label: 'Estimations / mois', free: '10', growth: '100', pro: '300' },
+  { label: 'Essai gratuit', free: 'Illimité', growth: '14 jours', pro: '14 jours' },
+  { label: 'Widget personnalisé (logo + couleurs)', free: '✓', growth: '✓', pro: '✓' },
+  { label: "PDF d'estimation auto", free: '✓', growth: '✓', pro: '✓' },
+  { label: 'Multilingue FR / EN / ES / PT', free: '✓', growth: '✓', pro: '✓' },
+  { label: 'Pack 50 estimations supplémentaires', free: '✓', growth: '✓', pro: '✓' },
+  { label: "Score d'opportunité (qualification lead)", free: '✗', growth: 'Basique', pro: 'Avancé + auto-priorisation' },
+  { label: 'Historique + suivi des leads', free: '✗', growth: '✓', pro: '✓' },
+  { label: 'Export CSV des leads', free: '✗', growth: '✓', pro: '✓' },
+  { label: 'Dashboard de performance', free: '✗', growth: '✗', pro: '✓' },
+  { label: 'API estimation publique', free: '✗', growth: '✗', pro: '✓' },
+  { label: 'Intégration CRM / PMS', free: '✗', growth: '✗', pro: '✓' },
+  { label: 'Marque blanche widget + PDF', free: '✗', growth: '✗', pro: '✓' },
 ]
 
 const faq = [
-  {
-    q: 'Puis-je changer de formule à tout moment ?',
-    a: 'Oui, vous pouvez upgrader ou downgrader votre abonnement à tout moment depuis votre espace client.',
-  },
-  {
-    q: 'Qu\'est-ce qu\'une estimation ?',
-    a: 'Une estimation correspond à une simulation complète réalisée via votre widget ou l\'API pour un bien donné.',
-  },
-  {
-    q: 'Comment fonctionne l\'essai gratuit ?',
-    a: 'Le plan Free est illimité dans le temps. Les plans Growth et Pro offrent 14 jours d\'essai complet sans carte bancaire requise.',
-  },
-  {
-    q: 'Le widget est-il personnalisable à mes couleurs ?',
-    a: 'Oui, dès le plan Free. Vous pouvez définir vos couleurs primaire et secondaire, ainsi qu\'ajouter votre logo.',
-  },
-  {
-    q: 'Qu\'est-ce que le score d\'opportunité ?',
-    a: 'C\'est un indicateur calculé pour chaque lead afin de prioriser automatiquement les propriétaires les plus susceptibles de confier leur bien.',
-  },
+  { q: 'Est-ce que je peux annuler à tout moment ?' },
+  { q: "Que se passe-t-il après les 14 jours d'essai gratuit ?" },
+  { q: "Que se passe-t-il quand j'atteins mon quota mensuel ?" },
+  { q: 'Le widget est-il vraiment à mes couleurs ?' },
+  { q: 'Comment intégrer le widget sur mon site ?' },
+  { q: 'Puis-je passer du plan Growth à Pro ?' },
 ]
 
-export default function PricingPage() {
-  const t = useTranslations('pricing')
-  return (
-    <div className="py-16 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">{t('title')}</h1>
-        <p className="text-gray-500 text-center mb-14">{t('subtitle')}</p>
+function Cell({ v }: { v: string }) {
+  if (v === '✓') return <span className="text-[#007caa] font-bold text-base">✓</span>
+  if (v === '✗') return <span className="text-gray-300 font-bold text-base">✗</span>
+  if (v === 'Illimité') return <span className="text-[#007caa] font-medium text-sm">{v}</span>
+  return <span className="text-gray-700 text-sm">{v}</span>
+}
 
-        {/* Plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+export default function PricingPage() {
+  return (
+    <div>
+      {/* Hero */}
+      <section className="py-16 px-4 text-center bg-white">
+        <p className="text-xs font-semibold tracking-widest uppercase text-[#007caa] mb-3">Nos offres</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+          L&apos;estimateur qui génère{' '}
+          <span className="text-[#007caa]">des mandats</span>
+        </h1>
+        <p className="text-gray-500 text-sm">
+          Choisissez le plan adapté à votre activité, changez à tout moment.<br />
+          Pas de frais cachés, essai gratuit sans CB.
+        </p>
+      </section>
+
+      {/* Plans */}
+      <section className="pb-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           {plans.map((plan) => (
             <div
               key={plan.key}
-              className={`rounded-2xl p-8 flex flex-col ${
+              className={`relative rounded-2xl flex flex-col ${
                 plan.highlight
-                  ? 'bg-[#007caa] text-white shadow-xl scale-105'
+                  ? 'bg-gray-900 text-white shadow-2xl'
                   : 'bg-white border border-gray-200 shadow-sm text-gray-800'
               }`}
             >
               {plan.highlight && (
-                <span className="text-xs font-semibold uppercase tracking-widest bg-white/20 rounded-full px-3 py-1 self-start mb-4">
-                  {t('mostPopular')}
-                </span>
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="bg-[#007caa] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                    Le plus populaire
+                  </span>
+                </div>
               )}
-              <div className="capitalize font-bold text-xl mb-1">{plan.key === 'free' ? 'Free' : plan.key.charAt(0).toUpperCase() + plan.key.slice(1)}</div>
-              <div className="text-4xl font-extrabold mb-1">
-                {plan.price}
-                {plan.price !== '0€' && <span className="text-base font-normal opacity-70">{t('month')}</span>}
+              <div className="p-8 pt-10 flex flex-col flex-1">
+                <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${plan.highlight ? 'text-white' : 'text-gray-500'}`}>
+                  {plan.key}
+                </p>
+                <p className={`text-sm mb-5 ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>{plan.desc}</p>
+                <div className="mb-6">
+                  <span className="text-5xl font-extrabold">{plan.price}</span>
+                  <span className={`text-base font-medium ml-1 ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>€/mois</span>
+                </div>
+                <a
+                  href={plan.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block text-center font-semibold py-3 rounded-full transition-colors mb-6 ${
+                    plan.highlight
+                      ? 'bg-white text-gray-900 hover:bg-gray-100'
+                      : 'bg-[#007caa] text-white hover:bg-[#005f85]'
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+                {'featuresPrefix' in plan && plan.featuresPrefix && (
+                  <p className={`text-xs font-semibold mb-3 ${plan.highlight ? 'text-gray-300' : 'text-gray-500'}`}>
+                    {plan.featuresPrefix}
+                  </p>
+                )}
+                <ul className="space-y-3 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm">
+                      <span className={`mt-0.5 flex-shrink-0 ${plan.highlight ? 'text-[#17a3b5]' : 'text-[#007caa]'}`}>✓</span>
+                      <span className={plan.highlight ? 'text-gray-200' : 'text-gray-600'}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className={`text-sm mb-1 ${plan.highlight ? 'text-white/80' : 'text-gray-500'}`}>{plan.estimations}</div>
-              <div className={`text-xs mb-6 ${plan.highlight ? 'text-white/70' : 'text-gray-400'}`}>{plan.trial}</div>
-              <ul className="flex-1 space-y-3 mb-8">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm">
-                    <span className={plan.highlight ? 'text-white' : 'text-[#007caa]'}>✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={plan.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`block text-center font-semibold py-3 rounded-lg transition-colors ${
-                  plan.highlight
-                    ? 'bg-white text-[#007caa] hover:bg-gray-100'
-                    : 'bg-[#007caa] text-white hover:bg-[#005f85]'
-                }`}
-              >
-                {plan.cta}
-              </a>
             </div>
           ))}
         </div>
+        <p className="text-center text-gray-400 text-xs mt-8">
+          Tarifs HT · Paiement sécurisé par Stripe · Annulation à tout moment depuis votre espace
+        </p>
+      </section>
 
-        {/* FAQ */}
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-8 text-center">Questions fréquentes</h2>
-          <div className="space-y-4">
-            {faq.map((item) => (
-              <details key={item.q} className="bg-white border border-gray-200 rounded-xl p-5 group">
-                <summary className="font-semibold text-gray-800 cursor-pointer list-none flex justify-between items-center">
-                  {item.q}
-                  <span className="text-[#007caa] text-lg">+</span>
-                </summary>
-                <p className="mt-3 text-gray-600 text-sm leading-relaxed">{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-
-        {/* CTA bottom */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-500 mb-4">Besoin d&apos;un devis sur-mesure ou d&apos;une intégration spécifique ?</p>
-          <Link
-            href="/demander-une-demo"
-            className="inline-block bg-[#007caa] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#005f85] transition-colors"
-          >
-            Parler à un expert
-          </Link>
-        </div>
+      {/* Trust bar */}
+      <div className="bg-[#f0f8fb] border-y border-[#cce8f0] py-3 px-4 text-center">
+        <p className="text-sm text-[#007caa]">
+          <span className="mr-2">🛡</span>
+          <strong>Satisfait ou remboursé 30 jours</strong> · Pas convaincu ? On vous rembourse intégralement, sans questions.
+        </p>
       </div>
+
+      {/* Social proof */}
+      <section className="py-12 px-4 bg-white text-center">
+        <p className="text-yellow-400 text-2xl mb-3">★★★★★</p>
+        <p className="text-gray-700 text-sm mb-2">
+          <strong>+100 professionnels</strong> de la location saisonnière utilisent déjà Estimate Rentals.
+        </p>
+        <p className="text-gray-500 text-sm italic">
+          👤 « Nous avons gagné plus de 400 mandats en 3 ans grâce à Estimate.rentals » - Carmen Immobilier
+        </p>
+      </section>
+
+      {/* Comparison table */}
+      <section className="pb-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-[#007caa]">
+                <th className="text-left py-3 pr-4 text-gray-500 font-normal w-1/2"></th>
+                <th className="text-center py-3 px-4 font-bold text-gray-700">FREE</th>
+                <th className="text-center py-3 px-4 font-bold text-[#007caa]">GROWTH</th>
+                <th className="text-center py-3 px-4 font-bold text-gray-700">PRO</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tableRows.map((row, i) => (
+                <tr key={row.label} className={`border-b border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+                  <td className="py-3 pr-4 text-gray-600">{row.label}</td>
+                  <td className="py-3 px-4 text-center"><Cell v={row.free} /></td>
+                  <td className="py-3 px-4 text-center"><Cell v={row.growth} /></td>
+                  <td className="py-3 px-4 text-center"><Cell v={row.pro} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="pb-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto space-y-3">
+          {faq.map((item) => (
+            <details key={item.q} className="border border-gray-200 rounded-xl bg-white">
+              <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-medium text-gray-800 text-sm list-none">
+                {item.q}
+                <span className="text-[#007caa] text-lg flex-shrink-0 ml-4">+</span>
+              </summary>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="pb-16 px-4 bg-white text-center">
+        <a
+          href="https://form.estimate.rentals"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#007caa] text-white font-semibold px-10 py-4 rounded-full hover:bg-[#005f85] transition-colors text-base mb-3"
+        >
+          Commencer l&apos;essai gratuit
+        </a>
+        <p className="text-gray-400 text-sm">Sans CB · Sans engagement · Annulation en 1 clic</p>
+
+        <div className="flex flex-wrap justify-center gap-6 mt-8 text-gray-400 text-xs">
+          <span>🔒 Paiement sécurisé</span>
+          <span>🛡 Données hébergées en France</span>
+          <span>✅ Conforme RGPD</span>
+          <span>💳 Sans CB pour l&apos;essai</span>
+        </div>
+      </section>
     </div>
   )
 }
