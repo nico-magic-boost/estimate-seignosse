@@ -37,20 +37,55 @@ export default async function EstimatePage() {
   const locale = await getLocale()
   return (
     <div>
-      {/* ── Hero ──────────────────────────────────────────── */}
+      {/* ── Titre + Widget en premier ─────────────────────── */}
+      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-14 px-4 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+            Vous êtes à quelques clics de découvrir le potentiel commercial de vos logements.
+          </h1>
+          <p className="text-base opacity-90 leading-relaxed">
+            Grâce à des données de marché actualisées, obtenez en quelques secondes une estimation
+            des revenus locatifs saisonniers réaliste et exploitable.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-10 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <EstimateWidget />
+        </div>
+      </section>
+
+      {/* ── Upsell banner ─────────────────────────────────── */}
+      <section className="bg-gray-50 border-y border-gray-200 py-4 px-4">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-700 text-sm">
+            <strong>Envie d&apos;aller plus loin ?</strong> Obtenez plus de leads, gagnez plus de mandats,
+            accédez à vos estimations et bien plus encore.
+          </p>
+          <Link
+            href="/tarifs"
+            className="flex-shrink-0 bg-[#007caa] text-white text-sm font-semibold px-6 py-2 rounded-full hover:bg-[#005f85] transition-colors"
+          >
+            Voir les tarifs
+          </Link>
+        </div>
+      </section>
+
+      {/* ── À propos de l'outil ───────────────────────────── */}
       <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-20 px-4">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
           <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
               L&apos;outil d&apos;estimation des revenus locatifs pour les professionnels de l&apos;immobilier
-            </h1>
+            </h2>
             <p className="text-base opacity-90 mb-8 leading-relaxed">
               Renforcez votre expertise et facilitez la prise de mandat : grâce à des données de marché actualisées,
               vous obtenez en quelques secondes une estimation des revenus locatifs saisonniers réaliste,
               exploitable en rendez-vous ou en prospection.
             </p>
             <Link
-              href="/estimez-gratuitement"
+              href="/installer-estimateur"
               className="inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
             >
               Je teste l&apos;estimateur gratuitement
@@ -66,55 +101,6 @@ export default async function EstimatePage() {
               priority
             />
           </div>
-        </div>
-      </section>
-
-      {/* ── Tagline ───────────────────────────────────────── */}
-      <section className="bg-[#17a3b5] text-white py-5 px-4 text-center">
-        <p className="text-lg font-semibold">
-          Vous êtes à quelques clics de découvrir le potentiel commercial de vos logements.
-        </p>
-      </section>
-
-      {/* ── Upsell banner ─────────────────────────────────── */}
-      <section className="bg-gray-50 border-b border-gray-200 py-4 px-4">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-700 text-sm">
-            <strong>Envie d&apos;aller plus loin ?</strong> Obtenez plus de leads, gagnez plus de mandats,
-            accédez à vos estimations et bien plus encore.
-          </p>
-          <Link
-            href="/tarifs"
-            className="flex-shrink-0 bg-[#007caa] text-white text-sm font-semibold px-6 py-2 rounded-full hover:bg-[#005f85] transition-colors"
-          >
-            Voir les tarifs
-          </Link>
-        </div>
-      </section>
-
-      {/* ── Widget ────────────────────────────────────────── */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">Votre estimation de location saisonnière</h2>
-          <p className="text-gray-600 text-sm leading-relaxed max-w-2xl mx-auto">
-            Grâce à notre simulateur en ligne, vous obtenez une <strong>estimation fiable et structurée</strong> des
-            revenus locatifs saisonniers, conçue pour un <strong>usage professionnel</strong> et fondée sur les données du marché.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-10 text-sm">
-            {[
-              { icon: '🆓', text: 'Gratuit, instantané et sans engagement' },
-              { icon: '📊', text: 'Basé sur des données de marché locales (taux d\'occupation, prix moyens, concurrence).' },
-              { icon: '🏢', text: 'Un outil conçu pour accompagner les agences immobilières dans l\'évaluation du potentiel de revenus d\'un bien en location saisonnière.' },
-            ].map((f) => (
-              <div key={f.text} className="flex flex-col items-center gap-2 text-gray-600">
-                <span className="text-2xl">{f.icon}</span>
-                <p className="leading-snug">{f.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="max-w-4xl mx-auto">
-          <EstimateWidget />
         </div>
       </section>
 
