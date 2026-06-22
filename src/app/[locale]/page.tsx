@@ -51,17 +51,32 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats bar ─────────────────────────────────────────── */}
-      <section className="bg-[#007caa] text-white py-6 px-4">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="bg-[#2b8ab5] text-white py-6 px-4">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center items-center">
+          {/* Bar chart stat */}
+          <div className="flex flex-col items-center gap-2">
+            <svg className="w-8 h-8 opacity-90" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 3v18h18M9 17V9m4 8V5m4 12v-6"/>
+              <rect x="7" y="9" width="4" height="8" rx="1"/>
+              <rect x="11" y="5" width="4" height="12" rx="1"/>
+              <rect x="15" y="11" width="4" height="6" rx="1"/>
+            </svg>
+            <div>
+              <div className="text-2xl font-bold leading-tight">800 000+</div>
+              <div className="text-sm opacity-85">locations analysées</div>
+            </div>
+          </div>
+          {/* Check stats */}
           {[
-            { stat: '800 000+', label: 'locations analysées' },
-            { stat: '✔', label: 'Réglementations locales intégrées' },
-            { stat: '✔', label: 'Leads qualifiés email + tél vérifiés' },
-            { stat: '✔', label: 'Installation en 1 clic' },
-          ].map((s) => (
-            <div key={s.label}>
-              <div className="text-xl font-bold">{s.stat}</div>
-              <div className="text-sm opacity-85 mt-1">{s.label}</div>
+            'Réglementations locales intégrées',
+            'Leads qualifiés email + tél vérifiés',
+            'Installation en 1 clic',
+          ].map((label) => (
+            <div key={label} className="flex flex-col items-center gap-2">
+              <svg className="w-8 h-8 text-violet-300" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 2a10 10 0 100 20A10 10 0 0012 2zm4.707 8.707a1 1 0 00-1.414-1.414L10 14.586l-2.293-2.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l6-6z" clipRule="evenodd"/>
+              </svg>
+              <div className="text-sm opacity-85 leading-snug">{label}</div>
             </div>
           ))}
         </div>
