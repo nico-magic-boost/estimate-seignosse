@@ -106,7 +106,7 @@ export default async function EstimatePage() {
 
       {/* ── Pourquoi ──────────────────────────────────────── */}
       <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-12">
           <div className="flex-1">
             <h2 className="text-2xl font-bold text-gray-900 mb-5 leading-tight">
               Pourquoi utiliser un outil d&apos;estimation de location saisonnière professionnel ?
@@ -146,7 +146,7 @@ export default async function EstimatePage() {
 
       {/* ── Comment est calculée ──────────────────────────── */}
       <section className="py-16 px-4 bg-white">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-12">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
             <h2 className="text-2xl font-bold text-gray-900 mb-5 leading-tight">
               Comment est calculée l&apos;estimation d&apos;une location saisonnière ?
