@@ -2,6 +2,11 @@ import pg from 'pg'
 
 const { Client } = pg
 
+if (!process.env.DATABASE_URI) {
+  console.log('DATABASE_URI not set, skipping table creation.')
+  process.exit(0)
+}
+
 const client = new Client({ connectionString: process.env.DATABASE_URI })
 await client.connect()
 

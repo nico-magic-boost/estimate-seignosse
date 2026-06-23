@@ -15,7 +15,7 @@ const reasons = [
   },
   {
     title: 'Précision',
-    text: 'grâce à des données reconnues et multiples, nous vous offrons l'estimateur le plus précis du marché.',
+    text: "grâce à des données reconnues et multiples, nous vous offrons l'estimateur le plus précis du marché.",
   },
 ]
 
