@@ -201,7 +201,7 @@ export default function InstallPage() {
             href="/demander-une-demo"
             className="flex-shrink-0 bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
           >
-            Demander une démo
+            Installer l&apos;estimateur sur mon site →
           </Link>
         </div>
       </section>

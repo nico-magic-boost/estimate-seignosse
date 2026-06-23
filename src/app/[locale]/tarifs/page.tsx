@@ -157,7 +157,12 @@ export default function PricingPage() {
               <tr className="border-b-2 border-[#007caa]">
                 <th className="text-left py-3 pr-4 text-gray-500 font-normal w-1/2"></th>
                 <th className="text-center py-3 px-4 font-bold text-gray-700">FREE</th>
-                <th className="text-center py-3 px-4 font-bold text-[#007caa]">GROWTH</th>
+                <th className="text-center py-3 px-4 font-bold text-[#007caa]">
+                  GROWTH
+                  <span className="block text-[10px] font-semibold bg-[#007caa] text-white rounded-full px-2 py-0.5 mx-auto mt-1 w-fit">
+                    Le plus populaire
+                  </span>
+                </th>
                 <th className="text-center py-3 px-4 font-bold text-gray-700">PRO</th>
               </tr>
             </thead>

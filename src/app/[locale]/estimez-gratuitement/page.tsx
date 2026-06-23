@@ -60,11 +60,10 @@ export default async function EstimatePage() {
       <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-14 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Vous êtes à quelques clics de découvrir le potentiel commercial de vos logements.
+            Découvrez le potentiel locatif de vos biens en 30 secondes.
           </h1>
-          <p className="text-base opacity-90 leading-relaxed">
-            Grâce à des données de marché actualisées, obtenez en quelques secondes une estimation
-            des revenus locatifs saisonniers réaliste et exploitable.
+          <p className="text-base opacity-75 leading-relaxed">
+            Données de marché actualisées · Résultat instantané · 100% gratuit
           </p>
         </div>
       </section>
@@ -72,6 +71,9 @@ export default async function EstimatePage() {
       <section className="py-10 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <EstimateWidget />
+          <p className="text-center text-xs text-gray-400 mt-4">
+            Gratuit · Sans inscription · Sans engagement · Résultat en moins de 30 secondes
+          </p>
         </div>
       </section>
 

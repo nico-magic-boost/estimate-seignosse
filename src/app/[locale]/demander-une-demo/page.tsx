@@ -109,6 +109,11 @@ export default function DemoPage() {
 
           {/* Right: Pipedrive form */}
           <div className="flex-1 border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <div className="flex flex-wrap gap-4 justify-center mb-5 text-xs text-gray-500">
+              <span className="flex items-center gap-1"><span className="text-[#007caa]">✓</span> Démo en 20 min</span>
+              <span className="flex items-center gap-1"><span className="text-[#007caa]">✓</span> Sans engagement</span>
+              <span className="flex items-center gap-1"><span className="text-[#007caa]">✓</span> Réponse sous 24h</span>
+            </div>
             <PipedriveForm />
           </div>
         </div>

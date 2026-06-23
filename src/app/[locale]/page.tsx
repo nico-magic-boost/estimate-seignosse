@@ -54,8 +54,13 @@ export default function HomePage() {
               href="/estimez-gratuitement"
               className="inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors text-base"
             >
-              Essai gratuit
+              Tester gratuitement →
             </Link>
+            <p className="mt-3 text-xs text-gray-400">Sans CB · Sans inscription · Résultat en 30 secondes</p>
+            <div className="flex items-center gap-2 mt-5">
+              <span className="text-yellow-400 text-sm leading-none">★★★★★</span>
+              <span className="text-xs text-gray-500">+100 professionnels utilisent déjà Estimate Rentals</span>
+            </div>
           </div>
           <div className="flex-1">
             <Image
