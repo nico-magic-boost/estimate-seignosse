@@ -33,7 +33,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="https://estimate.rentals/wp-content/uploads/2025/07/cropped-logo-estimate-rentals_Plan-de-travail-1.webp"
+              src="https://estimate.rentals/wp-content/uploads/2025/07/image-15.png"
               alt="Estimate Rentals"
               width={160}
               height={40}
