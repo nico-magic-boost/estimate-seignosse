@@ -1,6 +1,8 @@
+import type { Metadata } from 'next'
 import EstimateWidget from '@/components/EstimateWidget'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import { robots, canonical, SITE_URL } from '@/lib/seo'
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 
@@ -67,6 +69,25 @@ const benefits = [
   { img: `${WP}/2025/08/professional_white.png`, label: 'Résultat instantané et gratuit' },
 ]
 
+export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
+  const { city: citySlug } = await params
+  const cityData = CITIES.find((c) => c.slug === citySlug)
+  if (!cityData) return {}
+  return {
+    title: `Estimation de revenus locatifs à ${cityData.name}`,
+    description: `Estimez gratuitement le potentiel locatif saisonnier de votre bien à ${cityData.name} (${cityData.region}). Données de marché en temps réel, résultat instantané.`,
+    robots,
+    alternates: {
+      canonical: canonical('fr', `/${citySlug}`),
+    },
+    openGraph: {
+      title: `Estimation de revenus locatifs à ${cityData.name}`,
+      description: `Estimez gratuitement le potentiel locatif saisonnier de votre bien à ${cityData.name}.`,
+      url: canonical('fr', `/${citySlug}`),
+    },
+  }
+}
+
 export function generateStaticParams() {
   const locales = ['fr', 'en', 'es']
   return locales.flatMap((locale) =>
@@ -83,8 +104,19 @@ export default async function CityPage({
   const cityData = CITIES.find((c) => c.slug === citySlug)
   if (!cityData) notFound()
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `Estimation de revenus locatifs à ${cityData.name}`,
+    description: `Estimez le potentiel locatif saisonnier de votre bien à ${cityData.name}.`,
+    provider: { '@type': 'Organization', name: 'Estimate Rentals', url: SITE_URL },
+    areaServed: { '@type': 'City', name: cityData.name, containedInPlace: { '@type': 'State', name: cityData.region } },
+    url: canonical('fr', `/${citySlug}`),
+  }
+
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero */}
       <div className="relative h-64 md:h-80 overflow-hidden">
         <Image

@@ -1,5 +1,24 @@
+import type { Metadata } from 'next'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
+import { robots, hreflang, canonical } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Intégrer un estimateur de revenus locatifs sur votre site',
+    description: "Intégrez l'estimateur Estimate Rentals sur votre site immobilier en quelques minutes. Générez des leads propriétaires qualifiés et obtenez plus de mandats de location saisonnière.",
+    robots,
+    alternates: {
+      canonical: canonical('fr', '/installer-estimateur'),
+      ...hreflang({ fr: '/installer-estimateur', en: '/install-estimator', es: '/instalar-estimador' }),
+    },
+    openGraph: {
+      title: 'Intégrer un estimateur de revenus locatifs sur votre site',
+      description: "Intégrez l'estimateur Estimate Rentals sur votre site immobilier en quelques minutes.",
+      url: canonical('fr', '/installer-estimateur'),
+    },
+  }
+}
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 

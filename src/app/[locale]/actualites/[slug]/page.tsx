@@ -1,6 +1,8 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Link } from '@/i18n/navigation'
 import type { ComponentProps } from 'react'
+import { robots, canonical, SITE_URL } from '@/lib/seo'
 
 type Post = {
   title: string
@@ -109,13 +111,47 @@ export function generateStaticParams() {
   return Object.keys(posts).map((slug) => ({ slug }))
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = posts[slug]
+  if (!post) return {}
+  return {
+    title: post.title,
+    description: post.intro.slice(0, 160),
+    robots,
+    alternates: {
+      canonical: canonical('fr', `/actualites/${slug}`),
+    },
+    openGraph: {
+      title: post.title,
+      description: post.intro.slice(0, 160),
+      url: canonical('fr', `/actualites/${slug}`),
+      type: 'article',
+      publishedTime: post.date,
+    },
+  }
+}
+
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = posts[slug]
   if (!post) notFound()
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.intro.slice(0, 160),
+    datePublished: post.date,
+    author: { '@type': 'Organization', name: 'Estimate Rentals', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'Estimate Rentals', url: SITE_URL },
+    url: canonical('fr', `/actualites/${slug}`),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical('fr', `/actualites/${slug}`) },
+  }
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <time className="text-sm text-gray-400 block mb-3">
         {new Date(post.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
       </time>

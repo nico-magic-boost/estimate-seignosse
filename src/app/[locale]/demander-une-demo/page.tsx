@@ -1,4 +1,23 @@
+import type { Metadata } from 'next'
 import PipedriveForm from '@/components/PipedriveForm'
+import { robots, hreflang, canonical } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Demander une démo — Estimate Rentals',
+    description: "Réservez une démo gratuite avec un expert Estimate Rentals. Découvrez comment générer plus de leads propriétaires et transformer vos estimations en mandats de location saisonnière.",
+    robots,
+    alternates: {
+      canonical: canonical('fr', '/demander-une-demo'),
+      ...hreflang({ fr: '/demander-une-demo', en: '/request-a-demo', es: '/solicitar-demo' }),
+    },
+    openGraph: {
+      title: 'Demander une démo — Estimate Rentals',
+      description: "Réservez une démo gratuite avec un expert Estimate Rentals.",
+      url: canonical('fr', '/demander-une-demo'),
+    },
+  }
+}
 
 const reasons = [
   {

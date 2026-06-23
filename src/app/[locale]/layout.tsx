@@ -5,11 +5,25 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { robots, defaultOG, SITE_URL } from '@/lib/seo'
 import '../globals.css'
 
 export const metadata: Metadata = {
-  icons: {
-    icon: 'https://estimate.rentals/wp-content/uploads/2025/07/cropped-logo-estimate-rentals_Plan-de-travail-1.webp',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    template: '%s | Estimate Rentals',
+    default: 'Estimate Rentals — Estimateur de revenus locatifs saisonniers',
+  },
+  robots,
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: defaultOG.siteName,
+    images: [...defaultOG.images],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: defaultOG.images[0].url,
   },
 }
 

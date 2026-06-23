@@ -1,4 +1,39 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
+import { robots, hreflang, canonical, SITE_URL } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Qui sommes-nous — L'équipe Estimate Rentals",
+    description: "Estimate Rentals est une marque de Popconnect, basée à Biarritz. Une équipe de passionnés : experts en data, professionnels de l'immobilier et développeurs au service de la location saisonnière.",
+    robots,
+    alternates: {
+      canonical: canonical('fr', '/qui-sommes-nous'),
+      ...hreflang({ fr: '/qui-sommes-nous', en: '/who-are-we', es: '/quienes-somos' }),
+    },
+    openGraph: {
+      title: "Qui sommes-nous — L'équipe Estimate Rentals",
+      description: "Estimate Rentals est une marque de Popconnect, basée à Biarritz.",
+      url: canonical('fr', '/qui-sommes-nous'),
+    },
+  }
+}
+
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Estimate Rentals',
+  url: SITE_URL,
+  logo: 'https://estimate.rentals/wp-content/uploads/2025/07/image-15.png',
+  description: "L'outil d'estimation locative saisonnière dédié aux professionnels de l'immobilier.",
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Biarritz',
+    addressRegion: 'Nouvelle-Aquitaine',
+    addressCountry: 'FR',
+  },
+  sameAs: ['https://estimate.rentals'],
+}
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 
@@ -24,6 +59,7 @@ const values = [
 export default function AboutPage() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       {/* Photo équipe */}
       <section className="bg-white pt-10 px-4">
         <div className="max-w-4xl mx-auto">

@@ -1,6 +1,26 @@
+import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
+import { robots, hreflang, canonical } from '@/lib/seo'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  return {
+    title: "L'estimateur de revenus locatifs saisonniers pour les professionnels",
+    description: "Estimate Rentals : l'outil d'estimation locative saisonnière dédié aux professionnels de l'immobilier. Générez des leads propriétaires et obtenez plus de mandats.",
+    robots,
+    alternates: {
+      canonical: canonical(locale, '/'),
+      ...hreflang({ fr: '/', en: '/', es: '/' }),
+    },
+    openGraph: {
+      title: "L'estimateur de revenus locatifs saisonniers pour les professionnels",
+      description: "Estimate Rentals : l'outil d'estimation locative saisonnière dédié aux professionnels de l'immobilier.",
+      url: canonical(locale, '/'),
+    },
+  }
+}
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 

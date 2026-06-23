@@ -1,7 +1,26 @@
+import type { Metadata } from 'next'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import EstimateWidget from '@/components/EstimateWidget'
 import { getLocale } from 'next-intl/server'
+import { robots, hreflang, canonical } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Estimez gratuitement votre location saisonnière',
+    description: "Obtenez en quelques secondes une estimation gratuite des revenus locatifs saisonniers de votre bien. Outil professionnel basé sur les données du marché Airbnb, Booking, Abritel.",
+    robots,
+    alternates: {
+      canonical: canonical('fr', '/estimez-gratuitement'),
+      ...hreflang({ fr: '/estimez-gratuitement', en: '/estimate-for-free', es: '/estime-gratis' }),
+    },
+    openGraph: {
+      title: 'Estimez gratuitement votre location saisonnière',
+      description: "Obtenez en quelques secondes une estimation gratuite des revenus locatifs saisonniers de votre bien.",
+      url: canonical('fr', '/estimez-gratuitement'),
+    },
+  }
+}
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 

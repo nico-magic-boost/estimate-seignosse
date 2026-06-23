@@ -1,5 +1,24 @@
+import type { Metadata } from 'next'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { robots, hreflang, canonical } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Actualités & conseils location saisonnière',
+    description: "Conseils, stratégies et actualités pour les professionnels de la location saisonnière. Guides pratiques pour générer plus de mandats grâce à l'estimation locative.",
+    robots,
+    alternates: {
+      canonical: canonical('fr', '/actualites'),
+      ...hreflang({ fr: '/actualites', en: '/news', es: '/actualidad' }),
+    },
+    openGraph: {
+      title: 'Actualités & conseils location saisonnière — Estimate Rentals',
+      description: "Conseils, stratégies et actualités pour les professionnels de la location saisonnière.",
+      url: canonical('fr', '/actualites'),
+    },
+  }
+}
 
 const posts = [
   {

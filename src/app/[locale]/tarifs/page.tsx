@@ -1,5 +1,24 @@
+import type { Metadata } from 'next'
 import { Link } from '@/i18n/navigation'
 import SubscriptionWidget from '@/components/SubscriptionWidget'
+import { robots, hreflang, canonical } from '@/lib/seo'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Tarifs — Free, Growth, Pro',
+    description: "Découvrez les offres Estimate Rentals : plan Free gratuit, Growth à 129€/mois, Pro à 349€/mois. Essai gratuit sans CB. L'estimateur qui génère des mandats.",
+    robots,
+    alternates: {
+      canonical: canonical('fr', '/tarifs'),
+      ...hreflang({ fr: '/tarifs', en: '/pricing', es: '/precios' }),
+    },
+    openGraph: {
+      title: 'Tarifs Estimate Rentals — Free, Growth, Pro',
+      description: "Découvrez les offres Estimate Rentals : plan Free gratuit, Growth à 129€/mois, Pro à 349€/mois.",
+      url: canonical('fr', '/tarifs'),
+    },
+  }
+}
 
 const plans = [
   {
