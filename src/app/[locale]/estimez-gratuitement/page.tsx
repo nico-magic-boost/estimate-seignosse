@@ -113,11 +113,11 @@ export default async function EstimatePage() {
           <div className="flex-1">
             <Image
               src={`${WP}/2025/09/Votre-estimation-Airbnb-et-location-saisonniere-en-quelques-clics.webp`}
-              alt="Professionnels de l'immobilier"
+              alt="Professionnels de l'immobilier utilisant l'estimateur Estimate Rentals"
               width={520}
               height={380}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="rounded-2xl w-full object-cover shadow-xl"
-              priority
             />
           </div>
         </div>
@@ -234,9 +234,10 @@ export default async function EstimatePage() {
                 <div className="group relative overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow">
                   <Image
                     src={city.img}
-                    alt={city.name}
+                    alt={`Estimation location de vacances à ${city.name}`}
                     width={320}
-                    height={200}
+                    height={160}
+                    sizes="(max-width: 768px) 50vw, 33vw"
                     className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

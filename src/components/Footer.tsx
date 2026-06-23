@@ -56,7 +56,7 @@ export default function Footer() {
             <Link href="/politique-de-cookies" className="hover:text-white transition-colors">
               {t('cookies')}
             </Link>
-            <a href="https://www.popconnect.fr" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+            <a href="https://www.popconnect.fr" target="_blank" rel="noopener noreferrer" aria-label="Plan du site (ouvre dans un nouvel onglet)" className="hover:text-white transition-colors">
               Plan du site
             </a>
           </div>

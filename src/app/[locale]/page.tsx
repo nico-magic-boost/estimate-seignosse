@@ -63,6 +63,7 @@ export default function HomePage() {
               alt="Dashboard Estimate Rentals"
               width={600}
               height={420}
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="rounded-2xl shadow-xl w-full object-cover"
               priority
             />
@@ -75,45 +76,45 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
           {/* Bar chart */}
           <div className="flex items-center gap-4">
-            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg aria-hidden="true" className="w-10 h-10 flex-shrink-0 opacity-90" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.5V19a1 1 0 001 1h3V13.5M3 13.5V9a1 1 0 011-1h3a1 1 0 011 1v4.5M3 13.5h6m3 6V8a1 1 0 011-1h3a1 1 0 011 1v11m-5 0h6"/>
             </svg>
             <div>
               <div className="text-xl font-bold leading-tight">800 000+</div>
-              <div className="text-xs opacity-80 leading-snug">locations analysées</div>
+              <div className="text-xs opacity-90 leading-snug">locations analysées</div>
             </div>
           </div>
           {/* Circle check */}
           <div className="flex items-center gap-4">
-            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg aria-hidden="true" className="w-10 h-10 flex-shrink-0 opacity-90" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="9" strokeLinecap="round"/>
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 12.5l2.5 2.5 4.5-5"/>
             </svg>
             <div>
               <div className="text-sm font-bold leading-snug">Réglementations</div>
-              <div className="text-xs opacity-80">locales intégrées</div>
+              <div className="text-xs opacity-90">locales intégrées</div>
             </div>
           </div>
           {/* ID card / leads */}
           <div className="flex items-center gap-4">
-            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg aria-hidden="true" className="w-10 h-10 flex-shrink-0 opacity-90" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
               <rect x="2" y="6" width="20" height="14" rx="2" strokeLinecap="round"/>
               <circle cx="8" cy="13" r="2"/>
               <path strokeLinecap="round" d="M13 11h5M13 15h3"/>
             </svg>
             <div>
               <div className="text-sm font-bold leading-snug">Leads qualifiés</div>
-              <div className="text-xs opacity-80">email + tél vérifiés</div>
+              <div className="text-xs opacity-90">email + tél vérifiés</div>
             </div>
           </div>
           {/* Thumbs up */}
           <div className="flex items-center gap-4">
-            <svg className="w-10 h-10 flex-shrink-0 opacity-80" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <svg aria-hidden="true" className="w-10 h-10 flex-shrink-0 opacity-90" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715l.053-.13c.29-.72.29-1.516 0-2.236A1.5 1.5 0 0011.79 2h-.001A1.5 1.5 0 0010.29 3.5v.5c0 .982-.578 1.891-1.532 2.463L6 8l.001 10H18a2 2 0 001.94-1.515l1-4A2 2 0 0019 10h-6.369M6 8H3.5A1.5 1.5 0 002 9.5v7A1.5 1.5 0 003.5 18H6V8z"/>
             </svg>
             <div>
               <div className="text-sm font-bold leading-snug">Installation</div>
-              <div className="text-xs opacity-80">en 1 clic</div>
+              <div className="text-xs opacity-90">en 1 clic</div>
             </div>
           </div>
         </div>

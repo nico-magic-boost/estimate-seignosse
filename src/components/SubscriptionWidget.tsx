@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import Script from 'next/script'
 import { useLocale } from 'next-intl'
 
 declare global {
@@ -15,23 +15,16 @@ declare global {
 export default function SubscriptionWidget() {
   const locale = useLocale()
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'module'
-    script.src = 'https://form.estimate.rentals/subscriptionTunnelWebComponent.js'
-    document.head.appendChild(script)
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script)
-      }
-    }
-  }, [])
-
   return (
-    <div suppressHydrationWarning>
+    <>
+      <Script
+        src="https://form.estimate.rentals/subscriptionTunnelWebComponent.js"
+        strategy="afterInteractive"
+        type="module"
+      />
       <div id="inscription" />
       {/* @ts-ignore */}
-      <subscription-tunnel-wc lang={locale} suppressHydrationWarning />
-    </div>
+      <subscription-tunnel-wc lang={locale} />
+    </>
   )
 }

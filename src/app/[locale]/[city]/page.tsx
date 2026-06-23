@@ -145,7 +145,7 @@ export default async function CityPage({
           <div className="grid grid-cols-3 gap-4 mb-12">
             {benefits.map((b) => (
               <div key={b.label} className="bg-[#007caa] rounded-xl p-4 text-center text-white">
-                <Image src={b.img} alt="" width={40} height={40} className="mx-auto mb-2 h-10 w-10 object-contain brightness-0 invert" />
+                <Image src={b.img} alt={b.label} width={40} height={40} className="mx-auto mb-2 h-10 w-10 object-contain brightness-0 invert" />
                 <p className="text-xs font-medium leading-snug">{b.label}</p>
               </div>
             ))}

@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import Script from 'next/script'
 import { useLocale } from 'next-intl'
 
 declare global {
@@ -18,28 +18,20 @@ declare global {
 export default function EstimateWidget() {
   const locale = useLocale()
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'module'
-    script.src = 'https://form.estimate.rentals/estimateWebComponent.js'
-    document.head.appendChild(script)
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script)
-      }
-    }
-  }, [])
-
   return (
-    <div suppressHydrationWarning>
+    <>
+      <Script
+        src="https://form.estimate.rentals/estimateWebComponent.js"
+        strategy="afterInteractive"
+        type="module"
+      />
       {/* @ts-ignore */}
       <estimate-wc
         agency-ids="PDu96z5S6eidcbpPXioKlQ%3D%3D"
         primary-color="007caa"
         secondary-color="17a3b5"
         lang={locale}
-        suppressHydrationWarning
       />
-    </div>
+    </>
   )
 }
