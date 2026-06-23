@@ -68,12 +68,30 @@ const tableRows: { label: string; free: string; growth: string; pro: string }[] 
 ]
 
 const faq = [
-  { q: 'Est-ce que je peux annuler à tout moment ?' },
-  { q: "Que se passe-t-il après les 14 jours d'essai gratuit ?" },
-  { q: "Que se passe-t-il quand j'atteins mon quota mensuel ?" },
-  { q: 'Le widget est-il vraiment à mes couleurs ?' },
-  { q: 'Comment intégrer le widget sur mon site ?' },
-  { q: 'Puis-je passer du plan Growth à Pro ?' },
+  {
+    q: 'Est-ce que je peux annuler à tout moment ?',
+    a: "Oui, sans engagement. Vous pouvez résilier depuis votre espace en un clic. Votre accès reste actif jusqu'à la fin de la période payée.",
+  },
+  {
+    q: "Que se passe-t-il après les 14 jours d'essai gratuit ?",
+    a: "Aucun prélèvement n'est effectué pendant les 14 jours d'essai. Le 15ème jour, votre abonnement démarre automatiquement. Vous pouvez annuler à tout moment avant cette date depuis votre espace, en un clic.",
+  },
+  {
+    q: "Que se passe-t-il quand j'atteins mon quota mensuel ?",
+    a: "L'estimation est créée mais verrouillée : vous voyez qu'un lead est arrivé et son identité, mais pas les chiffres. Pour débloquer, vous pouvez acheter un pack de 50 estimations supplémentaires (one-shot, sans engagement) ou upgrader votre plan. Les estimations verrouillées les plus anciennes sont automatiquement débloquées à l'achat d'un pack.",
+  },
+  {
+    q: 'Le widget est-il vraiment à mes couleurs ?',
+    a: "Oui — logo, couleurs, options de qualification. Le widget que vous intégrez sur votre site ressemble à votre agence, pas à un outil tiers. La configuration se fait en quelques minutes depuis votre espace MySpace.",
+  },
+  {
+    q: 'Comment intégrer le widget sur mon site ?',
+    a: "Après configuration, vous copiez un simple code d'embed et vous le collez dans votre site. Compatible avec tous les CMS (WordPress, Wix, Squarespace…). Pas de développeur nécessaire.",
+  },
+  {
+    q: 'Puis-je passer du plan Growth à Pro ?',
+    a: "Oui, à n'importe quel moment. La différence est calculée au prorata pour le mois en cours.",
+  },
 ]
 
 function Cell({ v }: { v: string }) {
@@ -147,6 +165,9 @@ export default function PricingPage() {
                 {item.q}
                 <span className="text-[#007caa] text-lg flex-shrink-0 ml-4">+</span>
               </summary>
+              {'a' in item && item.a && (
+                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</p>
+              )}
             </details>
           ))}
         </div>
