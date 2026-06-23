@@ -86,27 +86,11 @@ function Cell({ v }: { v: string }) {
 export default function PricingPage() {
   return (
     <div>
-      {/* Hero */}
-      <section className="py-16 px-4 text-center bg-white">
-        <p className="text-xs font-semibold tracking-widest uppercase text-[#007caa] mb-3">Nos offres</p>
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
-          L&apos;estimateur qui génère{' '}
-          <span className="text-[#007caa]">des mandats</span>
-        </h1>
-        <p className="text-gray-500 text-sm">
-          Choisissez le plan adapté à votre activité, changez à tout moment.<br />
-          Pas de frais cachés, essai gratuit sans CB.
-        </p>
-      </section>
-
-      {/* Plans — web component */}
-      <section className="pb-4 px-4 bg-white">
+      {/* Plans — web component (includes its own hero + "Tarifs HT" footer) */}
+      <section className="bg-white">
         <div className="max-w-5xl mx-auto">
           <SubscriptionWidget />
         </div>
-        <p className="text-center text-gray-400 text-xs mt-6">
-          Tarifs HT · Paiement sécurisé par Stripe · Annulation à tout moment depuis votre espace
-        </p>
       </section>
 
       {/* Trust bar */}
