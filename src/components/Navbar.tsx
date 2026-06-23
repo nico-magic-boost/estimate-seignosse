@@ -19,12 +19,10 @@ export default function Navbar() {
   }
 
   const navLinks = [
-    { href: '/' as const, label: t('home') },
     { href: '/estimez-gratuitement' as const, label: t('estimator') },
     { href: '/installer-estimateur' as const, label: t('install') },
     { href: '/tarifs' as const, label: t('pricing') },
     { href: '/actualites' as const, label: t('blog') },
-    { href: '/qui-sommes-nous' as const, label: t('about') },
     { href: '/demander-une-demo' as const, label: t('demo') },
   ]
 
