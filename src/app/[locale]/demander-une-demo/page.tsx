@@ -33,11 +33,26 @@ const testimonials = [
 ]
 
 const faq = [
-  { q: 'En quoi l\'estimateur en ligne Estimate.rentals est-il différent des autres outils du marché ?', a: 'Notre estimateur est le premier à intégrer à la fois les frais de gestion, les coûts de distribution, les intermédiaires et les réglementations locales. Le résultat affiché est un revenu net propriétaire, et non un simple revenu brut.' },
-  { q: 'Que vais-je apprendre pendant la démo ?' },
-  { q: 'Combien de temps dure une démo ?' },
-  { q: "L'outil prend-il en compte les réglementations locales ?" },
-  { q: "Puis-je voir l'estimation pour plusieurs biens ?" },
+  {
+    q: "En quoi l'estimateur en ligne Estimate.rentals est-il différent des autres outils du marché ?",
+    a: "Notre estimateur est le premier à intégrer à la fois les frais de gestion, les coûts de distribution, les intermédiaires et les réglementations locales. Le résultat affiché est un revenu net propriétaire, et non un simple revenu brut.",
+  },
+  {
+    q: 'Que vais-je apprendre pendant la démo ?',
+    a: "Accompagné d'un de nos experts, vous verrez comment fonctionne notre estimateur en temps réel, vous comprendrez quels frais (gestion, plateformes, règlement local) sont pris en compte, et vous verrez concrètement ce que votre location saisonnière pourrait vous rapporter net.",
+  },
+  {
+    q: 'Combien de temps dure une démo ?',
+    a: "En général, environ 20 à 30 minutes : le temps de faire le tour des fonctionnalités, de poser vos questions, et de vous donner une estimation personnalisée.",
+  },
+  {
+    q: "L'outil prend-il en compte les réglementations locales ?",
+    a: "Absolument. Les spécificités locales (plafonds, fiscalité, durées, règles d'occupation) sont intégrées pour fournir des estimations légales et conformes.",
+  },
+  {
+    q: "Puis-je voir l'estimation pour plusieurs biens ?",
+    a: "Oui, vous pouvez demander une estimation pour autant de biens que vous souhaitez. Chaque bien sera évalué séparément selon ses caractéristiques propres.",
+  },
 ]
 
 export default function DemoPage() {
