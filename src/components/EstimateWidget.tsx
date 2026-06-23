@@ -27,7 +27,7 @@ export default function EstimateWidget() {
       />
       {/* @ts-ignore */}
       <estimate-wc
-        agency-ids="PDu96z5S6eidcbpPXioKlQ%3D%3D"
+        agency-ids={process.env.NEXT_PUBLIC_AGENCY_ID ?? 'PDu96z5S6eidcbpPXioKlQ%3D%3D'}
         primary-color="007caa"
         secondary-color="17a3b5"
         lang={locale}
