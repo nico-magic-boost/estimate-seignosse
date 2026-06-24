@@ -205,6 +205,32 @@ await exec(`
   ALTER TABLE "pages_locales" ADD COLUMN IF NOT EXISTS "seo_meta_description" varchar;
 `)
 
+// Pages sections (non-localized array)
+await exec(`
+  CREATE TABLE IF NOT EXISTS "pages_sections" (
+    "_order" integer NOT NULL,
+    "_parent_id" integer NOT NULL,
+    "id" varchar PRIMARY KEY NOT NULL,
+    "block_type" varchar NOT NULL,
+    "headline" varchar,
+    "subheadline" text,
+    "title" varchar,
+    "intro" text,
+    "text" text,
+    "cta_text" varchar,
+    "cta_href" varchar,
+    "social_proof" varchar,
+    "image_id" integer,
+    "image_position" varchar DEFAULT 'right',
+    "items" jsonb,
+    "content" jsonb
+  );
+`)
+
+await exec(`
+  ALTER TABLE "pages_sections" ADD COLUMN IF NOT EXISTS "block_name" varchar;
+`)
+
 // ── Posts ─────────────────────────────────────────────────────────────────
 
 await exec(`
@@ -395,6 +421,11 @@ await exec(`
   EXCEPTION WHEN duplicate_object THEN null; END $$;
 
   DO $$ BEGIN
+    ALTER TABLE "pages_sections" ADD CONSTRAINT "pages_sections_parent_id_fk"
+      FOREIGN KEY ("_parent_id") REFERENCES "pages"("id") ON DELETE cascade;
+  EXCEPTION WHEN duplicate_object THEN null; END $$;
+
+  DO $$ BEGIN
     ALTER TABLE "posts_locales" ADD CONSTRAINT "posts_locales_parent_id_fk"
       FOREIGN KEY ("_parent_id") REFERENCES "posts"("id") ON DELETE cascade;
   EXCEPTION WHEN duplicate_object THEN null; END $$;
@@ -458,6 +489,7 @@ await exec(`
   CREATE UNIQUE INDEX IF NOT EXISTS "media_filename_idx" ON "media" ("filename");
   CREATE INDEX IF NOT EXISTS "authors_created_at_idx" ON "authors" ("created_at");
   CREATE UNIQUE INDEX IF NOT EXISTS "pages_slug_idx" ON "pages" ("slug");
+  CREATE INDEX IF NOT EXISTS "pages_sections_parent_id_idx" ON "pages_sections" ("_parent_id");
   CREATE UNIQUE INDEX IF NOT EXISTS "posts_slug_idx" ON "posts" ("slug");
   CREATE UNIQUE INDEX IF NOT EXISTS "location_pages_slug_idx" ON "location_pages" ("slug");
   CREATE UNIQUE INDEX IF NOT EXISTS "pages_locales_locale_parent_unique" ON "pages_locales" ("_locale", "_parent_id");

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { robots, hreflang, canonical, SITE_URL } from '@/lib/seo'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+import { PageSectionRenderer } from '@/components/PageSectionRenderer'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -56,7 +59,30 @@ const values = [
   },
 ]
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  let cmsSections: any[] | null = null
+  try {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'pages',
+      where: { slug: { equals: 'qui-sommes-nous' } },
+      limit: 1,
+    })
+    const page = result.docs[0]
+    if (page?.sections?.length) cmsSections = page.sections
+  } catch {
+    // DB unavailable at build time — use hardcoded fallback
+  }
+
+  if (cmsSections) {
+    return (
+      <div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+        <PageSectionRenderer sections={cmsSections} />
+      </div>
+    )
+  }
+
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />

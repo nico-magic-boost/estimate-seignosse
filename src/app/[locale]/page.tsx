@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import { robots, hreflang, canonical } from '@/lib/seo'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -24,8 +26,26 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const t = useTranslations()
+
+  let cmsHeroTitle: string | null = null
+  let cmsHeroSubtitle: string | null = null
+  try {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'pages',
+      where: { slug: { equals: 'home' } },
+      locale: locale as any,
+      limit: 1,
+    })
+    const page = result.docs[0]
+    if (page?.heroTitle) cmsHeroTitle = page.heroTitle
+    if (page?.heroSubtitle) cmsHeroSubtitle = page.heroSubtitle
+  } catch {
+    // DB unavailable at build time — use hardcoded text
+  }
 
   return (
     <div>
@@ -34,14 +54,22 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-              L&apos;estimateur qui génère{' '}
-              <span className="text-[#007caa]">des mandats</span>
+              {cmsHeroTitle ?? (
+                <>
+                  L&apos;estimateur qui génère{' '}
+                  <span className="text-[#007caa]">des mandats</span>
+                </>
+              )}
             </h1>
             <p className="text-lg text-gray-600 mb-7 leading-relaxed">
-              Le seul estimateur de revenus locatifs intégrant les{' '}
-              <strong>réglementations locales</strong>, le potentiel de{' '}
-              <strong>revenus agence</strong> et la{' '}
-              <strong>qualification propriétaire</strong>.
+              {cmsHeroSubtitle ?? (
+                <>
+                  Le seul estimateur de revenus locatifs intégrant les{' '}
+                  <strong>réglementations locales</strong>, le potentiel de{' '}
+                  <strong>revenus agence</strong> et la{' '}
+                  <strong>qualification propriétaire</strong>.
+                </>
+              )}
             </p>
             <div className="flex flex-wrap gap-2 mb-8">
               {['Fiable', 'Rapide', 'Personnalisable'].map((b) => (

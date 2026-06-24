@@ -63,6 +63,141 @@ export const Pages: CollectionConfig = {
       localized: true,
     },
 
+    // ── Page Builder Sections ─────────────────────────────────
+    {
+      name: 'sections',
+      type: 'array',
+      label: 'Sections (Page Builder)',
+      admin: {
+        description: 'Construisez la page section par section. Chaque section correspond à un bloc de contenu affiché sur la page.',
+      },
+      fields: [
+        {
+          name: 'blockType',
+          type: 'select',
+          required: true,
+          label: 'Type de bloc',
+          options: [
+            { label: 'Hero', value: 'hero' },
+            { label: 'Liste de fonctionnalités', value: 'featureList' },
+            { label: 'Texte + Image', value: 'textImage' },
+            { label: 'FAQ', value: 'faq' },
+            { label: 'Bannière CTA', value: 'ctaBanner' },
+            { label: 'Texte enrichi', value: 'richText' },
+          ],
+        },
+        // ── Hero fields ──────────────────────────────────────
+        {
+          name: 'headline',
+          type: 'text',
+          label: 'Titre principal (H1)',
+          admin: {
+            condition: (_, siblingData) => siblingData?.blockType === 'hero',
+          },
+        },
+        {
+          name: 'subheadline',
+          type: 'textarea',
+          label: 'Sous-titre',
+          admin: {
+            condition: (_, siblingData) => ['hero'].includes(siblingData?.blockType),
+          },
+        },
+        {
+          name: 'socialProof',
+          type: 'text',
+          label: 'Preuve sociale (ex: +100 professionnels)',
+          admin: {
+            condition: (_, siblingData) => siblingData?.blockType === 'hero',
+          },
+        },
+        // ── featureList / textImage / ctaBanner fields ───────
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Titre de section',
+          admin: {
+            condition: (_, siblingData) => ['featureList', 'textImage', 'ctaBanner'].includes(siblingData?.blockType),
+          },
+        },
+        {
+          name: 'intro',
+          type: 'textarea',
+          label: 'Introduction / accroche',
+          admin: {
+            condition: (_, siblingData) => ['featureList'].includes(siblingData?.blockType),
+          },
+        },
+        {
+          name: 'text',
+          type: 'textarea',
+          label: 'Texte',
+          admin: {
+            condition: (_, siblingData) => siblingData?.blockType === 'textImage',
+          },
+        },
+        // ── CTA fields (hero, featureList, textImage, ctaBanner)
+        {
+          name: 'ctaText',
+          type: 'text',
+          label: 'Texte du bouton CTA',
+          admin: {
+            condition: (_, siblingData) => ['hero', 'featureList', 'textImage', 'ctaBanner'].includes(siblingData?.blockType),
+          },
+        },
+        {
+          name: 'ctaHref',
+          type: 'text',
+          label: 'Lien du bouton CTA',
+          admin: {
+            condition: (_, siblingData) => ['hero', 'featureList', 'textImage', 'ctaBanner'].includes(siblingData?.blockType),
+          },
+        },
+        // ── Image fields ─────────────────────────────────────
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Image',
+          admin: {
+            condition: (_, siblingData) => ['textImage', 'hero'].includes(siblingData?.blockType),
+          },
+        },
+        {
+          name: 'imagePosition',
+          type: 'select',
+          label: 'Position de l\'image',
+          defaultValue: 'right',
+          options: [
+            { label: 'Gauche', value: 'left' },
+            { label: 'Droite', value: 'right' },
+          ],
+          admin: {
+            condition: (_, siblingData) => siblingData?.blockType === 'textImage',
+          },
+        },
+        // ── Items (FAQ, featureList items, hero badges) ──────
+        {
+          name: 'items',
+          type: 'json',
+          label: 'Éléments (JSON)',
+          admin: {
+            description: 'FAQ: [{question, answer}] | featureList: [{title, text}] | Hero badges: [{label}]',
+            condition: (_, siblingData) => ['faq', 'featureList', 'hero'].includes(siblingData?.blockType),
+          },
+        },
+        // ── richText content ─────────────────────────────────
+        {
+          name: 'content',
+          type: 'richText',
+          label: 'Contenu enrichi',
+          admin: {
+            condition: (_, siblingData) => siblingData?.blockType === 'richText',
+          },
+        },
+      ],
+    },
+
     // ── SEO ───────────────────────────────────────────────────
     {
       name: 'seo',
