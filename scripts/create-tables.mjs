@@ -156,10 +156,16 @@ await exec(`
     "name" varchar NOT NULL,
     "role" varchar,
     "bio" varchar,
+    "writing_tone" varchar,
     "avatar_id" integer,
     "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
     "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
+`)
+
+// Add new columns to authors (idempotent)
+await exec(`
+  ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "writing_tone" varchar;
 `)
 
 // ── Pages ─────────────────────────────────────────────────────────────────

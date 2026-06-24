@@ -60,12 +60,28 @@ if (!maellieId) {
     name: 'Maëllie',
     role: 'Content Manager',
     bio: "Experte en location saisonnière et en marketing digital, Maëllie partage ses conseils pour aider les professionnels à développer leur activité.",
+    writing_tone: "Pédagogique et bienveillant. Explique les concepts métier avec des exemples concrets, des listes structurées et un vocabulaire accessible. S'adresse aux professionnels de la location saisonnière avec un ton rassurant et pratique.",
     updated_at: new Date().toISOString(),
     created_at: new Date().toISOString(),
   })
   console.log(`  ✓ Auteur Maëllie créé (id: ${maellieId})`)
 } else {
   console.log(`  · Auteur Maëllie déjà présent (id: ${maellieId})`)
+}
+
+let nicolasId = await exists('authors', 'name', 'Nicolas Ormart')
+if (!nicolasId) {
+  nicolasId = await insert('authors', {
+    name: 'Nicolas Ormart',
+    role: 'Co-fondateur & CEO',
+    bio: "Expert en location saisonnière et solutions SaaS pour les professionnels de l'immobilier. Nicolas accompagne les agences et gestionnaires locatifs dans leur développement commercial grâce à des outils d'estimation et de conversion innovants.",
+    writing_tone: "Stratégique et orienté résultats. Adopte un discours business ancré dans les chiffres et les cas concrets. Direct, sans jargon inutile, il s'adresse aux professionnels avec autorité et pragmatisme. Chaque argument est étayé par des données mesurables.",
+    updated_at: new Date().toISOString(),
+    created_at: new Date().toISOString(),
+  })
+  console.log(`  ✓ Auteur Nicolas Ormart créé (id: ${nicolasId})`)
+} else {
+  console.log(`  · Auteur Nicolas Ormart déjà présent (id: ${nicolasId})`)
 }
 
 // ── Pages ──────────────────────────────────────────────────────────────────

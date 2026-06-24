@@ -7,7 +7,7 @@ export const Authors: CollectionConfig = {
     useAsTitle: 'name',
     group: 'Blog',
     description: 'Auteurs des articles du blog.',
-    defaultColumns: ['name', 'updatedAt'],
+    defaultColumns: ['name', 'role', 'updatedAt'],
   },
   fields: [
     {
@@ -20,12 +20,21 @@ export const Authors: CollectionConfig = {
       name: 'role',
       type: 'text',
       label: 'Rôle / Titre',
-      admin: { description: 'Ex : Rédactrice, Expert SEO…' },
+      admin: { description: 'Ex : Co-fondateur, Rédactrice, Expert SEO…' },
     },
     {
       name: 'bio',
       type: 'textarea',
       label: 'Biographie courte',
+      admin: { description: 'Présentée sous les articles et sur la page auteur.' },
+    },
+    {
+      name: 'writingTone',
+      type: 'textarea',
+      label: 'Ton de rédaction',
+      admin: {
+        description: 'Décrivez le style, le registre et l\'angle éditorial de cet auteur. Utilisé comme référence pour la rédaction de contenus.',
+      },
     },
     {
       name: 'avatar',
@@ -35,3 +44,4 @@ export const Authors: CollectionConfig = {
     },
   ],
 }
+
