@@ -1,7 +1,4 @@
-/**
- * Minimal Lexical JSON renderer — handles paragraphs, headings, lists,
- * bold text, and links. Sufficient for legal / static CMS content.
- */
+import React from 'react'
 
 type LexicalNode = {
   type: string
@@ -22,8 +19,7 @@ function renderNode(node: LexicalNode, key: string | number): React.ReactNode {
     case 'heading': {
       const tag = node.tag ?? 'h2'
       const children = node.children?.map((c, i) => renderNode(c, i)) ?? null
-      const Tag = tag as keyof JSX.IntrinsicElements
-      return <Tag key={key}>{children}</Tag>
+      return React.createElement(tag, { key }, children)
     }
     case 'list': {
       const items = node.children?.map((c, i) => renderNode(c, i)) ?? null
