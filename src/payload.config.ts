@@ -25,6 +25,8 @@ export default buildConfig({
         Logo: '@/components/admin/Logo#AdminLogo',
         Icon: '@/components/admin/Icon#AdminIcon',
       },
+      beforeDashboard: ['@/components/admin/Dashboard#BeforeDashboard'],
+      beforeLogin: ['@/components/admin/BeforeLogin#BeforeLogin'],
     },
     importMap: {
       autoGenerate: false,

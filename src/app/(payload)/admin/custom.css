@@ -48,14 +48,40 @@
   --color-blue-950: rgb(0, 18, 25);
 }
 
-/* ── Login page — fond blanc avec accent teal ─────────────────────────── */
+/* ── Login page ───────────────────────────────────────────────────────── */
 .login__wrap {
   border-top: 3px solid #007caa;
 }
 
-/* ── Nav sidebar — barre accent gauche sur item actif ─────────────────── */
+/* ── Nav sidebar — item actif ─────────────────────────────────────────── */
 .nav__link--active {
   border-left: 3px solid #007caa;
+}
+
+/* ── Collection cards on dashboard ────────────────────────────────────── */
+.dashboard__card-list .card {
+  border-radius: 12px !important;
+  border: 1px solid #e5f0f5 !important;
+  transition: box-shadow 0.15s, transform 0.15s !important;
+}
+.dashboard__card-list .card:hover {
+  box-shadow: 0 4px 16px rgba(0,124,170,0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── Table rows ───────────────────────────────────────────────────────── */
+.table .row:hover td {
+  background-color: #f5fafd !important;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.btn--style-primary {
+  border-radius: 8px !important;
+}
+
+/* ── Document header ──────────────────────────────────────────────────── */
+.doc-header {
+  border-bottom: 2px solid #f0f8fb !important;
 }
 
 /* ── Focus ring — brand color ─────────────────────────────────────────── */
@@ -64,6 +90,13 @@
 }
 
 /* ── Scrollbar (Webkit) ───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
   background-color: #cce8f0;
   border-radius: 4px;
