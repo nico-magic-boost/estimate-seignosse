@@ -73,15 +73,31 @@ let nicolasId = await exists('authors', 'name', 'Nicolas Ormart')
 if (!nicolasId) {
   nicolasId = await insert('authors', {
     name: 'Nicolas Ormart',
-    role: 'Co-fondateur & CEO',
+    role: 'Co-fondateur & CEO — Estimate Rentals',
     bio: "Expert en location saisonnière et solutions SaaS pour les professionnels de l'immobilier. Nicolas accompagne les agences et gestionnaires locatifs dans leur développement commercial grâce à des outils d'estimation et de conversion innovants.",
-    writing_tone: "Stratégique et orienté résultats. Adopte un discours business ancré dans les chiffres et les cas concrets. Direct, sans jargon inutile, il s'adresse aux professionnels avec autorité et pragmatisme. Chaque argument est étayé par des données mesurables.",
+    writing_tone: "Stratégique et orienté résultats. Discours business ancré dans les chiffres et les cas concrets. Direct, sans jargon inutile, s'adresse aux professionnels avec autorité et pragmatisme. Chaque argument est étayé par des données mesurables et des exemples terrain.",
+    linkedin_url: 'https://www.linkedin.com/in/nicolas-ormart-44177932/',
+    expertise: 'Location saisonnière, Revenue management, SaaS immobilier, Growth & acquisition',
+    credentials: "Co-fondateur d'Estimate Rentals, plateforme SaaS dédiée aux professionnels de la location courte durée. Expérience terrain en gestion locative et développement commercial dans l'immobilier saisonnier.",
     updated_at: new Date().toISOString(),
     created_at: new Date().toISOString(),
   })
   console.log(`  ✓ Auteur Nicolas Ormart créé (id: ${nicolasId})`)
 } else {
-  console.log(`  · Auteur Nicolas Ormart déjà présent (id: ${nicolasId})`)
+  // Update EEAT fields if already exists
+  await client.query(
+    `UPDATE "authors" SET
+      linkedin_url = $1, expertise = $2, credentials = $3, writing_tone = $4
+     WHERE id = $5`,
+    [
+      'https://www.linkedin.com/in/nicolas-ormart-44177932/',
+      'Location saisonnière, Revenue management, SaaS immobilier, Growth & acquisition',
+      "Co-fondateur d'Estimate Rentals, plateforme SaaS dédiée aux professionnels de la location courte durée. Expérience terrain en gestion locative et développement commercial dans l'immobilier saisonnier.",
+      "Stratégique et orienté résultats. Discours business ancré dans les chiffres et les cas concrets. Direct, sans jargon inutile, s'adresse aux professionnels avec autorité et pragmatisme. Chaque argument est étayé par des données mesurables et des exemples terrain.",
+      nicolasId,
+    ]
+  )
+  console.log(`  · Auteur Nicolas Ormart mis à jour (id: ${nicolasId})`)
 }
 
 // ── Pages ──────────────────────────────────────────────────────────────────

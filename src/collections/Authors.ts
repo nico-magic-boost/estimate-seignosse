@@ -10,6 +10,7 @@ export const Authors: CollectionConfig = {
     defaultColumns: ['name', 'role', 'updatedAt'],
   },
   fields: [
+    // ── Identité ────────────────────────────────────────────────────────────
     {
       name: 'name',
       type: 'text',
@@ -20,21 +21,13 @@ export const Authors: CollectionConfig = {
       name: 'role',
       type: 'text',
       label: 'Rôle / Titre',
-      admin: { description: 'Ex : Co-fondateur, Rédactrice, Expert SEO…' },
+      admin: { description: 'Ex : Co-fondateur & CEO, Rédactrice, Expert SEO…' },
     },
     {
       name: 'bio',
       type: 'textarea',
       label: 'Biographie courte',
-      admin: { description: 'Présentée sous les articles et sur la page auteur.' },
-    },
-    {
-      name: 'writingTone',
-      type: 'textarea',
-      label: 'Ton de rédaction',
-      admin: {
-        description: 'Décrivez le style, le registre et l\'angle éditorial de cet auteur. Utilisé comme référence pour la rédaction de contenus.',
-      },
+      admin: { description: 'Présentée sous les articles et sur la page auteur (2-3 phrases).' },
     },
     {
       name: 'avatar',
@@ -42,6 +35,54 @@ export const Authors: CollectionConfig = {
       relationTo: 'media',
       label: 'Photo de profil',
     },
+
+    // ── Ton éditorial ───────────────────────────────────────────────────────
+    {
+      name: 'writingTone',
+      type: 'textarea',
+      label: 'Ton de rédaction',
+      admin: {
+        description: 'Style, registre et angle éditorial. Référence pour la rédaction et la relecture des contenus signés par cet auteur.',
+      },
+    },
+
+    // ── EEAT — Expertise, Authoritativeness, Trustworthiness ───────────────
+    {
+      type: 'collapsible',
+      label: 'Signaux EEAT (Google)',
+      admin: { description: 'Ces informations renforcent la crédibilité de l\'auteur aux yeux de Google (E-E-A-T).' },
+      fields: [
+        {
+          name: 'linkedinUrl',
+          type: 'text',
+          label: 'Profil LinkedIn',
+          admin: { description: 'https://www.linkedin.com/in/…' },
+        },
+        {
+          name: 'twitterUrl',
+          type: 'text',
+          label: 'Profil X / Twitter',
+          admin: { description: 'https://x.com/…' },
+        },
+        {
+          name: 'websiteUrl',
+          type: 'text',
+          label: 'Site web personnel',
+          admin: { description: 'https://…' },
+        },
+        {
+          name: 'expertise',
+          type: 'text',
+          label: 'Domaines d\'expertise',
+          admin: { description: 'Ex : Location saisonnière, Revenue management, SaaS immobilier' },
+        },
+        {
+          name: 'credentials',
+          type: 'textarea',
+          label: 'Références & accréditations',
+          admin: { description: 'Diplômes, certifications, années d\'expérience, publications notables…' },
+        },
+      ],
+    },
   ],
 }
-

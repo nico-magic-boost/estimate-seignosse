@@ -166,6 +166,11 @@ await exec(`
 // Add new columns to authors (idempotent)
 await exec(`
   ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "writing_tone" varchar;
+  ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "linkedin_url" varchar;
+  ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "twitter_url" varchar;
+  ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "website_url" varchar;
+  ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "expertise" varchar;
+  ALTER TABLE "authors" ADD COLUMN IF NOT EXISTS "credentials" varchar;
 `)
 
 // ── Pages ─────────────────────────────────────────────────────────────────
