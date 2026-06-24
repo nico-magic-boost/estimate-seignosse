@@ -8,6 +8,9 @@ export const Posts: CollectionConfig = {
     group: 'Blog',
     defaultColumns: ['title', 'author', 'status', 'publishedAt'],
     description: 'Articles du blog Estimate Rentals.',
+    components: {
+      beforeListTable: ['@/components/admin/GenerateWithAI#GenerateWithAI'],
+    },
   },
   fields: [
     // ── Sidebar ──────────────────────────────────────────────
@@ -19,7 +22,7 @@ export const Posts: CollectionConfig = {
       label: 'Slug URL',
       admin: {
         position: 'sidebar',
-        description: 'Identifiant unique dans l\'URL. Ex : pourquoi-integrer-un-simulateur',
+        description: "Identifiant unique dans l'URL. Ex : pourquoi-integrer-un-simulateur",
       },
     },
     {
@@ -30,9 +33,21 @@ export const Posts: CollectionConfig = {
       label: 'Statut',
       options: [
         { label: 'Brouillon', value: 'draft' },
-        { label: 'Publié', value: 'published' },
+        { label: 'Programme', value: 'scheduled' },
+        { label: 'Publie', value: 'published' },
       ],
       admin: { position: 'sidebar' },
+    },
+    {
+      name: 'scheduledAt',
+      type: 'date',
+      label: 'Date de publication programmee',
+      admin: {
+        position: 'sidebar',
+        condition: (data: Record<string, unknown>) => data?.status === 'scheduled',
+        date: { pickerAppearance: 'dayAndTime' },
+        description: "L'article sera publie a cette date.",
+      },
     },
     {
       name: 'author',
@@ -53,11 +68,11 @@ export const Posts: CollectionConfig = {
     {
       name: 'lastEditedAt',
       type: 'date',
-      label: 'Date de mise à jour',
+      label: 'Date de mise a jour',
       admin: {
         position: 'sidebar',
         date: { pickerAppearance: 'dayOnly', displayFormat: 'd MMMM yyyy' },
-        description: 'Affiché dans la barre de métadonnées de l\'article.',
+        description: "Affiche dans la barre de metadonnees de l'article.",
       },
     },
 
@@ -66,16 +81,16 @@ export const Posts: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-      label: 'Titre de l\'article',
+      label: "Titre de l'article",
       localized: true,
     },
     {
       name: 'coverImage',
       type: 'upload',
       relationTo: 'media',
-      label: 'Image de couverture (bannière)',
+      label: 'Image de couverture (banniere)',
       admin: {
-        description: 'Format recommandé : 1200×480 px. Affichée en haut de l\'article.',
+        description: 'Format recommande : 1200x480 px. Affichee en haut de l article.',
       },
     },
     {
@@ -84,7 +99,7 @@ export const Posts: CollectionConfig = {
       label: 'Introduction',
       localized: true,
       admin: {
-        description: 'Paragraphe d\'accroche affiché sous le titre. 2 à 4 phrases.',
+        description: "Paragraphe d'accroche affiche sous le titre. 2 a 4 phrases.",
         rows: 4,
       },
     },
@@ -93,11 +108,10 @@ export const Posts: CollectionConfig = {
     {
       name: 'sections',
       type: 'array',
-      label: 'Sections de l\'article',
+      label: "Sections de l'article",
       localized: true,
       admin: {
-        description: 'Chaque section correspond à un titre H2 avec son contenu.',
-        
+        description: 'Chaque section correspond a un titre H2 avec son contenu.',
       },
       fields: [
         {
@@ -111,7 +125,7 @@ export const Posts: CollectionConfig = {
           type: 'text',
           label: 'Ancre URL',
           admin: {
-            description: 'Identifiant pour le sommaire. Ex : erreur-1. Généré depuis le titre si vide.',
+            description: 'Identifiant pour le sommaire. Ex : erreur-1.',
           },
         },
         {
@@ -125,21 +139,20 @@ export const Posts: CollectionConfig = {
       ],
     },
 
-    // ── Résumé ────────────────────────────────────────────────
+    // ── Resume ────────────────────────────────────────────────
     {
       name: 'summary',
       type: 'array',
-      label: '"Ce qu\'il faut retenir" (encadré teal)',
+      label: 'Ce qu il faut retenir (encadre teal)',
       admin: {
-        description: 'Points clés affichés dans l\'encadré de conclusion. 3 à 5 points recommandés.',
-        
+        description: 'Points cles affiches dans l encadre de conclusion. 3 a 5 points recommandes.',
       },
       fields: [
         {
           name: 'text',
           type: 'text',
           required: true,
-          label: 'Point clé',
+          label: 'Point cle',
         },
       ],
     },
@@ -148,7 +161,7 @@ export const Posts: CollectionConfig = {
     {
       name: 'cta',
       type: 'group',
-      label: 'Appel à l\'action (bouton sidebar)',
+      label: "Appel a l'action (bouton sidebar)",
       fields: [
         {
           name: 'text',
@@ -170,19 +183,18 @@ export const Posts: CollectionConfig = {
       name: 'seo',
       type: 'group',
       label: 'SEO',
-      // collapsed by default
       fields: [
         {
           name: 'metaTitle',
           type: 'text',
           label: 'Titre SEO',
-          admin: { description: 'Si vide, le titre de l\'article est utilisé. Max 60 caractères.' },
+          admin: { description: "Si vide, le titre de l'article est utilise. Max 60 caracteres." },
         },
         {
           name: 'metaDescription',
           type: 'textarea',
-          label: 'Méta description',
-          admin: { description: 'Résumé affiché dans Google. Max 160 caractères.', rows: 2 },
+          label: 'Meta description',
+          admin: { description: 'Resume affiche dans Google. Max 160 caracteres.', rows: 2 },
         },
       ],
     },

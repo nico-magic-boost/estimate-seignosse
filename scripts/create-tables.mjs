@@ -258,6 +258,7 @@ await exec(`
   ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "author_id" integer;
   ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "cover_image_id" integer;
   ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "last_edited_at" timestamp(3) with time zone;
+  ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "scheduled_at" timestamp(3) with time zone;
   ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "cta_text" varchar;
   ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "cta_href" varchar;
   ALTER TABLE "posts" ADD COLUMN IF NOT EXISTS "seo_meta_title" varchar;
