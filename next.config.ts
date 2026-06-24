@@ -19,14 +19,14 @@ const nextConfig: NextConfig = {
     const csp = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline' https://form.estimate.rentals https://webforms.pipedrive.com",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://estimate.rentals https://form.estimate.rentals",
-      "font-src 'self'",
-      "connect-src 'self' https://form.estimate.rentals https://webforms.pipedrive.com",
-      "frame-src https://webforms.pipedrive.com",
+      "style-src 'self' 'unsafe-inline' https://form.estimate.rentals",
+      "img-src 'self' data: blob: https://estimate.rentals https://form.estimate.rentals https://webforms.pipedrive.com",
+      "font-src 'self' https://form.estimate.rentals",
+      "connect-src 'self' https://form.estimate.rentals https://webforms.pipedrive.com https://api.estimate.rentals",
+      "frame-src https://webforms.pipedrive.com https://form.estimate.rentals",
       "object-src 'none'",
       "base-uri 'self'",
-      "form-action 'self' https://webforms.pipedrive.com",
+      "form-action 'self' https://webforms.pipedrive.com https://form.estimate.rentals",
       "upgrade-insecure-requests",
     ].join('; ')
 
