@@ -310,28 +310,137 @@ const posts: Record<string, Post> = {
     title: "3 astuces pour convaincre un propriétaire de mettre son bien en gestion",
     author: 'Maëllie',
     publishedAt: '2025-02-25',
-    intro: "Un propriétaire qui gère seul sa location saisonnière voit rarement tout le potentiel de son bien immobilier. Votre rôle, en tant qu'agence, c'est de lui montrer que la gestion locative professionnelle augmente ses revenus, simplifie son quotidien et sécurise sa situation. Voici trois arguments concrets pour décrocher des mandats de gestion locative.",
+    updatedAt: '2026-05-21',
+    intro: "Un propriétaire qui gère seul sa location saisonnière voit rarement tout le potentiel de son bien immobilier. Entre les nuits à tarif sous-optimisé, les semaines vides faute de visibilité et les heures perdues en gestion opérationnelle, le manque à gagner peut dépasser plusieurs milliers d'euros par an. Votre rôle, en tant qu'agence ou gestionnaire professionnel, c'est de lui montrer — chiffres à l'appui — que la gestion locative professionnelle augmente ses revenus nets, simplifie son quotidien et sécurise sa situation face aux obligations légales. Voici trois arguments concrets, testés sur le terrain, pour décrocher des mandats de gestion locative saisonnière.",
     sections: [
       {
-        heading: 'Astuce n°1 — Prouver que la gestion locative maximise les revenus',
+        heading: 'Astuce n°1 — Prouver que la gestion locative maximise les revenus nets',
         anchor: 'astuce-1',
-        blocks: [{ type: 'paragraph', text: "L'argument économique reste le plus convaincant : une agence optimise les loyers grâce à des outils et services qu'un propriétaire seul n'utilise pas. La tarification dynamique, l'analyse du marché et la diffusion multi-plateformes permettent souvent d'obtenir un meilleur taux d'occupation et un revenu plus stable. À travers une estimation fiable issue d'Estimate.rentals, vous transformez un argument théorique en réalité chiffrée, ce qui facilite la décision et renforce votre expertise dès les premières minutes." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "L'argument économique reste le plus convaincant. Une agence professionnelle optimise les loyers grâce à des outils et services qu'un propriétaire seul n'utilise généralement pas : tarification dynamique, analyse concurrentielle du marché local, diffusion multi-plateformes coordonnée (Airbnb, Booking, Abritel, site propre), référencement des annonces. Résultat : un taux d'occupation supérieur et des revenus plus stables sur l'année.",
+          },
+          {
+            type: 'paragraph',
+            text: "Mais dire « nous faisons mieux » ne suffit pas. Ce qui convainc un propriétaire, c'est de lui montrer son potentiel chiffré — pas une promesse vague. C'est exactement là qu'Estimate.rentals change la donne.",
+          },
+          {
+            type: 'subsection',
+            heading: 'Comment Estimate.rentals vous y aide concrètement',
+            paragraphs: [
+              "Avant même le premier rendez-vous, vous pouvez générer une estimation personnalisée du bien du propriétaire : revenu brut potentiel, revenu net après charges, taux d'occupation cible, saisonnalité des revenus. Ces données s'appuient sur des sources de marché réelles, pas sur des moyennes génériques.",
+              "En arrivant avec un document chiffré et transparent, vous transformez votre discours commercial en démonstration factuelle. Le propriétaire cesse de se demander si ça vaut le coup — il voit ce qu'il laisse sur la table en continuant à gérer seul.",
+            ],
+          },
+          {
+            type: 'highlight',
+            title: "Ce qu'un propriétaire gagne souvent en passant à la gestion professionnelle :",
+            items: [
+              "Hausse du taux d'occupation de 10 à 20 % grâce à la diffusion multi-canaux",
+              "Optimisation tarifaire : +15 à 25 % de revenu brut par nuit en haute saison",
+              "Réduction des nuits vides grâce aux promotions last-minute et early-bird",
+              "Accès à des voyageurs plus qualifiés via les plateformes professionnelles",
+            ],
+          },
+        ],
       },
       {
-        heading: 'Astuce n°2 — Souligner la tranquillité totale',
+        heading: "Astuce n°2 — Souligner la tranquillité totale : zéro gestion, zéro stress",
         anchor: 'astuce-2',
-        blocks: [{ type: 'paragraph', text: "Une location saisonnière demande du temps et une vraie organisation. Entre chaque locataire, il faut gérer le ménage, le linge, les arrivées tardives, les messages, les petites réparations. Un propriétaire finit vite par y passer plusieurs heures par mois. Votre agence prend tout en charge : coordination de l'équipe de ménage, accueil ou check-in autonome, gestion des demandes pendant le séjour, appel aux artisans en urgence." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "La gestion opérationnelle d'une location saisonnière est chronophage. Entre chaque séjour, il faut coordonner le ménage, vérifier l'état du logement, gérer le linge, organiser les arrivées (parfois tardives), répondre aux messages des voyageurs, traiter les avis, et intervenir en cas de problème. Un propriétaire finit vite par y consacrer plusieurs heures par semaine.",
+          },
+          {
+            type: 'subsection',
+            heading: 'Ce que cela représente concrètement en temps par mois',
+            paragraphs: [
+              "En haute saison, un bien qui tourne avec des séjours de 4 à 7 nuits peut générer 6 à 8 rotations par mois. Chaque rotation implique : communication avec le voyageur entrant, coordination ménage, vérification et état des lieux, gestion des retours et avis. Sans compter les imprévus (panne, réclamation, oubli de voyageur).",
+              "Cumulées, ces tâches représentent facilement 15 à 20 heures par mois — du temps que la plupart des propriétaires n'ont pas ou ne souhaitent pas y consacrer.",
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: "Ce que votre agence prend entièrement en charge",
+            paragraphs: [],
+            bullets: [
+              "Coordination et contrôle qualité de l'équipe de ménage",
+              "Accueil physique ou check-in autonome (boîte à clés, application dédiée)",
+              "Gestion des demandes voyageurs 7j/7, avant, pendant et après le séjour",
+              "Intervention et coordination des artisans en cas d'urgence ou de panne",
+              "Gestion des avis voyageurs et optimisation de la réputation en ligne",
+              "Réapprovisionnement des consommables et suivi de l'état du bien",
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "Face à un propriétaire hésitant, posez-lui la question directement : « Combien d'heures par mois êtes-vous prêt à consacrer à la gestion de votre location ? » La réponse ouvre naturellement la conversation sur la valeur de votre service.",
+          },
+        ],
       },
       {
-        heading: 'Astuce n°3 — Sécuriser juridiquement et administrativement le bailleur',
+        heading: "Astuce n°3 — Sécuriser juridiquement et administrativement le propriétaire",
         anchor: 'astuce-3',
-        blocks: [{ type: 'paragraph', text: "La location saisonnière obéit à des règles précises : déclaration en mairie, numéro d'enregistrement, limites de durée dans certaines villes, règlement de copropriété, taxe de séjour, contrats adaptés. Un propriétaire qui gère sans accompagnement s'expose à des erreurs et des pénalités. Votre agence sécurise tout le cadre : mandat clair, contrat adapté, gestion des dépôts de garantie, collecte et reversement de la taxe de séjour, respect des règles locales." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "La location saisonnière est encadrée par une réglementation de plus en plus stricte, qui varie selon les communes et évolue chaque année. Un propriétaire qui gère sans accompagnement professionnel s'expose à des oublis, des erreurs déclaratives et des pénalités financières parfois lourdes.",
+          },
+          {
+            type: 'subsection',
+            heading: 'Les obligations légales souvent méconnues des propriétaires',
+            paragraphs: [],
+            bullets: [
+              "Déclaration en mairie obligatoire pour toute location meublée de tourisme",
+              "Numéro d'enregistrement à mentionner sur toutes les annonces dans les communes qui l'exigent",
+              "Respect des limites de durée (120 nuits/an pour les résidences principales dans certaines villes)",
+              "Vérification du règlement de copropriété (autorisation explicite de louer en courte durée)",
+              "Collecte et reversement mensuel ou trimestriel de la taxe de séjour à la commune",
+              "Contrat de location adapté, distinct d'un bail classique, avec dépôt de garantie conforme",
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: 'Les risques concrets pour un propriétaire non accompagné',
+            paragraphs: [
+              "Une location non déclarée peut entraîner une amende allant jusqu'à 5 000 € par infraction. Le non-reversement de la taxe de séjour expose à des pénalités de retard. Un contrat inadapté peut fragiliser le propriétaire en cas de litige avec un voyageur.",
+              "En prenant en charge l'intégralité du cadre administratif et juridique, votre agence élimine ces risques. C'est un argument décisif, notamment pour les propriétaires qui louent pour la première fois ou dans des zones soumises à une réglementation renforcée.",
+            ],
+          },
+        ],
       },
       {
-        heading: 'Ce qu\'il faut retenir',
-        anchor: 'conclusion',
-        blocks: [{ type: 'paragraph', text: "Pour convaincre un propriétaire, combinez les trois leviers : montrez-lui son potentiel chiffré (économique), sa future tranquillité d'esprit (opérationnel) et sa sécurité (juridique). Un estimateur comme Estimate.rentals vous permet de démarrer chaque rendez-vous avec des données concrètes, ce qui transforme votre discours commercial en démonstration factuelle." }],
+        heading: "Comment aborder le premier rendez-vous propriétaire",
+        anchor: 'premier-rdv',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "Convaincre un propriétaire, ce n'est pas vendre un service — c'est lui montrer ce qu'il perd sans vous. La structure idéale d'un premier rendez-vous combine les trois leviers dans cet ordre précis : économique d'abord (ce qu'il peut gagner), opérationnel ensuite (ce qu'il peut économiser en temps), juridique en dernier (ce qu'il risque sans accompagnement).",
+          },
+          {
+            type: 'subsection',
+            heading: 'Préparez votre rendez-vous en 3 étapes',
+            paragraphs: [
+              "1. Générez une estimation Estimate.rentals du bien avant la rencontre. Arrivez avec le potentiel chiffré : revenu brut, revenu net estimé, taux d'occupation cible. C'est votre meilleur outil d'accroche.",
+              "2. Préparez un comparatif simple : gestion seul vs gestion professionnelle. Mettez en regard les revenus supplémentaires attendus et les heures économisées. Le calcul parle de lui-même.",
+              "3. Évoquez un cas concret d'un propriétaire que vous accompagnez déjà — sans citer son nom. Les témoignages terrain ont bien plus d'impact que les arguments généraux.",
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "Le propriétaire qui comprend qu'il peut gagner plus, travailler moins et dormir sur ses deux oreilles n'a plus beaucoup de raisons d'hésiter. Il ne vous reste plus qu'à finaliser les termes du mandat.",
+          },
+        ],
       },
+    ],
+    summary: [
+      "L'argument économique est le plus puissant : chiffrez le potentiel du bien avant le rendez-vous avec Estimate.rentals",
+      "La gestion opérationnelle d'un bien représente 15 à 20 heures par mois en haute saison — votre agence prend tout en charge",
+      "La réglementation de la location saisonnière est complexe et évolue : accompagnez le propriétaire sur le volet juridique et administratif",
+      "Combinez les trois leviers dans l'ordre : économique → opérationnel → juridique pour maximiser votre taux de conversion",
+      "Un premier rendez-vous préparé avec des données concrètes transforme votre discours commercial en démonstration factuelle",
     ],
     cta: { text: 'Demander une démo', href: '/demander-une-demo' },
   },
