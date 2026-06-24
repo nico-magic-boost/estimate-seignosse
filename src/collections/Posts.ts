@@ -51,7 +51,7 @@ export const Posts: CollectionConfig = {
       },
     },
     {
-      name: 'updatedAt',
+      name: 'lastEditedAt',
       type: 'date',
       label: 'Date de mise à jour',
       admin: {
