@@ -3,88 +3,80 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { fileURLToPath } from 'url'
+
+import { Media } from './collections/Media'
+import { Authors } from './collections/Authors'
+import { Pages } from './collections/Pages'
+import { Posts } from './collections/Posts'
+import { Settings } from './collections/Settings'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
     user: 'users',
+    meta: {
+      titleSuffix: '— Estimate Rentals',
+    },
     importMap: {
       autoGenerate: false,
     },
   },
+
   collections: [
+    // Auth
     {
       slug: 'users',
+      labels: { singular: 'Utilisateur', plural: 'Utilisateurs' },
       auth: true,
-      fields: [],
-    },
-    {
-      slug: 'pages',
+      admin: {
+        useAsTitle: 'email',
+        group: 'Configuration',
+        description: 'Comptes administrateurs du back office.',
+        defaultColumns: ['email', 'updatedAt'],
+      },
       fields: [
-        { name: 'title', type: 'text', localized: true, required: true },
-        { name: 'slug', type: 'text', required: true, unique: true },
-        { name: 'content', type: 'richText', localized: true, editor: lexicalEditor({}) },
-        {
-          name: 'seo',
-          type: 'group',
-          fields: [
-            { name: 'title', type: 'text', localized: true },
-            { name: 'description', type: 'textarea', localized: true },
-            { name: 'keywords', type: 'text', localized: true },
-          ],
-        },
+        { name: 'name', type: 'text', label: 'Nom complet' },
       ],
     },
-    {
-      slug: 'posts',
-      fields: [
-        { name: 'title', type: 'text', localized: true, required: true },
-        { name: 'slug', type: 'text', required: true, unique: true },
-        { name: 'excerpt', type: 'textarea', localized: true },
-        { name: 'content', type: 'richText', localized: true, editor: lexicalEditor({}) },
-        { name: 'publishedAt', type: 'date' },
-      ],
-    },
-    {
-      slug: 'location-pages',
-      fields: [
-        { name: 'city', type: 'text', required: true },
-        { name: 'slug', type: 'text', required: true, unique: true },
-        { name: 'content', type: 'richText', localized: true, editor: lexicalEditor({}) },
-      ],
-    },
+
+    // Médias
+    Media,
+
+    // Site
+    Pages,
+
+    // Blog
+    Authors,
+    Posts,
   ],
-  globals: [
-    {
-      slug: 'settings',
-      fields: [
-        { name: 'siteTitle', type: 'text' },
-        { name: 'siteDescription', type: 'textarea', localized: true },
-        {
-          name: 'navLinks',
-          type: 'array',
-          fields: [
-            { name: 'label', type: 'text', localized: true },
-            { name: 'href', type: 'text' },
-          ],
-        },
-      ],
-    },
-  ],
+
+  globals: [Settings],
+
+  editor: lexicalEditor({}),
+
   localization: {
-    locales: ['fr', 'en', 'es'],
+    locales: [
+      { label: 'Français', code: 'fr' },
+      { label: 'English', code: 'en' },
+      { label: 'Español', code: 'es' },
+    ],
     defaultLocale: 'fr',
     fallback: true,
   },
+
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
+
   secret: process.env.PAYLOAD_SECRET || '',
+
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+
   plugins: [],
 })
