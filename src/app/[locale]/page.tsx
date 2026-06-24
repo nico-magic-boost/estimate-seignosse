@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="bg-white py-20 px-4">
+      <section className="relative bg-white dot-grid py-20 px-4">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
@@ -52,7 +52,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/estimez-gratuitement"
-              className="inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors text-base"
+              className="btn-shimmer inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors text-base"
             >
               Tester gratuitement →
             </Link>
@@ -77,7 +77,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats bar ─────────────────────────────────────────── */}
-      <section className="bg-gradient-to-r from-[#007caa] to-[#17a3b5] text-white py-8 px-4">
+      <section className="mesh-gradient-animated text-white py-8 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
           {/* Bar chart */}
           <div className="flex items-center gap-4">
@@ -169,7 +169,7 @@ export default function HomePage() {
           <p className="text-gray-600 text-sm italic mb-8">
             Avec Estimate.rentals, vous renforcez votre expertise, gagnez en crédibilité et offrez à vos prospects un service différenciant et professionnel.
           </p>
-          <Link href="/estimez-gratuitement" className="inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-7 py-3 rounded-full transition-colors">
+          <Link href="/estimez-gratuitement" className="btn-shimmer inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-7 py-3 rounded-full transition-colors">
             En savoir plus
           </Link>
 
@@ -341,7 +341,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA final ─────────────────────────────────────────── */}
-      <section className="bg-[#007caa] py-14 px-4">
+      <section className="mesh-gradient py-14 px-4">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <h2 className="text-2xl font-bold text-white text-center md:text-left leading-snug">
             Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?

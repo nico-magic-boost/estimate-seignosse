@@ -77,7 +77,7 @@ export default function InstallPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-16 px-4">
+      <section className="mesh-gradient-animated text-white py-16 px-4">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
           <div className="flex-1">
             <h1 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
@@ -151,14 +151,14 @@ export default function InstallPage() {
       </section>
 
       {/* Pourquoi intégrer */}
-      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-16 px-4">
+      <section className="mesh-gradient text-white py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             Pourquoi intégrer un estimateur de revenus locatifs sur son site ?
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {whyItems.map((item) => (
-              <div key={item.label} className="flex flex-col items-center text-center gap-4">
+              <div key={item.label} className="card-hover flex flex-col items-center text-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5">
                 <Image
                   src={item.img}
                   alt=""
@@ -181,7 +181,7 @@ export default function InstallPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((t) => (
-              <div key={t.name} className="bg-gray-50 rounded-2xl border border-gray-200 p-8">
+              <div key={t.name} className="card-hover bg-gray-50 rounded-2xl border border-gray-200 p-8">
                 <p className="text-gray-700 text-sm leading-relaxed italic mb-6">{t.quote}</p>
                 <p className="text-gray-900 font-semibold text-sm">{t.name}</p>
                 <p className="text-gray-500 text-xs">{t.role}</p>
@@ -192,14 +192,14 @@ export default function InstallPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] py-14 px-4">
+      <section className="mesh-gradient py-14 px-4">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <h2 className="text-2xl font-bold text-white text-center md:text-left leading-snug">
             Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?
           </h2>
           <Link
             href="/demander-une-demo"
-            className="flex-shrink-0 bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
+            className="btn-shimmer flex-shrink-0 bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
           >
             Installer l&apos;estimateur sur mon site →
           </Link>

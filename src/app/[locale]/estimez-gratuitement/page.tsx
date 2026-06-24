@@ -57,7 +57,7 @@ export default async function EstimatePage() {
   return (
     <div>
       {/* ── Titre + Widget en premier ─────────────────────── */}
-      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-14 px-4 text-center">
+      <section className="mesh-gradient text-white py-14 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             Découvrez le potentiel locatif de vos biens en 30 secondes.
@@ -94,7 +94,7 @@ export default async function EstimatePage() {
       </section>
 
       {/* ── À propos de l'outil ───────────────────────────── */}
-      <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-20 px-4">
+      <section className="mesh-gradient text-white py-20 px-4">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
           <div className="flex-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-tight">
@@ -107,7 +107,7 @@ export default async function EstimatePage() {
             </p>
             <Link
               href="/installer-estimateur"
-              className="inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
+              className="btn-shimmer inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-8 py-3 rounded-full transition-colors"
             >
               Je teste l&apos;estimateur gratuitement
             </Link>
@@ -269,7 +269,7 @@ export default async function EstimatePage() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────── */}
-      <section className="bg-[#007caa] py-14 px-4">
+      <section className="mesh-gradient py-14 px-4">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <h2 className="text-2xl font-bold text-white text-center md:text-left leading-snug">
             Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?

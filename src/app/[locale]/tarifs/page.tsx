@@ -201,7 +201,7 @@ export default function PricingPage() {
       <section className="pb-16 px-4 bg-white text-center">
         <a
           href="#abonnement"
-          className="inline-block bg-[#007caa] text-white font-semibold px-10 py-4 rounded-full hover:bg-[#005f85] transition-colors text-base mb-3"
+          className="btn-shimmer-auto inline-block bg-[#007caa] text-white font-semibold px-10 py-4 rounded-full hover:bg-[#005f85] transition-colors text-base mb-3"
         >
           Commencer l&apos;essai gratuit
         </a>

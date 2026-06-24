@@ -127,7 +127,7 @@ export default function DemoPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((t) => (
-              <div key={t.name} className="border border-gray-200 rounded-xl p-6">
+              <div key={t.name} className="card-hover border border-gray-200 rounded-xl p-6">
                 <p className="text-sm text-gray-700 leading-relaxed italic mb-4">{t.quote}</p>
                 <p className="text-sm font-semibold text-gray-900">{t.name}</p>
                 <p className="text-xs text-gray-500">{t.role}</p>
