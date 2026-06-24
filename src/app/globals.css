@@ -7,7 +7,7 @@
   --color-secondary-dark: #128a9a;
 }
 
-/* ── Mesh gradient ────────────────────────────────────────── */
+/* ── Mesh gradient statique ───────────────────────────────── */
 .mesh-gradient {
   background-color: #007caa;
   background-image:
@@ -17,22 +17,38 @@
     radial-gradient(ellipse 40% 40% at 80% 75%, #1ab8cc 0%, transparent 50%);
 }
 
+/* ── Mesh gradient animé — transform sur pseudo-element (GPU composited, 0 repaint) */
 .mesh-gradient-animated {
+  position: relative;
   background-color: #007caa;
+  overflow: hidden;
+}
+
+/* Push content above the pseudo-element layer */
+.mesh-gradient-animated > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mesh-gradient-animated::before {
+  content: '';
+  position: absolute;
+  inset: -40%;
   background-image:
-    radial-gradient(ellipse 80% 60% at 10% 20%, #0090c0 0%, transparent 60%),
-    radial-gradient(ellipse 60% 70% at 85% 15%, #17a3b5 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 50% 90%, #005f85 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 80% 75%, #1ab8cc 0%, transparent 50%);
-  background-size: 200% 200%;
+    radial-gradient(ellipse 80% 60% at 20% 30%, #0090c0 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 80% 20%, #17a3b5 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 40% 80%, #005f85 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 70% 65%, #1ab8cc 0%, transparent 50%);
   animation: mesh-move 18s ease-in-out infinite alternate;
+  will-change: transform;
+  z-index: 0;
 }
 
 @keyframes mesh-move {
-  0%   { background-position: 0% 0%; }
-  33%  { background-position: 60% 30%; }
-  66%  { background-position: 30% 70%; }
-  100% { background-position: 100% 100%; }
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(4%, 3%) scale(1.04); }
+  66%  { transform: translate(-3%, 6%) scale(1.02); }
+  100% { transform: translate(6%, -4%) scale(1.06); }
 }
 
 /* Subtle dot grid for light hero backgrounds */
@@ -41,7 +57,7 @@
   background-size: 28px 28px;
 }
 
-/* ── Shimmer CTA ──────────────────────────────────────────── */
+/* ── Shimmer CTA (au hover — GPU composited) ──────────────── */
 .btn-shimmer {
   position: relative;
   overflow: hidden;
@@ -58,7 +74,7 @@
     transparent 65%
   );
   transform: translateX(-100%);
-  transition: transform 0s;
+  will-change: transform;
 }
 
 .btn-shimmer:hover::after {
@@ -66,7 +82,12 @@
   transition: transform 0.45s ease;
 }
 
-/* Auto shimmer (loops every 3.5s) */
+/* ── Shimmer auto (boucle, GPU composited) ────────────────── */
+.btn-shimmer-auto {
+  position: relative;
+  overflow: hidden;
+}
+
 .btn-shimmer-auto::after {
   content: '';
   position: absolute;
@@ -78,6 +99,7 @@
     transparent 65%
   );
   animation: shimmer-loop 3.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes shimmer-loop {
@@ -86,9 +108,10 @@
   100% { transform: translateX(100%); }
 }
 
-/* ── Card lift on hover ───────────────────────────────────── */
+/* ── Card lift on hover (GPU composited) ──────────────────── */
 .card-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
 }
 .card-hover:hover {
   transform: translateY(-4px);
@@ -111,8 +134,18 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Reduced motion */
+/* Reduced motion — désactive toutes les animations */
 @media (prefers-reduced-motion: reduce) {
+  .mesh-gradient-animated::before {
+    animation: none;
+  }
+  .btn-shimmer-auto::after {
+    animation: none;
+  }
+  .card-hover {
+    transition: none;
+    will-change: auto;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
