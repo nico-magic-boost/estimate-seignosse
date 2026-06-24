@@ -16,8 +16,15 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     user: 'users',
+    theme: 'light',
     meta: {
       titleSuffix: '— Estimate Rentals',
+    },
+    components: {
+      graphics: {
+        Logo: '@/components/admin/Logo#AdminLogo',
+        Icon: '@/components/admin/Icon#AdminIcon',
+      },
     },
     importMap: {
       autoGenerate: false,

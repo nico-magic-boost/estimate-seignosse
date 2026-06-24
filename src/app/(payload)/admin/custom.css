@@ -1,0 +1,73 @@
+/*
+ * Estimate Rentals — Admin branding overrides
+ * Replaces Payload's default blue-success scale with #007caa brand teal.
+ * Overrides apply to both light and dark themes.
+ */
+
+:root {
+  /* ── Brand color scale (mapped to --color-success-* used by Payload for links/focus/CTA) ── */
+  --color-success-50:  rgb(235, 246, 250);
+  --color-success-100: rgb(204, 233, 243);
+  --color-success-150: rgb(170, 218, 235);
+  --color-success-200: rgb(135, 202, 226);
+  --color-success-250: rgb(101, 186, 216);
+  --color-success-300: rgb(69, 169, 204);
+  --color-success-350: rgb(38, 151, 190);
+  --color-success-400: rgb(12, 136, 178);
+  --color-success-450: rgb(0, 128, 170);
+  --color-success-500: rgb(0, 124, 170);   /* #007caa — couleur primaire */
+  --color-success-550: rgb(0, 111, 152);
+  --color-success-600: rgb(0, 99, 136);    /* #005f85 — couleur primaire dark */
+  --color-success-650: rgb(0, 87, 119);
+  --color-success-700: rgb(0, 76, 103);
+  --color-success-750: rgb(0, 64, 87);
+  --color-success-800: rgb(0, 53, 72);
+  --color-success-850: rgb(0, 41, 56);
+  --color-success-900: rgb(0, 30, 41);
+  --color-success-950: rgb(0, 18, 25);
+
+  /* ── Également override le blue (utilisé pour les liens dans certains contextes) ── */
+  --color-blue-50:  rgb(235, 246, 250);
+  --color-blue-100: rgb(204, 233, 243);
+  --color-blue-150: rgb(170, 218, 235);
+  --color-blue-200: rgb(135, 202, 226);
+  --color-blue-250: rgb(101, 186, 216);
+  --color-blue-300: rgb(69, 169, 204);
+  --color-blue-350: rgb(38, 151, 190);
+  --color-blue-400: rgb(12, 136, 178);
+  --color-blue-450: rgb(0, 128, 170);
+  --color-blue-500: rgb(0, 124, 170);
+  --color-blue-550: rgb(0, 111, 152);
+  --color-blue-600: rgb(0, 99, 136);
+  --color-blue-650: rgb(0, 87, 119);
+  --color-blue-700: rgb(0, 76, 103);
+  --color-blue-750: rgb(0, 64, 87);
+  --color-blue-800: rgb(0, 53, 72);
+  --color-blue-850: rgb(0, 41, 56);
+  --color-blue-900: rgb(0, 30, 41);
+  --color-blue-950: rgb(0, 18, 25);
+}
+
+/* ── Login page — fond blanc avec accent teal ─────────────────────────── */
+.login__wrap {
+  border-top: 3px solid #007caa;
+}
+
+/* ── Nav sidebar — barre accent gauche sur item actif ─────────────────── */
+.nav__link--active {
+  border-left: 3px solid #007caa;
+}
+
+/* ── Focus ring — brand color ─────────────────────────────────────────── */
+*:focus-visible {
+  outline-color: #007caa !important;
+}
+
+/* ── Scrollbar (Webkit) ───────────────────────────────────────────────── */
+::-webkit-scrollbar-thumb {
+  background-color: #cce8f0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #007caa;
+}
