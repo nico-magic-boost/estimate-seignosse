@@ -28,7 +28,7 @@ const WP = 'https://estimate.rentals/wp-content/uploads'
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const t = useTranslations()
+  // const t = await getTranslations() // uncomment if translations are needed
 
   let cmsHeroTitle: string | null = null
   let cmsHeroSubtitle: string | null = null
