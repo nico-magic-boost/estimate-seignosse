@@ -8,6 +8,9 @@ export const PillarPages: CollectionConfig = {
     group: 'Pages Piliers',
     defaultColumns: ['title', 'city', 'targetKeyword', 'status', 'updatedAt'],
     description: 'Pages de destination SEO par ville (ex : Estimation location vacances à Arcachon).',
+    components: {
+      beforeListTable: ['@/components/admin/GeneratePillarPage#GeneratePillarPage'],
+    },
   },
   fields: [
     // ── Sidebar ──────────────────────────────────────────────
