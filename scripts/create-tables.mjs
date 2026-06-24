@@ -484,6 +484,57 @@ await exec(`
 
 // ── Indexes ───────────────────────────────────────────────────────────────
 
+// ── Pillar Pages ──────────────────────────────────────────────────────────
+
+await exec(`
+  CREATE TABLE IF NOT EXISTS "pillar_pages" (
+    "id" serial PRIMARY KEY NOT NULL,
+    "slug" varchar NOT NULL,
+    "status" varchar DEFAULT 'draft' NOT NULL,
+    "city" varchar NOT NULL,
+    "target_keyword" varchar,
+    "title" varchar NOT NULL,
+    "intro" text,
+    "hero_image_id" integer,
+    "hero_image_url" varchar,
+    "hero_cta_text" varchar DEFAULT 'J''estime mes revenus',
+    "seo_meta_title" varchar,
+    "seo_meta_description" text,
+    "seo_canonical_url" varchar,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+
+  CREATE TABLE IF NOT EXISTS "pillar_pages_sections" (
+    "_order" integer NOT NULL,
+    "_parent_id" integer NOT NULL,
+    "id" varchar PRIMARY KEY NOT NULL,
+    "block_type" varchar NOT NULL,
+    "title" varchar,
+    "text" text,
+    "image_url" varchar,
+    "image_position" varchar DEFAULT 'right',
+    "cta_text" varchar,
+    "cta_href" varchar,
+    "items" jsonb
+  );
+
+  CREATE TABLE IF NOT EXISTS "pillar_pages_faq_items" (
+    "_order" integer NOT NULL,
+    "_parent_id" integer NOT NULL,
+    "id" varchar PRIMARY KEY NOT NULL,
+    "question" varchar NOT NULL,
+    "answer" text NOT NULL
+  );
+`)
+
+await exec(`
+  ALTER TABLE "pillar_pages_sections" ADD CONSTRAINT "pillar_pages_sections_parent_fk"
+    FOREIGN KEY ("_parent_id") REFERENCES "pillar_pages"("id") ON DELETE CASCADE;
+  ALTER TABLE "pillar_pages_faq_items" ADD CONSTRAINT "pillar_pages_faq_items_parent_fk"
+    FOREIGN KEY ("_parent_id") REFERENCES "pillar_pages"("id") ON DELETE CASCADE;
+`)
+
 await exec(`
   CREATE UNIQUE INDEX IF NOT EXISTS "users_email_idx" ON "users" ("email");
   CREATE INDEX IF NOT EXISTS "users_created_at_idx" ON "users" ("created_at");
@@ -493,6 +544,9 @@ await exec(`
   CREATE INDEX IF NOT EXISTS "pages_sections_parent_id_idx" ON "pages_sections" ("_parent_id");
   CREATE UNIQUE INDEX IF NOT EXISTS "posts_slug_idx" ON "posts" ("slug");
   CREATE UNIQUE INDEX IF NOT EXISTS "location_pages_slug_idx" ON "location_pages" ("slug");
+  CREATE UNIQUE INDEX IF NOT EXISTS "pillar_pages_slug_idx" ON "pillar_pages" ("slug");
+  CREATE INDEX IF NOT EXISTS "pillar_pages_sections_parent_idx" ON "pillar_pages_sections" ("_parent_id");
+  CREATE INDEX IF NOT EXISTS "pillar_pages_faq_items_parent_idx" ON "pillar_pages_faq_items" ("_parent_id");
   CREATE UNIQUE INDEX IF NOT EXISTS "pages_locales_locale_parent_unique" ON "pages_locales" ("_locale", "_parent_id");
   CREATE UNIQUE INDEX IF NOT EXISTS "posts_locales_locale_parent_unique" ON "posts_locales" ("_locale", "_parent_id");
   CREATE UNIQUE INDEX IF NOT EXISTS "location_pages_locales_locale_parent_unique" ON "location_pages_locales" ("_locale", "_parent_id");

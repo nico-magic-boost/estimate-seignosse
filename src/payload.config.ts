@@ -8,6 +8,7 @@ import { Media } from './collections/Media'
 import { Authors } from './collections/Authors'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
+import { PillarPages } from './collections/PillarPages'
 import { Settings } from './collections/Settings'
 
 const filename = fileURLToPath(import.meta.url)
@@ -59,6 +60,9 @@ export default buildConfig({
     // Blog
     Authors,
     Posts,
+
+    // Pages Piliers SEO
+    PillarPages,
   ],
 
   globals: [Settings],
