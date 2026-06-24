@@ -1,106 +1,247 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
 import type { ComponentProps } from 'react'
 import { robots, canonical, SITE_URL } from '@/lib/seo'
 
+type ContentBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'bullets'; items: string[] }
+  | { type: 'highlight'; title: string; items: string[] }
+  | { type: 'subsection'; heading: string; paragraphs: string[]; bullets?: string[] }
+
+type Section = {
+  heading: string
+  anchor: string
+  blocks: ContentBlock[]
+}
+
 type Post = {
   title: string
-  date: string
+  author: string
+  publishedAt: string
+  updatedAt?: string
+  img?: string
   intro: string
-  sections: { heading: string; content: string }[]
+  sections: Section[]
+  summary?: string[]
   cta: { text: string; href: string }
 }
+
+const WP = 'https://estimate.rentals/wp-content/uploads'
 
 const posts: Record<string, Post> = {
   'pourquoi-integrer-un-simulateur': {
     title: 'Pourquoi intégrer un estimateur sur votre site pro',
-    date: '2025-04-10',
-    intro: 'Le secteur de la location saisonnière connaît une transformation profonde. Les propriétaires comparent souvent plusieurs offres avant de choisir un gestionnaire ou une agence. Dans ce contexte, générer des mandats devient un défi quotidien. Un site statique, qui présente uniquement les services sans offrir de valeur immédiate, perd du terrain face à des concurrents qui proposent une expérience interactive et utile.',
+    author: 'Maëllie',
+    publishedAt: '2025-12-02',
+    updatedAt: '2026-05-21',
+    img: `${WP}/2025/12/Banniere-blog-75.png`,
+    intro: "Le secteur de la location saisonnière connaît une transformation profonde. Les propriétaires comparent souvent plusieurs offres avant de choisir un gestionnaire ou une agence. Dans ce contexte, générer des mandats devient un défi quotidien. Le site web d'une agence ne se contente plus d'être une simple vitrine : c'est devenu un point de contact stratégique. Un site statique, qui présente uniquement les services sans offrir de valeur immédiate, perd du terrain face à des concurrents qui proposent une expérience interactive et utile.",
     sections: [
       {
-        heading: 'La question que se pose chaque propriétaire',
-        content: 'À l\'arrivée sur votre site, un propriétaire se pose souvent la question : « Combien pourrais-je gagner en louant mon bien en courte durée ? » S\'il ne trouve pas de réponse rapide, il partira ailleurs. C\'est ici qu\'un outil interactif comme Estimate.rentals prend tout son sens. Un estimateur intégré offre une réponse instantanée, ce qui augmente l\'engagement et la confiance.',
+        heading: 'Pourquoi les pros de la location saisonnière ont besoin d\'un estimateur de revenus',
+        anchor: 'besoin-estimateur',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "À l'arrivée sur votre site, un propriétaire se pose souvent la question : « Combien pourrais-je gagner en louant mon bien en courte durée ? » S'il ne trouve pas de réponse rapide, il partira ailleurs. C'est ici qu'un outil interactif comme Estimate.rentals prend tout son sens. Un estimateur intégré offre une réponse instantanée, ce qui augmente l'engagement et la confiance.",
+          },
+          {
+            type: 'highlight',
+            title: "Les avantages concrets d'Estimate.rentals pour votre activité",
+            items: [
+              'Répond immédiatement à la préoccupation principale du propriétaire',
+              'Génère des leads qualifiés',
+              'Valorise votre expertise et renforce votre crédibilité auprès des propriétaires',
+              'Gagne de la crédibilité sur le long terme : grâce aux estimations fiables',
+              "Outil simple à intégrer : l'estimateur s'installe facilement sur votre site",
+            ],
+          },
+        ],
       },
       {
-        heading: '1. Générer automatiquement des leads propriétaires qualifiés',
-        content: 'L\'estimateur capte l\'attention des propriétaires au moment exact où ils s\'interrogent sur la rentabilité de leur bien. En échange d\'une estimation, ils laissent leurs coordonnées. Vous recevez donc des leads déjà qualifiés, avec toutes les informations essentielles (adresse, type de bien, surface, potentiel locatif…).',
-      },
-      {
-        heading: '2. Renforcer votre crédibilité et votre expertise',
-        content: 'Estimate.rentals s\'appuie sur des données réelles, des contraintes locales, des coûts de gestion et des règles spécifiques à la location courte durée. Vous offrez ainsi une estimation transparente, fiable et professionnelle, qui crédibilise immédiatement votre positionnement face aux concurrents.',
-      },
-      {
-        heading: '3. Vous différencier de la concurrence locale',
-        content: 'Peu d\'agences proposent un estimateur professionnel dédié à la location courte durée. En l\'intégrant, vous offrez une fonctionnalité moderne et unique qui vous distingue immédiatement dans un marché très compétitif.',
-      },
-      {
-        heading: '4. Automatiser une partie de votre prospection',
-        content: 'L\'estimateur en ligne joue le rôle d\'un assistant commercial 24/7 : il qualifie les prospects à votre place, collecte les données nécessaires, et réduit les premiers échanges chronophages. Vos équipes gagnent plusieurs heures de travail chaque semaine.',
-      },
-      {
-        heading: '5. Améliorer votre référencement naturel (SEO)',
-        content: 'Un outil interactif augmente fortement le temps passé sur la page, diminue le taux de rebond, génère des partages et liens entrants, et renforce votre autorité sur Google. Il attire un trafic local hautement qualifié.',
+        heading: 'Pourquoi intégrer un estimateur en ligne sur votre site professionnel ?',
+        anchor: 'pourquoi-integrer',
+        blocks: [
+          {
+            type: 'subsection',
+            heading: '1. Générer automatiquement des leads propriétaires qualifiés',
+            paragraphs: [
+              "L'estimateur capte l'attention des propriétaires au moment exact où ils s'interrogent sur la rentabilité de leur bien.",
+              "En échange d'une estimation, ils laissent leurs coordonnées.",
+              'Vous recevez donc des leads déjà qualifiés, avec toutes les informations essentielles (adresse, type de bien, surface, potentiel locatif…).',
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: '2. Renforcer votre crédibilité et votre expertise',
+            paragraphs: [
+              "Estimate.rentals s'appuie sur des données réelles, des contraintes locales, des coûts de gestion et des règles spécifiques à la location courte durée.",
+              'Vous offrez ainsi une estimation transparente, fiable et professionnelle, qui crédibilise immédiatement votre positionnement face aux concurrents.',
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: '3. Attirer plus de propriétaires grâce à un service gratuit',
+            paragraphs: [
+              "Un estimateur gratuit attire naturellement davantage de visiteurs sur votre site.",
+              "Les propriétaires recherchent activement ce type d'outil : vous devenez une référence locale pour l'estimation des revenus saisonniers.",
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: '4. Vous différencier de la concurrence locale',
+            paragraphs: [
+              "Peu d'agences proposent un estimateur professionnel dédié à la location courte durée.",
+              "En l'intégrant, vous offrez une fonctionnalité moderne et unique qui vous distingue immédiatement dans un marché très compétitif.",
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: '5. Automatiser une partie de votre prospection',
+            paragraphs: ["L'estimateur en ligne joue le rôle d'un assistant commercial 24/7 :"],
+            bullets: [
+              'Il qualifie les prospects à votre place,',
+              'Collecte les données nécessaires,',
+              'Réduit les premiers échanges chronophages.',
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: '6. Améliorer votre référencement naturel (SEO)',
+            paragraphs: ['Un outil interactif :'],
+            bullets: [
+              'Augmente fortement le temps passé sur la page,',
+              'Diminue le taux de rebond, génère des partages et liens entrants,',
+              'Renforce votre autorité sur Google,',
+              'Attire un trafic local hautement qualifié.',
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: '7. Offrir une expérience moderne et fluide à vos visiteurs',
+            paragraphs: [
+              "L'estimateur s'intègre en quelques lignes de code, sans compétence technique.",
+              "Il s'adapte automatiquement à votre site, fonctionne parfaitement sur mobile, et offre une expérience fluide et professionnelle.",
+            ],
+          },
+        ],
       },
       {
         heading: 'Comment fonctionne Estimate.rentals',
-        content: 'Estimate.rentals est un estimateur en ligne conçu pour les professionnels de la location saisonnière. Il s\'intègre en quelques lignes de code sur n\'importe quel site web. Le propriétaire renseigne son bien (localisation, surface, type…) et reçoit une estimation instantanée de ses revenus potentiels, saison par saison. En échange, vous récupérez ses coordonnées et les données de son bien dans votre tableau de bord.',
+        anchor: 'comment-fonctionne',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "Estimate.rentals est un estimateur en ligne gratuit conçu pour les professionnels de la location courte durée. L'outil calcule les revenus potentiels en analysant :",
+          },
+          {
+            type: 'bullets',
+            items: [
+              'La localisation du bien,',
+              'Le type de logement,',
+              'La surface,',
+              'Les caractéristiques et équipements,',
+              'Les frais de gestion et de distribution,',
+              'Les contraintes réglementaires locales.',
+            ],
+          },
+          {
+            type: 'paragraph',
+            text: "Le résultat fourni est un revenu réaliste, cohérent et professionnel. Il permet au propriétaire de se projeter, et à vous de vous appuyer sur des données concrètes pour argumenter votre offre.",
+          },
+        ],
+      },
+      {
+        heading: 'Un levier efficace pour développer votre portefeuille clients',
+        anchor: 'levier-portefeuille',
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "En intégrant l'estimateur sur votre site web, vous captez l'attention des propriétaires dès leur première visite. Ils obtiennent une estimation instantanée puis, s'ils souhaitent aller plus loin, ils laissent leurs coordonnées. L'estimateur transforme ainsi un simple intérêt en mandat potentiel.",
+          },
+          {
+            type: 'paragraph',
+            text: "Grâce à Estimate.rentals, votre site web devient un véritable outil commercial, actif 24h/24 et 7j/7, capable d'attirer des leads même lorsque votre agence est fermée.",
+          },
+        ],
       },
     ],
-    cta: { text: 'Essayer gratuitement', href: '/estimez-gratuitement' },
+    summary: [
+      'Un outil puissant pour attirer et convertir les propriétaires',
+      "Un moyen de renforcer votre crédibilité professionnelle : grâce à des estimations établies sur des données réelles",
+      "Un levier marketing qui booste votre site et votre prospection : l'estimateur améliore votre SEO, enrichit l'expérience utilisateur",
+    ],
+    cta: { text: 'Essai gratuit', href: '/estimez-gratuitement' },
   },
+
   'les-5-erreurs': {
-    title: 'Les 5 erreurs à éviter lors de l\'estimation d\'un bien saisonnier',
-    date: '2025-03-18',
-    intro: 'Estimer la rentabilité d\'un bien destiné à la location saisonnière ne s\'improvise pas. Contrairement à la location classique, les revenus varient selon les saisons, les charges sont plus élevées, la concurrence est variable, et le taux d\'occupation n\'est jamais linéaire. Beaucoup d\'investisseurs se trompent dès l\'étape d\'estimation et achètent un bien sur des projections trop optimistes.',
+    title: "Les 5 erreurs à éviter lors de l'estimation d'un bien saisonnier",
+    author: 'Maëllie',
+    publishedAt: '2025-03-18',
+    intro: "Estimer la rentabilité d'un bien destiné à la location saisonnière ne s'improvise pas. Contrairement à la location classique, les revenus varient selon les saisons, les charges sont plus élevées, la concurrence est variable, et le taux d'occupation n'est jamais linéaire. Beaucoup d'investisseurs se trompent dès l'étape d'estimation et achètent un bien sur des projections trop optimistes.",
     sections: [
       {
-        heading: 'Erreur n°1 : appliquer un tarif unique toute l\'année',
-        content: 'L\'une des erreurs les plus coûteuses consiste à appliquer un tarif fixe tout au long de l\'année. Un appartement en bord de mer qui se loue facilement 80 € la nuit en juillet-août aura du mal à trouver preneur au même tarif en novembre. Un tarif de 50 € sera bien plus adapté. Cette différence de 30 € par nuit représente une variation de près de 40 % qu\'il est impossible de négliger dans vos calculs.',
+        heading: "Erreur n°1 : appliquer un tarif unique toute l'année",
+        anchor: 'erreur-1',
+        blocks: [{ type: 'paragraph', text: "L'une des erreurs les plus coûteuses consiste à appliquer un tarif fixe tout au long de l'année. Un appartement en bord de mer qui se loue facilement 80 € la nuit en juillet-août aura du mal à trouver preneur au même tarif en novembre. Un tarif de 50 € sera bien plus adapté. Cette différence de 30 € par nuit représente une variation de près de 40 % qu'il est impossible de négliger dans vos calculs." }],
       },
       {
         heading: 'Erreur n°2 : négliger l\'étude comparative du marché local',
-        content: 'Il est absolument essentiel de réaliser une analyse comparative approfondie du marché local avant toute estimation. Ne partez jamais du prix d\'achat du bien ou d\'un tarif « qui semble correct ». Observez les biens comparables sur votre zone : superficie, équipements, standing, localisation précise. Éliminez les extrêmes et concentrez-vous sur la fourchette médiane.',
+        anchor: 'erreur-2',
+        blocks: [{ type: 'paragraph', text: "Il est absolument essentiel de réaliser une analyse comparative approfondie du marché local avant toute estimation. Ne partez jamais du prix d'achat du bien ou d'un tarif « qui semble correct ». Observez les biens comparables sur votre zone : superficie, équipements, standing, localisation précise. Éliminez les extrêmes et concentrez-vous sur la fourchette médiane." }],
       },
       {
-        heading: 'Erreur n°3 : sous-estimer les charges et frais réels d\'exploitation',
-        content: 'La location saisonnière engendre des coûts spécifiques souvent sous-estimés : frais de ménage entre chaque locataire, consommation d\'eau et d\'électricité plus élevée, entretien du linge, petites réparations fréquentes, frais de plateforme (15 à 20 % du loyer sur Airbnb et Booking), assurance spécifique, taxe de séjour à reverser à la commune.',
+        heading: "Erreur n°3 : sous-estimer les charges et frais réels d'exploitation",
+        anchor: 'erreur-3',
+        blocks: [{ type: 'paragraph', text: "La location saisonnière engendre des coûts spécifiques souvent sous-estimés : frais de ménage entre chaque locataire, consommation d'eau et d'électricité plus élevée, entretien du linge, petites réparations fréquentes, frais de plateforme (15 à 20 % du loyer sur Airbnb et Booking), assurance spécifique, taxe de séjour à reverser à la commune." }],
       },
       {
         heading: 'Erreur n°4 : ignorer la tarification dynamique et les événements locaux',
-        content: 'Les événements locaux — festival, compétition sportive, salon professionnel — peuvent permettre de multiplier votre tarif par deux ou trois sur quelques jours. Inversement, certaines périodes creuses nécessitent des promotions pour maintenir un taux d\'occupation acceptable. Une bonne stratégie tarifaire intègre ces variations dès la phase d\'estimation.',
+        anchor: 'erreur-4',
+        blocks: [{ type: 'paragraph', text: "Les événements locaux — festival, compétition sportive, salon professionnel — peuvent permettre de multiplier votre tarif par deux ou trois sur quelques jours. Inversement, certaines périodes creuses nécessitent des promotions pour maintenir un taux d'occupation acceptable. Une bonne stratégie tarifaire intègre ces variations dès la phase d'estimation." }],
       },
       {
-        heading: 'Erreur n°5 : négliger la qualité de présentation et l\'attractivité du bien',
-        content: 'La qualité de la présentation impacte directement le taux d\'occupation et le tarif applicable. Des photos professionnelles, un titre accrocheur, une description détaillée et des équipements adaptés (climatisation, wifi rapide, machine à café) permettent souvent d\'augmenter le tarif de 15 à 25 % par rapport à un bien similaire mal présenté.',
+        heading: "Erreur n°5 : négliger la qualité de présentation et l'attractivité du bien",
+        anchor: 'erreur-5',
+        blocks: [{ type: 'paragraph', text: "La qualité de la présentation impacte directement le taux d'occupation et le tarif applicable. Des photos professionnelles, un titre accrocheur, une description détaillée et des équipements adaptés (climatisation, wifi rapide, machine à café) permettent souvent d'augmenter le tarif de 15 à 25 % par rapport à un bien similaire mal présenté." }],
       },
       {
         heading: 'La solution : utiliser un estimateur spécialisé',
-        content: 'Pour éviter ces cinq erreurs, utilisez un outil conçu pour la location saisonnière. Estimate.rentals intègre la saisonnalité, les données de marché locales, les charges réelles et les spécificités de chaque destination pour fournir une projection fiable et utilisable pour votre prise de décision.',
+        anchor: 'solution',
+        blocks: [{ type: 'paragraph', text: "Pour éviter ces cinq erreurs, utilisez un outil conçu pour la location saisonnière. Estimate.rentals intègre la saisonnalité, les données de marché locales, les charges réelles et les spécificités de chaque destination pour fournir une projection fiable et utilisable pour votre prise de décision." }],
       },
     ],
     cta: { text: 'Obtenir une estimation gratuite', href: '/estimez-gratuitement' },
   },
+
   'astuces-convaincre-proprietaire-gestion': {
-    title: '3 astuces pour convaincre un propriétaire de mettre son bien en gestion',
-    date: '2025-02-25',
-    intro: 'Un propriétaire qui gère seul sa location saisonnière voit rarement tout le potentiel de son bien immobilier. Votre rôle, en tant qu\'agence, c\'est de lui montrer que la gestion locative professionnelle augmente ses revenus, simplifie son quotidien et sécurise sa situation. Voici trois arguments concrets pour décrocher des mandats de gestion locative.',
+    title: "3 astuces pour convaincre un propriétaire de mettre son bien en gestion",
+    author: 'Maëllie',
+    publishedAt: '2025-02-25',
+    intro: "Un propriétaire qui gère seul sa location saisonnière voit rarement tout le potentiel de son bien immobilier. Votre rôle, en tant qu'agence, c'est de lui montrer que la gestion locative professionnelle augmente ses revenus, simplifie son quotidien et sécurise sa situation. Voici trois arguments concrets pour décrocher des mandats de gestion locative.",
     sections: [
       {
         heading: 'Astuce n°1 — Prouver que la gestion locative maximise les revenus',
-        content: 'L\'argument économique reste le plus convaincant : une agence optimise les loyers grâce à des outils et services qu\'un propriétaire seul n\'utilise pas. La tarification dynamique, l\'analyse du marché et la diffusion multi-plateformes permettent souvent d\'obtenir un meilleur taux d\'occupation et un revenu plus stable. À travers une estimation fiable issue d\'Estimate.rentals, vous transformez un argument théorique en réalité chiffrée, ce qui facilite la décision et renforce votre expertise dès les premières minutes.',
+        anchor: 'astuce-1',
+        blocks: [{ type: 'paragraph', text: "L'argument économique reste le plus convaincant : une agence optimise les loyers grâce à des outils et services qu'un propriétaire seul n'utilise pas. La tarification dynamique, l'analyse du marché et la diffusion multi-plateformes permettent souvent d'obtenir un meilleur taux d'occupation et un revenu plus stable. À travers une estimation fiable issue d'Estimate.rentals, vous transformez un argument théorique en réalité chiffrée, ce qui facilite la décision et renforce votre expertise dès les premières minutes." }],
       },
       {
         heading: 'Astuce n°2 — Souligner la tranquillité totale',
-        content: 'Une location saisonnière demande du temps et une vraie organisation. Entre chaque locataire, il faut gérer le ménage, le linge, les arrivées tardives, les messages, les petites réparations. Un propriétaire finit vite par y passer plusieurs heures par mois. Votre agence prend tout en charge : coordination de l\'équipe de ménage, accueil ou check-in autonome, gestion des demandes pendant le séjour, appel aux artisans en urgence. Lors d\'un rendez-vous, demandez simplement : « Qu\'est-ce qui vous prend le plus de temps aujourd\'hui ? » — et montrez comment vous l\'éliminezs.',
+        anchor: 'astuce-2',
+        blocks: [{ type: 'paragraph', text: "Une location saisonnière demande du temps et une vraie organisation. Entre chaque locataire, il faut gérer le ménage, le linge, les arrivées tardives, les messages, les petites réparations. Un propriétaire finit vite par y passer plusieurs heures par mois. Votre agence prend tout en charge : coordination de l'équipe de ménage, accueil ou check-in autonome, gestion des demandes pendant le séjour, appel aux artisans en urgence." }],
       },
       {
         heading: 'Astuce n°3 — Sécuriser juridiquement et administrativement le bailleur',
-        content: 'La location saisonnière obéit à des règles précises : déclaration en mairie, numéro d\'enregistrement, limites de durée dans certaines villes, règlement de copropriété, taxe de séjour, contrats adaptés. Un propriétaire qui gère sans accompagnement s\'expose à des erreurs et des pénalités. Votre agence sécurise tout le cadre : mandat clair, contrat adapté, gestion des dépôts de garantie, collecte et reversement de la taxe de séjour, respect des règles locales.',
+        anchor: 'astuce-3',
+        blocks: [{ type: 'paragraph', text: "La location saisonnière obéit à des règles précises : déclaration en mairie, numéro d'enregistrement, limites de durée dans certaines villes, règlement de copropriété, taxe de séjour, contrats adaptés. Un propriétaire qui gère sans accompagnement s'expose à des erreurs et des pénalités. Votre agence sécurise tout le cadre : mandat clair, contrat adapté, gestion des dépôts de garantie, collecte et reversement de la taxe de séjour, respect des règles locales." }],
       },
       {
         heading: 'Ce qu\'il faut retenir',
-        content: 'Pour convaincre un propriétaire, combinez les trois leviers : montrez-lui son potentiel chiffré (économique), sa future tranquillité d\'esprit (opérationnel) et sa sécurité (juridique). Un estimateur comme Estimate.rentals vous permet de démarrer chaque rendez-vous avec des données concrètes, ce qui transforme votre discours commercial en démonstration factuelle.',
+        anchor: 'conclusion',
+        blocks: [{ type: 'paragraph', text: "Pour convaincre un propriétaire, combinez les trois leviers : montrez-lui son potentiel chiffré (économique), sa future tranquillité d'esprit (opérationnel) et sa sécurité (juridique). Un estimateur comme Estimate.rentals vous permet de démarrer chaque rendez-vous avec des données concrètes, ce qui transforme votre discours commercial en démonstration factuelle." }],
       },
     ],
     cta: { text: 'Demander une démo', href: '/demander-une-demo' },
@@ -119,17 +260,71 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title,
     description: post.intro.slice(0, 160),
     robots,
-    alternates: {
-      canonical: canonical('fr', `/actualites/${slug}`),
-    },
+    alternates: { canonical: canonical('fr', `/actualites/${slug}`) },
     openGraph: {
       title: post.title,
       description: post.intro.slice(0, 160),
       url: canonical('fr', `/actualites/${slug}`),
       type: 'article',
-      publishedTime: post.date,
+      publishedTime: post.publishedAt,
+      ...(post.img ? { images: [{ url: post.img, width: 1200, height: 630 }] } : {}),
     },
   }
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+}
+
+function renderBlock(block: ContentBlock, idx: number) {
+  if (block.type === 'paragraph') {
+    return <p key={idx} className="text-gray-600 leading-relaxed mb-4">{block.text}</p>
+  }
+  if (block.type === 'bullets') {
+    return (
+      <ul key={idx} className="list-none space-y-1 mb-4">
+        {block.items.map((item, i) => (
+          <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
+            <span className="text-[#007caa] mt-0.5 flex-shrink-0">•</span>{item}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+  if (block.type === 'highlight') {
+    return (
+      <div key={idx} className="my-6 bg-[#f0f8fb] border border-[#cce8f0] rounded-xl p-6">
+        <p className="font-bold text-[#007caa] mb-4 text-base leading-snug">{block.title}</p>
+        <ul className="space-y-2">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
+              <span className="text-[#007caa] font-bold flex-shrink-0">✓</span>{item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+  if (block.type === 'subsection') {
+    return (
+      <div key={idx} className="mb-8">
+        <h3 className="text-[#007caa] font-semibold text-base mb-3">{block.heading}</h3>
+        {block.paragraphs.map((p, i) => (
+          <p key={i} className="text-gray-600 leading-relaxed text-sm mb-2">{p}</p>
+        ))}
+        {block.bullets && (
+          <ul className="list-none mt-2 space-y-1">
+            {block.bullets.map((item, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
+                <span className="text-[#007caa] flex-shrink-0">•</span>{item}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )
+  }
+  return null
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -142,46 +337,135 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.intro.slice(0, 160),
-    datePublished: post.date,
-    author: { '@type': 'Organization', name: 'Estimate Rentals', url: SITE_URL },
+    datePublished: post.publishedAt,
+    ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
+    author: { '@type': 'Person', name: post.author },
     publisher: { '@type': 'Organization', name: 'Estimate Rentals', url: SITE_URL },
     url: canonical('fr', `/actualites/${slug}`),
+    ...(post.img ? { image: post.img } : {}),
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical('fr', `/actualites/${slug}`) },
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-16">
+    <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <time className="text-sm text-gray-400 block mb-3">
-        {new Date(post.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
-      </time>
-      <h1 className="text-3xl font-bold text-gray-900 mb-8 leading-tight">{post.title}</h1>
 
-      <p className="text-gray-600 text-lg leading-relaxed mb-10 border-l-4 border-[#007caa] pl-5">{post.intro}</p>
+      {/* Banner image */}
+      {post.img && (
+        <div className="w-full max-h-80 overflow-hidden">
+          <Image
+            src={post.img}
+            alt={post.title}
+            width={1200}
+            height={480}
+            className="w-full object-cover"
+            priority
+          />
+        </div>
+      )}
 
-      <div className="space-y-8">
-        {post.sections.map((section) => (
-          <div key={section.heading}>
-            <h2 className="text-xl font-bold text-gray-800 mb-3">{section.heading}</h2>
-            <p className="text-gray-600 leading-relaxed">{section.content}</p>
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        {/* Title + meta */}
+        <div className="max-w-3xl mx-auto mb-8 text-center md:text-left">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{post.title}</h1>
+          <div className="flex flex-wrap items-center gap-4 text-gray-400 text-xs mb-6">
+            <span className="flex items-center gap-1">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              {post.author}
+            </span>
+            <span className="flex items-center gap-1">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path strokeLinecap="round" d="M12 7v5l3 3"/></svg>
+              <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+            </span>
+            {post.updatedAt && (
+              <span className="flex items-center gap-1">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" d="M16.862 3.487A9 9 0 105.637 18.363M16.862 3.487L16.862 8.487M16.862 3.487L11.862 3.487"/></svg>
+                <time dateTime={post.updatedAt}>{formatDate(post.updatedAt)}</time>
+              </span>
+            )}
           </div>
-        ))}
-      </div>
+          <hr className="border-[#007caa]/30" />
+        </div>
 
-      <div className="mt-14 bg-gradient-to-br from-[#007caa] to-[#17a3b5] rounded-2xl p-8 text-center text-white">
-        <p className="font-semibold text-lg mb-4">Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?</p>
-        <Link
-          href={post.cta.href as ComponentProps<typeof Link>['href']}
-          className="inline-block bg-white text-[#007caa] font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-        >
-          {post.cta.text}
-        </Link>
-      </div>
+        {/* 2-col layout */}
+        <div className="flex flex-col lg:flex-row gap-10 items-start">
 
-      <div className="mt-10">
-        <Link href="/actualites" className="text-[#007caa] text-sm font-semibold hover:underline">
-          ← Retour aux actualités
-        </Link>
+          {/* Sidebar */}
+          <aside className="lg:w-64 flex-shrink-0 lg:sticky lg:top-24 space-y-5">
+            {/* TOC */}
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <p className="font-bold text-gray-800 text-sm mb-4">Sommaire</p>
+              <nav>
+                <ul className="space-y-2">
+                  {post.sections.map((s) => (
+                    <li key={s.anchor}>
+                      <a
+                        href={`#${s.anchor}`}
+                        className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#007caa] transition-colors leading-snug"
+                      >
+                        <span className="text-[#007caa] flex-shrink-0 mt-0.5">○</span>
+                        {s.heading}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
+            {/* Sticky CTA */}
+            <div className="mesh-gradient rounded-xl p-5 text-white text-center">
+              <p className="font-semibold text-sm leading-snug mb-4">
+                Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?
+              </p>
+              <Link
+                href={post.cta.href as ComponentProps<typeof Link>['href']}
+                className="btn-shimmer inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-5 py-2 rounded-full transition-colors text-sm"
+              >
+                {post.cta.text}
+              </Link>
+            </div>
+          </aside>
+
+          {/* Article content */}
+          <article className="flex-1 min-w-0">
+            {/* Intro */}
+            <p className="text-gray-700 leading-relaxed mb-10 text-base">{post.intro}</p>
+
+            {/* Sections */}
+            {post.sections.map((section, i) => (
+              <section key={section.anchor} id={section.anchor} className="mb-10">
+                {i > 0 && <hr className="border-[#007caa]/20 mb-8" />}
+                <h2 className="text-xl md:text-2xl font-bold text-[#007caa] mb-6 leading-snug">
+                  {section.heading}
+                </h2>
+                <div>
+                  {section.blocks.map((block, idx) => renderBlock(block, idx))}
+                </div>
+              </section>
+            ))}
+
+            {/* Summary box */}
+            {post.summary && (
+              <div className="mesh-gradient rounded-xl p-7 text-white mt-10">
+                <p className="font-bold text-base mb-4">Ce qu&apos;il faut retenir :</p>
+                <ul className="space-y-2">
+                  {post.summary.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm opacity-95">
+                      <span className="flex-shrink-0 mt-0.5">•</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Back link */}
+            <div className="mt-10">
+              <Link href="/actualites" className="text-[#007caa] text-sm font-semibold hover:underline">
+                ← Retour aux actualités
+              </Link>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   )
