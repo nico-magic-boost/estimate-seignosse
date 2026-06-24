@@ -124,7 +124,7 @@ export default function PricingPage() {
   return (
     <div>
       {/* Plans — web component (includes its own hero + "Tarifs HT" footer) */}
-      <section className="bg-white">
+      <section id="abonnement" className="bg-white">
         <div className="max-w-5xl mx-auto">
           <SubscriptionWidget />
         </div>
@@ -200,9 +200,7 @@ export default function PricingPage() {
       {/* Bottom CTA */}
       <section className="pb-16 px-4 bg-white text-center">
         <a
-          href="https://form.estimate.rentals"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#abonnement"
           className="inline-block bg-[#007caa] text-white font-semibold px-10 py-4 rounded-full hover:bg-[#005f85] transition-colors text-base mb-3"
         >
           Commencer l&apos;essai gratuit
