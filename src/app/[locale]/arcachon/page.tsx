@@ -83,10 +83,9 @@ export default function ArcachonPage() {
           <div className="flex-1 flex justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/arcachon-hero.jpg"
-              alt="Location de vacances à Arcachon"
+              src="https://estimate.rentals/wp-content/uploads/2026/02/estimateur-location-vacances-arcachon-768x768.webp"
+              alt="Estimateur location de vacances à Arcachon"
               className="rounded-2xl shadow-xl w-full max-w-md object-cover"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
           </div>
         </div>
@@ -307,10 +306,9 @@ export default function ArcachonPage() {
           <div className="flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/keys-hand.jpg"
-              alt="Propriétaire à Arcachon"
+              src="https://estimate.rentals/wp-content/uploads/2025/09/Pourquoi-utiliser-estimate.rentals-quand-on-est-proprietaire-768x768.webp"
+              alt="Pourquoi utiliser estimate.rentals quand on est propriétaire à Arcachon"
               className="rounded-2xl shadow-xl w-full max-w-md object-cover"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
           </div>
         </div>
