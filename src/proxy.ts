@@ -34,6 +34,9 @@ export function proxy(request: NextRequest) {
         headers: { 'Retry-After': '60' },
       })
     }
+    // Don't pass /admin or /api through the intl middleware — it would
+    // redirect /admin → /fr/admin, breaking the Payload CMS panel.
+    return NextResponse.next()
   }
 
   return intlMiddleware(request)
