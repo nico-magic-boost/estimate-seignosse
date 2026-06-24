@@ -180,39 +180,128 @@ const posts: Record<string, Post> = {
   'les-5-erreurs': {
     title: "Les 5 erreurs à éviter lors de l'estimation d'un bien saisonnier",
     author: 'Maëllie',
-    publishedAt: '2025-03-18',
-    intro: "Estimer la rentabilité d'un bien destiné à la location saisonnière ne s'improvise pas. Contrairement à la location classique, les revenus varient selon les saisons, les charges sont plus élevées, la concurrence est variable, et le taux d'occupation n'est jamais linéaire. Beaucoup d'investisseurs se trompent dès l'étape d'estimation et achètent un bien sur des projections trop optimistes.",
+    publishedAt: '2025-12-10',
+    updatedAt: '2026-05-21',
+    intro: "Estimer la rentabilité d'un bien destiné à la location saisonnière ne s'improvise pas. Contrairement à la location classique, les revenus varient selon les saisons, les charges sont plus élevées, la concurrence est variable, et le taux d'occupation n'est jamais linéaire. Beaucoup de propriétaires et d'investisseurs se trompent dès l'étape d'estimation, en s'appuyant sur des données incomplètes ou des intuitions trop optimistes. Résultat : des projections de rentabilité faussées qui mènent à de mauvaises décisions. Voici les 5 erreurs les plus fréquentes — et comment les éviter.",
     sections: [
       {
         heading: "Erreur n°1 : appliquer un tarif unique toute l'année",
         anchor: 'erreur-1',
-        blocks: [{ type: 'paragraph', text: "L'une des erreurs les plus coûteuses consiste à appliquer un tarif fixe tout au long de l'année. Un appartement en bord de mer qui se loue facilement 80 € la nuit en juillet-août aura du mal à trouver preneur au même tarif en novembre. Un tarif de 50 € sera bien plus adapté. Cette différence de 30 € par nuit représente une variation de près de 40 % qu'il est impossible de négliger dans vos calculs." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "L'une des erreurs les plus coûteuses consiste à appliquer un tarif fixe tout au long de l'année. En location saisonnière, la demande est par nature fluctuante : elle dépend des vacances scolaires, de la météo, des événements locaux et des week-ends prolongés. Ignorer cette réalité revient à se priver d'une partie significative de son potentiel de revenus — ou à afficher un prix trop élevé hors saison, ce qui vide le calendrier.",
+          },
+          {
+            type: 'subsection',
+            heading: 'Prenons un exemple concret :',
+            paragraphs: [
+              "Un appartement en bord de mer qui se loue facilement 80 € la nuit en juillet-août aura du mal à trouver preneur au même tarif en novembre. Un tarif de 50 € sera bien plus adapté.",
+              "Cette différence de 30 € par nuit représente une variation de près de 40 % qu'il est impossible de négliger dans vos calculs de rentabilité annuelle. Un bien rentable ne vaut pas la même chose selon le moment : c'est un principe fondamental que toute estimation sérieuse doit intégrer.",
+            ],
+          },
+        ],
       },
       {
-        heading: 'Erreur n°2 : négliger l\'étude comparative du marché local',
+        heading: "Erreur n°2 : négliger l'étude comparative du marché local",
         anchor: 'erreur-2',
-        blocks: [{ type: 'paragraph', text: "Il est absolument essentiel de réaliser une analyse comparative approfondie du marché local avant toute estimation. Ne partez jamais du prix d'achat du bien ou d'un tarif « qui semble correct ». Observez les biens comparables sur votre zone : superficie, équipements, standing, localisation précise. Éliminez les extrêmes et concentrez-vous sur la fourchette médiane." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "Se baser sur son ressenti, le prix d'achat du bien ou ce que « l'on pense que cela vaut » est une erreur classique. Le marché de la location saisonnière est dynamique et très local. Il est absolument essentiel de réaliser une analyse comparative approfondie avant toute estimation.",
+          },
+          {
+            type: 'subsection',
+            heading: 'Comment effectuer une analyse comparative efficace ?',
+            paragraphs: [
+              "Consultez les principales plateformes (Airbnb, Booking, Abritel) pour identifier les biens similaires dans un rayon de 1 à 2 km. Notez les tarifs pratiqués selon les périodes, les taux d'occupation apparents (calendriers bloqués) et les scores de qualité.",
+              "Éliminez les extrêmes — les biens mal notés ou exceptionnellement bien équipés — et concentrez-vous sur la fourchette médiane. C'est cette fourchette qui reflète la réalité du marché pour un bien standard.",
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: 'Les critères déterminants pour comparer ce qui est comparable',
+            paragraphs: [
+              "Ne comparez pas un studio avec un T2 ou un appartement sans parking avec un bien qui en dispose. Les critères à aligner : superficie, nombre de couchages, équipements (lave-vaisselle, climatisation, balcon, vue), localisation précise (distance mer, centre-ville, transports) et standing général.",
+              "Estimate.rentals effectue automatiquement cette analyse comparative en croisant des milliers de données locales, ce qui élimine le biais humain et garantit une estimation ancrée dans la réalité du marché.",
+            ],
+          },
+        ],
       },
       {
         heading: "Erreur n°3 : sous-estimer les charges et frais réels d'exploitation",
         anchor: 'erreur-3',
-        blocks: [{ type: 'paragraph', text: "La location saisonnière engendre des coûts spécifiques souvent sous-estimés : frais de ménage entre chaque locataire, consommation d'eau et d'électricité plus élevée, entretien du linge, petites réparations fréquentes, frais de plateforme (15 à 20 % du loyer sur Airbnb et Booking), assurance spécifique, taxe de séjour à reverser à la commune." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "La location saisonnière génère des charges spécifiques, bien supérieures à celles d'une location longue durée. Beaucoup d'estimations restent optimistes parce qu'elles ne tiennent pas compte de l'ensemble des coûts réels. C'est pourtant le point critique qui transforme un revenu brut séduisant en revenu net décevant.",
+          },
+          {
+            type: 'subsection',
+            heading: 'Les charges fixes incontournables',
+            paragraphs: [],
+            bullets: [
+              "Frais de gestion locative (entre 15 et 30 % des revenus bruts si vous passez par une agence ou un gestionnaire)",
+              "Charges de copropriété (souvent plus élevées que prévu pour les résidences avec piscine, ascenseur, etc.)",
+              "Assurance habitation spécifique location courte durée",
+              "Taxe foncière et taxe d'habitation le cas échéant",
+              "Amortissement du mobilier et des équipements",
+            ],
+          },
+          {
+            type: 'subsection',
+            heading: "Les frais d'exploitation spécifiques au saisonnier",
+            paragraphs: [],
+            bullets: [
+              "Frais de ménage entre chaque locataire (souvent 60 à 120 € par rotation)",
+              "Entretien et renouvellement du linge (draps, serviettes)",
+              "Consommation d'eau et d'électricité plus élevée qu'en résidence principale",
+              "Frais de commission des plateformes (15 à 20 % du loyer sur Airbnb et Booking)",
+              "Petites réparations fréquentes et frais de maintenance",
+              "Taxe de séjour à collecter et reverser à la commune",
+            ],
+          },
+        ],
       },
       {
         heading: 'Erreur n°4 : ignorer la tarification dynamique et les événements locaux',
         anchor: 'erreur-4',
-        blocks: [{ type: 'paragraph', text: "Les événements locaux — festival, compétition sportive, salon professionnel — peuvent permettre de multiplier votre tarif par deux ou trois sur quelques jours. Inversement, certaines périodes creuses nécessitent des promotions pour maintenir un taux d'occupation acceptable. Une bonne stratégie tarifaire intègre ces variations dès la phase d'estimation." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "La tarification dynamique est devenue un standard dans la location saisonnière professionnelle. Elle consiste à ajuster les prix en temps réel en fonction de la demande, de la concurrence, du taux d'occupation et des événements locaux.",
+          },
+          {
+            type: 'paragraph',
+            text: "Les événements locaux — festival, compétition sportive, salon professionnel, pont férié — peuvent permettre de multiplier votre tarif par deux ou trois sur quelques jours. Inversement, certaines périodes creuses nécessitent des promotions pour maintenir un taux d'occupation acceptable. Ne pas intégrer ces variations dans vos projections, c'est rater des pics de revenus significatifs et surestimer les périodes basses.",
+          },
+          {
+            type: 'paragraph',
+            text: "Une bonne estimation intègre donc un taux d'occupation réaliste par période — et non un taux moyen annuel — ainsi qu'une fourchette tarifaire dynamique. C'est exactement ce que fait Estimate.rentals en analysant la saisonnalité spécifique à chaque destination.",
+          },
+        ],
       },
       {
         heading: "Erreur n°5 : négliger la qualité de présentation et l'attractivité du bien",
         anchor: 'erreur-5',
-        blocks: [{ type: 'paragraph', text: "La qualité de la présentation impacte directement le taux d'occupation et le tarif applicable. Des photos professionnelles, un titre accrocheur, une description détaillée et des équipements adaptés (climatisation, wifi rapide, machine à café) permettent souvent d'augmenter le tarif de 15 à 25 % par rapport à un bien similaire mal présenté." }],
+        blocks: [
+          {
+            type: 'paragraph',
+            text: "L'une des erreurs les plus coûteuses en location saisonnière consiste à sous-estimer l'impact de la présentation sur la rentabilité. La décoration et l'identité d'un espace jouent un rôle essentiel dans l'expérience du voyageur, bien au-delà du simple confort fonctionnel. Un bien mal présenté, même bien situé, ne pourra jamais atteindre les tarifs du marché, faussant dès le départ toute estimation de rentabilité.",
+          },
+          {
+            type: 'paragraph',
+            text: "Les photos professionnelles constituent le premier levier d'attractivité. Les erreurs classiques sont nombreuses : mauvais cadrage, éclairage insuffisant, pièces encombrées, mobilier vieillot visible. Des études de cas montrent qu'un même appartement, photographié avant et après mise en valeur, peut voir son taux de réservation multiplié par deux. La lumière naturelle, des espaces dégagés et une décoration moderne font toute la différence entre une annonce qu'on parcourt et une annonce qui génère des réservations.",
+          },
+        ],
       },
-      {
-        heading: 'La solution : utiliser un estimateur spécialisé',
-        anchor: 'solution',
-        blocks: [{ type: 'paragraph', text: "Pour éviter ces cinq erreurs, utilisez un outil conçu pour la location saisonnière. Estimate.rentals intègre la saisonnalité, les données de marché locales, les charges réelles et les spécificités de chaque destination pour fournir une projection fiable et utilisable pour votre prise de décision." }],
-      },
+    ],
+    summary: [
+      "La demande fluctue selon : vacances scolaires, météo, événements locaux, week-ends prolongés",
+      "Se baser sur son ressenti, le prix d'achat ou ce que « l'on pense que cela vaut » est une erreur classique.",
+      "La location saisonnière génère des charges spécifiques bien supérieures à la location longue durée",
+      "Un bien rentable ne vaut pas la même chose selon le moment — intégrez la saisonnalité dans vos projections",
+      "Photos professionnelles, décoration épurée, literie haut de gamme, wifi, climatisation… Deux biens similaires sur le papier peuvent avoir 20 à 40 % de différence de prix selon la perception du voyageur.",
     ],
     cta: { text: 'Obtenir une estimation gratuite', href: '/estimez-gratuitement' },
   },
@@ -438,6 +527,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                       </a>
                     </li>
                   ))}
+                  {post.summary && (
+                    <li>
+                      <a
+                        href="#ce-qu-il-faut-retenir"
+                        className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#007caa] transition-colors leading-snug"
+                      >
+                        <span className="text-[#007caa] flex-shrink-0 mt-0.5">○</span>
+                        Ce qu&apos;il faut retenir
+                      </a>
+                    </li>
+                  )}
                 </ul>
               </nav>
             </div>
@@ -476,7 +576,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
             {/* Summary box */}
             {post.summary && (
-              <div className="mesh-gradient rounded-xl p-7 text-white mt-10">
+              <div id="ce-qu-il-faut-retenir" className="mesh-gradient rounded-xl p-7 text-white mt-10">
                 <p className="font-bold text-base mb-4">Ce qu&apos;il faut retenir :</p>
                 <ul className="space-y-2">
                   {post.summary.map((item, i) => (
