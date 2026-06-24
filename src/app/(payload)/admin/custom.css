@@ -104,3 +104,126 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #007caa;
 }
+
+/* ── App header (top bar) ─────────────────────────────────────────────── */
+.app-header {
+  border-bottom: 2px solid #cce8f0 !important;
+}
+
+/* ── Nav sidebar ──────────────────────────────────────────────────────── */
+.nav {
+  border-right: 1px solid #e5f0f5 !important;
+}
+
+/* Group labels */
+.nav-group__toggle,
+.nav-group__toggle button,
+.nav-group > button {
+  color: #007caa !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  opacity: 1 !important;
+}
+
+/* Individual nav links */
+.nav__link {
+  border-radius: 6px !important;
+  margin: 1px 6px !important;
+  padding: 7px 10px !important;
+  transition: background 0.12s !important;
+  color: #4a6a7a !important;
+}
+.nav__link:hover {
+  background: #f0f8fb !important;
+  color: #007caa !important;
+}
+.nav__link--active {
+  background: #e8f4f8 !important;
+  color: #007caa !important;
+  font-weight: 600 !important;
+  border-left: 3px solid #007caa !important;
+}
+
+/* ── Collection list header ───────────────────────────────────────────── */
+.collection-list__header {
+  border-bottom: 2px solid #f0f8fb !important;
+  padding-bottom: 12px !important;
+}
+
+/* ── Tabs (edit view) ─────────────────────────────────────────────────── */
+.tabs-field__tabs-wrap {
+  border-bottom: 2px solid #e5f0f5 !important;
+}
+.tabs-field__tab-button {
+  color: #7a9eab !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  border-bottom: 2px solid transparent !important;
+  margin-bottom: -2px !important;
+  transition: color 0.12s, border-color 0.12s !important;
+}
+.tabs-field__tab-button:hover {
+  color: #007caa !important;
+}
+.tabs-field__tab-button--active,
+.tabs-field__tab-button[aria-selected="true"] {
+  color: #007caa !important;
+  border-bottom-color: #007caa !important;
+  font-weight: 700 !important;
+}
+
+/* ── Sidebar panel (right side on edit views) ────────────────────────── */
+.render-fields--sidebar-fields {
+  border-left: 1px solid #e5f0f5 !important;
+}
+
+/* ── Status pill ──────────────────────────────────────────────────────── */
+.pill--style-light {
+  background: #f0f8fb !important;
+  color: #007caa !important;
+  border: 1px solid #cce8f0 !important;
+}
+
+/* ── Group / collapsible headings ────────────────────────────────────── */
+.group-field__wrap > .field-label,
+.collapsible__toggle-wrap .field-label {
+  color: #007caa !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* ── Table header ─────────────────────────────────────────────────────── */
+.table .row--header th {
+  background: #f8fcfd !important;
+  color: #007caa !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 2px solid #cce8f0 !important;
+}
+
+/* ── Pagination ───────────────────────────────────────────────────────── */
+.pagination__page-button--active {
+  background: #007caa !important;
+  color: #fff !important;
+  border-color: #007caa !important;
+}
+
+/* ── Toast success ────────────────────────────────────────────────────── */
+.toast--success {
+  border-left: 4px solid #007caa !important;
+}
+
+/* ── React-select (dropdowns) ─────────────────────────────────────────── */
+.rs__option--is-selected {
+  background: #007caa !important;
+}
+.rs__option--is-focused {
+  background: #f0f8fb !important;
+  color: #007caa !important;
+}
