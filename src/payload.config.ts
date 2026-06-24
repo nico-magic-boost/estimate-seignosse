@@ -6,10 +6,6 @@ import { fileURLToPath } from 'url'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-if (!process.env.PAYLOAD_SECRET) {
-  throw new Error('PAYLOAD_SECRET environment variable is required')
-}
-
 export default buildConfig({
   admin: {
     user: 'users',
@@ -86,7 +82,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  secret: process.env.PAYLOAD_SECRET,
+  secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
