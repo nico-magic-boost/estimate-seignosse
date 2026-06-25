@@ -90,13 +90,13 @@ export default function PillarPageRenderer({ page }: { page: PillarPageData }) {
   const city = page.city
 
   // Parse each section's stored JSON (full section data is serialised in `text`)
-  const sections = (page.sections ?? []).map(s => {
+  const sections: any[] = (page.sections ?? []).map(s => {
     let data: Record<string, any> = {}
     try { data = JSON.parse(s.text ?? '{}') } catch { /* ignore */ }
     return { blockType: s.blockType, title: s.title, ctaText: s.ctaText, ...data }
   })
 
-  const byType = (type: string) => sections.find(s => s.type === type || s.blockType === type)
+  const byType = (type: string): any => sections.find(s => s.type === type || s.blockType === type)
 
   const intro3cols  = byType('intro3cols')
   const whyEstimate = byType('whyEstimate')
