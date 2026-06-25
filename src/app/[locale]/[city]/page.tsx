@@ -3,6 +3,7 @@ import EstimateWidget from '@/components/EstimateWidget'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { robots, canonical, SITE_URL } from '@/lib/seo'
+import ArcachonPage from '@/app/[locale]/arcachon/page'
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 
@@ -96,9 +97,7 @@ export default async function CityPage({
   params: Promise<{ locale: string; city: string }>
 }) {
   const { city: citySlug } = await params
-  // Cities with dedicated pages must not be handled here
-  const DEDICATED = ['arcachon']
-  if (DEDICATED.includes(citySlug)) notFound()
+  if (citySlug === 'arcachon') return <ArcachonPage />
   const cityData = CITIES.find((c) => c.slug === citySlug)
   if (!cityData) notFound()
 
