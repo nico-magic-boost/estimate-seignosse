@@ -529,10 +529,14 @@ await exec(`
 `)
 
 await exec(`
-  ALTER TABLE "pillar_pages_sections" ADD CONSTRAINT "pillar_pages_sections_parent_fk"
-    FOREIGN KEY ("_parent_id") REFERENCES "pillar_pages"("id") ON DELETE CASCADE;
-  ALTER TABLE "pillar_pages_faq_items" ADD CONSTRAINT "pillar_pages_faq_items_parent_fk"
-    FOREIGN KEY ("_parent_id") REFERENCES "pillar_pages"("id") ON DELETE CASCADE;
+  DO $$ BEGIN
+    ALTER TABLE "pillar_pages_sections" ADD CONSTRAINT "pillar_pages_sections_parent_fk"
+      FOREIGN KEY ("_parent_id") REFERENCES "pillar_pages"("id") ON DELETE CASCADE;
+  EXCEPTION WHEN duplicate_object THEN null; END $$;
+  DO $$ BEGIN
+    ALTER TABLE "pillar_pages_faq_items" ADD CONSTRAINT "pillar_pages_faq_items_parent_fk"
+      FOREIGN KEY ("_parent_id") REFERENCES "pillar_pages"("id") ON DELETE CASCADE;
+  EXCEPTION WHEN duplicate_object THEN null; END $$;
 `)
 
 await exec(`
