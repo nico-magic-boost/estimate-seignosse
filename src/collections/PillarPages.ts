@@ -30,7 +30,8 @@ export const PillarPages: CollectionConfig = {
       label: 'Statut',
       options: [
         { label: 'Brouillon', value: 'draft' },
-        { label: 'Publié', value: 'published' },
+        { label: 'Programmé', value: 'scheduled' },
+        { label: 'Généré', value: 'published' },
       ],
       admin: { position: 'sidebar' },
     },

@@ -189,7 +189,7 @@ Génère la page pilier complète en JSON :
     collection: 'pillar-pages',
     data: {
       slug: finalSlug,
-      status: 'draft' as const,
+      status: 'published' as const,
       city,
       targetKeyword: keyword,
       title: generated.title ?? `Estimation location de vacances à ${city}`,

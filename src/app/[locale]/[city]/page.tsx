@@ -76,7 +76,7 @@ async function getPillarPage(citySlug: string) {
       collection: 'pillar-pages',
       where: {
         slug: { equals: citySlug },
-        status: { equals: 'published' },
+        status: { in: ['published', 'scheduled'] },
       },
       limit: 1,
     })
