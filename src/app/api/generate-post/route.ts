@@ -170,7 +170,6 @@ Minimum 4 sections. Au moins 2 maillons internes. Contenu substantiel, pas de re
   const message = await client.messages.create({
     model: 'claude-opus-4-8',
     max_tokens: 8192,
-    temperature: 0.7,
     system: systemPrompt,
     messages: [{ role: 'user', content: userPrompt }],
   })

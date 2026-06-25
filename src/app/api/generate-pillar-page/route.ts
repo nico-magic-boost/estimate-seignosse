@@ -151,7 +151,6 @@ Génère la page pilier complète en JSON :
   const message = await client.messages.create({
     model: 'claude-opus-4-8',
     max_tokens: 8192,
-    temperature: 0.6,
     system: systemPrompt,
     messages: [{ role: 'user', content: userPrompt }],
   })
