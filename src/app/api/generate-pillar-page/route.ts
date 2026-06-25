@@ -167,7 +167,8 @@ Génère la page pilier complète en JSON :
 
   const payload = await getPayload({ config })
 
-  const slug = generated.slug ?? slugify(city)
+  // Force slug = slugify(city) for clean URLs like /fr/biarritz (ignore Claude's suggestion)
+  const slug = slugify(city)
   const existing = await payload.find({ collection: 'pillar-pages', where: { slug: { equals: slug } } })
   const finalSlug = existing.totalDocs > 0 ? `${slug}-${Date.now()}` : slug
 
