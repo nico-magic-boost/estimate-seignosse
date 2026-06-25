@@ -3,6 +3,8 @@ import Anthropic from '@anthropic-ai/sdk'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+export const maxDuration = 300
+
 // ── Lexical helpers ────────────────────────────────────────────────────────
 
 function mkText(text: string, bold = false) {

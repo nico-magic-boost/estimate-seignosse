@@ -3,6 +3,8 @@ import Anthropic from '@anthropic-ai/sdk'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
+export const maxDuration = 300 // 5 min — génération Claude peut prendre 30-60s
+
 function slugify(str: string) {
   return str
     .toLowerCase()
