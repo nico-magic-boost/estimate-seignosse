@@ -10,7 +10,7 @@ function slugify(str: string) {
     .slice(0, 80)
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://estimate.rentals'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://estimate.location-seignosse.fr'
 
 export const PillarPages: CollectionConfig = {
   slug: 'pillar-pages',

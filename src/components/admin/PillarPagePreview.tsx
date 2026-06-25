@@ -3,7 +3,7 @@
 import React from 'react'
 import { useFormFields } from '@payloadcms/ui'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://estimate.rentals'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://estimate.location-seignosse.fr'
 
 export function PillarPagePreview() {
   const slug = useFormFields(([fields]) => fields.slug?.value as string | undefined)
