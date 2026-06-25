@@ -134,6 +134,90 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── Scroll reveal ────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translate(0);
+}
+/* staggered children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  will-change: opacity, transform;
+}
+.reveal-stagger.is-visible > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { opacity:1; transform:none; transition-delay: 90ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { opacity:1; transform:none; transition-delay: 180ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { opacity:1; transform:none; transition-delay: 270ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { opacity:1; transform:none; transition-delay: 360ms; }
+
+/* ── Gradient text ────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #007caa 0%, #17a3b5 50%, #1ab8cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Float animation (hero decorative elements) ───────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+.float {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+.float-slow {
+  animation: float 9s ease-in-out infinite;
+  will-change: transform;
+}
+.float-delayed {
+  animation: float 7s ease-in-out 1.5s infinite;
+  will-change: transform;
+}
+
+/* ── Glow pulse ───────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,124,170,0); }
+  50%       { box-shadow: 0 0 24px 6px rgba(0,124,170,0.2); }
+}
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+/* ── Orb decorative blobs (GPU composited) ────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+  will-change: transform;
+}
+
 /* Reduced motion — désactive toutes les animations */
 @media (prefers-reduced-motion: reduce) {
   .mesh-gradient-animated::before {
@@ -144,6 +228,20 @@ html {
   }
   .card-hover {
     transition: none;
+    will-change: auto;
+  }
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .float, .float-slow, .float-delayed, .glow-pulse {
+    animation: none;
     will-change: auto;
   }
   *, *::before, *::after {

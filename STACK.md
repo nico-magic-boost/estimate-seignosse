@@ -167,7 +167,7 @@
 - Import via `@import "tailwindcss"` dans `globals.css`
 - Couleurs marque : `--color-primary: #007caa`, `--color-secondary: #17a3b5`
 - CTA orange : `#e8621a`
-- Classes custom : `mesh-gradient`, `btn-shimmer`, `dot-grid`
+- Classes custom : `mesh-gradient`, `btn-shimmer`, `dot-grid`, `reveal`, `reveal-left`, `reveal-right`, `reveal-stagger`, `gradient-text`, `float`, `glow-pulse`, `orb`
 
 ---
 
@@ -181,6 +181,7 @@
 | `BeforeLogin` | Hook before-login | Bannière avant login |
 | `GenerateWithAI` | Posts → beforeListTable | Modal génération article via Claude |
 | `GeneratePillarPage` | PillarPages → beforeListTable | Modal génération page pilier via Claude |
+| `PillarPagePreview` | PillarPages → sidebar UI field | Lien de prévisualisation en temps réel |
 
 ---
 
