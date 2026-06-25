@@ -14,12 +14,6 @@ const CITIES = [
     img: `${WP}/2025/07/appartement-01.webp`,
   },
   {
-    slug: 'arcachon',
-    name: 'Arcachon',
-    region: 'Bassin d\'Arcachon',
-    img: `${WP}/2026/02/estimateur-location-vacances-arcachon.webp`,
-  },
-  {
     slug: 'biscarrosse',
     name: 'Biscarrosse',
     region: 'Landes',
