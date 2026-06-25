@@ -74,18 +74,33 @@ async function getPillarPage(citySlug: string) {
   try {
     const payload = await getPayload({ config })
 
-    // Check if a Payload admin user is logged in
-    const reqHeaders = await headers()
-    const { user } = await payload.auth({ headers: reqHeaders })
-
-    const statusFilter = user ? {} : { status: { in: ['published', 'scheduled'] } }
-
+    // Fetch the page regardless of status first
     const result = await payload.find({
       collection: 'pillar-pages',
-      where: { slug: { equals: citySlug }, ...statusFilter } as any,
+      where: { slug: { equals: citySlug } } as any,
       limit: 1,
     })
-    return { doc: result.docs[0] ?? null, isAdmin: !!user }
+    const doc = result.docs[0] ?? null
+    if (!doc) return { doc: null, isAdmin: false }
+
+    const status = (doc as any).status as string
+
+    // Published/scheduled pages are public
+    if (status === 'published' || status === 'scheduled') {
+      return { doc, isAdmin: false }
+    }
+
+    // Draft pages: check if a Payload admin user is logged in
+    try {
+      const reqHeaders = await headers()
+      const { user } = await payload.auth({ headers: reqHeaders })
+      if (user) return { doc, isAdmin: true }
+    } catch {
+      // auth check failed — treat as not logged in
+    }
+
+    // Draft, not logged in → not accessible
+    return { doc: null, isAdmin: false }
   } catch {
     return { doc: null, isAdmin: false }
   }
