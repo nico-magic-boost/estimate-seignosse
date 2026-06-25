@@ -172,8 +172,7 @@ Génère la page pilier complète en JSON :
   const finalSlug = existing.totalDocs > 0 ? `${slug}-${Date.now()}` : slug
 
   // Build sections array for Payload — full data serialised in `text` for the renderer
-  const sections = (generated.sections ?? []).map((s: any, i: number) => ({
-    id: s.id ?? `section-${i}`,
+  const sections = (generated.sections ?? []).map((s: any) => ({
     blockType: s.type ?? 'richText',
     title: s.title ?? '',
     text: JSON.stringify(s),
