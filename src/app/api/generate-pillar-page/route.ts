@@ -169,15 +169,14 @@ Génère la page pilier complète en JSON :
   const existing = await payload.find({ collection: 'pillar-pages', where: { slug: { equals: slug } } })
   const finalSlug = existing.totalDocs > 0 ? `${slug}-${Date.now()}` : slug
 
-  // Build sections array for Payload
+  // Build sections array for Payload — full data serialised in `text` for the renderer
   const sections = (generated.sections ?? []).map((s: any, i: number) => ({
     id: s.id ?? `section-${i}`,
     blockType: s.type ?? 'richText',
     title: s.title ?? '',
-    text: JSON.stringify(s), // Store full JSON for the renderer to use
+    text: JSON.stringify(s),
     ctaText: s.ctaText ?? '',
     ctaHref: s.ctaHref ?? '',
-    items: s.items ?? s.services ?? null,
   }))
 
   const faqItems = (generated.faqItems ?? []).map((f: any) => ({

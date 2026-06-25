@@ -146,13 +146,9 @@ export const PillarPages: CollectionConfig = {
         },
         {
           name: 'items',
-          type: 'array',
-          label: 'Éléments (features, FAQ, données…)',
-          fields: [
-            { name: 'icon', type: 'text', label: 'Icône (emoji ou texte)' },
-            { name: 'title', type: 'text', label: 'Titre / question' },
-            { name: 'text', type: 'textarea', label: 'Texte / réponse' },
-          ],
+          type: 'json',
+          label: 'Éléments (JSON)',
+          admin: { description: 'Stockage JSON interne — données accessibles via le champ "Texte / intro".' },
         },
       ],
     },
