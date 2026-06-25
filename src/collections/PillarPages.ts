@@ -1,5 +1,17 @@
 import type { CollectionConfig } from 'payload'
 
+function slugify(str: string) {
+  return str
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 80)
+}
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://estimate.rentals'
+
 export const PillarPages: CollectionConfig = {
   slug: 'pillar-pages',
   labels: { singular: 'Page Pilier', plural: 'Pages Piliers' },
@@ -8,9 +20,24 @@ export const PillarPages: CollectionConfig = {
     group: 'Pages Piliers',
     defaultColumns: ['title', 'city', 'status', 'updatedAt'],
     description: 'Pages de destination SEO par ville (ex : Estimation location vacances à Arcachon).',
+    preview: (doc) => {
+      const slug = (doc as any).slug
+      if (!slug) return null
+      return `${SITE_URL}/fr/${slug}`
+    },
     components: {
       beforeListTable: ['@/components/admin/GeneratePillarPage#GeneratePillarPage'],
     },
+  },
+  hooks: {
+    beforeValidate: [
+      ({ data, operation }) => {
+        if (operation === 'create' && data && !data.slug && data.city) {
+          data.slug = slugify(data.city as string)
+        }
+        return data
+      },
+    ],
   },
   fields: [
     // ── Sidebar ──────────────────────────────────────────────
@@ -20,7 +47,21 @@ export const PillarPages: CollectionConfig = {
       required: true,
       unique: true,
       label: 'Slug URL',
-      admin: { position: 'sidebar', description: 'Ex : biarritz → /fr/biarritz' },
+      admin: {
+        position: 'sidebar',
+        description: 'Ex : biarritz → /fr/biarritz (auto-généré depuis la ville, modifiable)',
+      },
+    },
+    {
+      name: 'previewLink',
+      type: 'ui',
+      label: 'Prévisualisation',
+      admin: {
+        position: 'sidebar',
+        components: {
+          Field: '@/components/admin/PillarPagePreview#PillarPagePreview',
+        },
+      },
     },
     {
       name: 'status',
