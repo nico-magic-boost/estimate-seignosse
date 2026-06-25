@@ -15,7 +15,7 @@
 | @anthropic-ai/sdk | 0.105.0 | Génération IA (Claude) |
 | tailwindcss | 4.3.1 | Styling CSS |
 
-**Modèle Claude utilisé :** `claude-opus-4-8` (max_tokens: 8192, temperature: 0.7)
+**Modèle Claude utilisé :** `claude-opus-4-8` (max_tokens: 8192)
 
 ---
 
