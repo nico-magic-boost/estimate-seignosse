@@ -61,6 +61,8 @@
 │   │
 │   ├── components/
 │   │   ├── EstimateWidget.tsx         # Web component <estimate-wc/>
+│   │   ├── PillarPageRenderer.tsx     # Rendu complet page pilier CMS (structure Arcachon)
+│   │   ├── PillarPageFaq.tsx          # Accordéon FAQ (client) pour pages piliers
 │   │   ├── PageSectionRenderer.tsx    # Rendu sections CMS
 │   │   ├── LexicalRenderer.tsx        # Rendu contenu Lexical
 │   │   ├── Navbar.tsx

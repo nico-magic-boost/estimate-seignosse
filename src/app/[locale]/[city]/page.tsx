@@ -4,6 +4,11 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { robots, canonical, SITE_URL } from '@/lib/seo'
 import ArcachonPage from '@/app/[locale]/arcachon/page'
+import PillarPageRenderer from '@/components/PillarPageRenderer'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+
+export const dynamic = 'force-dynamic'
 
 const WP = 'https://estimate.rentals/wp-content/uploads'
 
@@ -64,8 +69,41 @@ const benefits = [
   { img: `${WP}/2025/08/professional_white.png`, label: 'Résultat instantané et gratuit' },
 ]
 
+async function getPillarPage(citySlug: string) {
+  try {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'pillar-pages',
+      where: {
+        slug: { equals: citySlug },
+        status: { equals: 'published' },
+      },
+      limit: 1,
+    })
+    return result.docs[0] ?? null
+  } catch {
+    return null
+  }
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const { city: citySlug } = await params
+
+  const pillarPage = await getPillarPage(citySlug)
+  if (pillarPage) {
+    return {
+      title: pillarPage.seo?.metaTitle || pillarPage.title,
+      description: pillarPage.seo?.metaDescription || '',
+      robots,
+      alternates: { canonical: canonical('fr', `/${citySlug}`) },
+      openGraph: {
+        title: pillarPage.seo?.metaTitle || pillarPage.title,
+        description: pillarPage.seo?.metaDescription || '',
+        url: canonical('fr', `/${citySlug}`),
+      },
+    }
+  }
+
   const cityData = CITIES.find((c) => c.slug === citySlug)
   if (!cityData) return {}
   return {
@@ -97,7 +135,14 @@ export default async function CityPage({
   params: Promise<{ locale: string; city: string }>
 }) {
   const { city: citySlug } = await params
+
   if (citySlug === 'arcachon') return <ArcachonPage />
+
+  // Check for a published pillar page in the CMS
+  const pillarPage = await getPillarPage(citySlug)
+  if (pillarPage) return <PillarPageRenderer page={pillarPage as any} />
+
+  // Fallback: generic city template
   const cityData = CITIES.find((c) => c.slug === citySlug)
   if (!cityData) notFound()
 
