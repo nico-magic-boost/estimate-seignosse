@@ -16,8 +16,9 @@ function slugify(str: string) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return NextResponse.json({ error: 'ANTHROPIC_API_KEY non configurée.' }, { status: 500 })
+  try {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return NextResponse.json({ error: 'ANTHROPIC_API_KEY non configurée.' }, { status: 500 })
   }
 
   const body = await req.json()
@@ -205,5 +206,12 @@ Génère la page pilier complète en JSON :
     } as any,
   })
 
-  return NextResponse.json({ pageId: page.id, slug: finalSlug })
+    return NextResponse.json({ pageId: page.id, slug: finalSlug })
+  } catch (err: any) {
+    console.error('[generate-pillar-page] erreur:', err)
+    return NextResponse.json(
+      { error: err?.message ?? 'Erreur serveur inconnue', stack: err?.stack?.slice(0, 500) },
+      { status: 500 }
+    )
+  }
 }

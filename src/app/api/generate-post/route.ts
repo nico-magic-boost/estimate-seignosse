@@ -59,6 +59,7 @@ function slugify(str: string) {
 // ── Route ──────────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
+  try {
   if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json({ error: 'ANTHROPIC_API_KEY non configurée.' }, { status: 500 })
   }
@@ -219,4 +220,11 @@ Minimum 4 sections. Au moins 2 maillons internes. Contenu substantiel, pas de re
   })
 
   return NextResponse.json({ postId: post.id, slug: finalSlug })
+  } catch (err: any) {
+    console.error('[generate-post] erreur:', err)
+    return NextResponse.json(
+      { error: err?.message ?? 'Erreur serveur inconnue', stack: err?.stack?.slice(0, 500) },
+      { status: 500 }
+    )
+  }
 }

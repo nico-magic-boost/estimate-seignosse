@@ -38,10 +38,16 @@ export function GeneratePillarPage() {
         }),
       })
 
-      const data = await res.json()
+      let data: any = {}
+      const text = await res.text()
+      try { data = JSON.parse(text) } catch {
+        setStatus('error')
+        setErrorMsg(`Réponse invalide (${res.status}): ${text.slice(0, 200)}`)
+        return
+      }
       if (!res.ok) {
         setStatus('error')
-        setErrorMsg(data.error ?? 'Erreur inconnue.')
+        setErrorMsg(data.error ?? `Erreur ${res.status}`)
         return
       }
 
