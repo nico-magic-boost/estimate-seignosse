@@ -386,6 +386,7 @@ await exec(`
 await exec(`
   ALTER TABLE "payload_locked_documents_rels" ADD COLUMN IF NOT EXISTS "media_id" integer;
   ALTER TABLE "payload_locked_documents_rels" ADD COLUMN IF NOT EXISTS "authors_id" integer;
+  ALTER TABLE "payload_locked_documents_rels" ADD COLUMN IF NOT EXISTS "pillar_pages_id" integer;
 `)
 
 // ── Foreign key constraints (idempotent) ──────────────────────────────────
