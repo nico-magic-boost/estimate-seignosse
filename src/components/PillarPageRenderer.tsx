@@ -86,7 +86,7 @@ type PillarPageData = {
 
 // ── Renderer ────────────────────────────────────────────────────────────────
 
-export default function PillarPageRenderer({ page }: { page: PillarPageData }) {
+export default function PillarPageRenderer({ page, isDraft }: { page: PillarPageData; isDraft?: boolean }) {
   const city = page.city
 
   // Parse each section's stored JSON (full section data is serialised in `text`)
@@ -112,6 +112,28 @@ export default function PillarPageRenderer({ page }: { page: PillarPageData }) {
 
   return (
     <main>
+
+      {/* ── Bannière brouillon (visible uniquement pour les admins) ───────── */}
+      {isDraft && (
+        <div style={{
+          background: '#f59e0b', color: '#78350f',
+          padding: '10px 16px', textAlign: 'center',
+          fontSize: 13, fontWeight: 600, letterSpacing: '0.02em',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+        }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1.5L1 14.5h14L8 1.5z" stroke="#78350f" strokeWidth="1.5" strokeLinejoin="round"/>
+            <path d="M8 6v4M8 11.5v.5" stroke="#78350f" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+          Brouillon — visible uniquement pour les administrateurs connectés
+          <a
+            href="/admin/collections/pillar-pages"
+            style={{ marginLeft: 8, textDecoration: 'underline', fontWeight: 700 }}
+          >
+            Modifier dans l&apos;admin
+          </a>
+        </div>
+      )}
 
       {/* ── 1. HERO ──────────────────────────────────────────────────────── */}
       <section className="bg-gradient-to-br from-[#007caa] to-[#17a3b5] text-white py-16 px-4">

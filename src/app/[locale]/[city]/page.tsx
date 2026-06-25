@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import EstimateWidget from '@/components/EstimateWidget'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import { headers } from 'next/headers'
 import { robots, canonical, SITE_URL } from '@/lib/seo'
 import ArcachonPage from '@/app/[locale]/arcachon/page'
 import PillarPageRenderer from '@/components/PillarPageRenderer'
@@ -72,24 +73,28 @@ const benefits = [
 async function getPillarPage(citySlug: string) {
   try {
     const payload = await getPayload({ config })
+
+    // Check if a Payload admin user is logged in
+    const reqHeaders = await headers()
+    const { user } = await payload.auth({ headers: reqHeaders })
+
+    const statusFilter = user ? {} : { status: { in: ['published', 'scheduled'] } }
+
     const result = await payload.find({
       collection: 'pillar-pages',
-      where: {
-        slug: { equals: citySlug },
-        status: { in: ['published', 'scheduled'] },
-      },
+      where: { slug: { equals: citySlug }, ...statusFilter } as any,
       limit: 1,
     })
-    return result.docs[0] ?? null
+    return { doc: result.docs[0] ?? null, isAdmin: !!user }
   } catch {
-    return null
+    return { doc: null, isAdmin: false }
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
   const { city: citySlug } = await params
 
-  const pillarPage = await getPillarPage(citySlug)
+  const { doc: pillarPage } = await getPillarPage(citySlug)
   if (pillarPage) {
     return {
       title: pillarPage.seo?.metaTitle || pillarPage.title,
@@ -138,9 +143,9 @@ export default async function CityPage({
 
   if (citySlug === 'arcachon') return <ArcachonPage />
 
-  // Check for a published pillar page in the CMS
-  const pillarPage = await getPillarPage(citySlug)
-  if (pillarPage) return <PillarPageRenderer page={pillarPage as any} />
+  // Check for a pillar page in the CMS (draft visible if admin logged in)
+  const { doc: pillarPage, isAdmin } = await getPillarPage(citySlug)
+  if (pillarPage) return <PillarPageRenderer page={pillarPage as any} isDraft={isAdmin && pillarPage.status === 'draft'} />
 
   // Fallback: generic city template
   const cityData = CITIES.find((c) => c.slug === citySlug)
