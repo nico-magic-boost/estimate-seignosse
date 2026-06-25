@@ -48,6 +48,7 @@ export const routing = defineRouting({
       fr: '/politique-de-cookies',
       en: '/cookie-policy',
       es: '/politica-de-cookies'
-    }
+    },
+    '/[city]': '/[city]'
   }
 });
