@@ -83,9 +83,10 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
 }
 
 export function generateStaticParams() {
+  const DEDICATED = ['arcachon']
   const locales = ['fr', 'en', 'es']
   return locales.flatMap((locale) =>
-    CITIES.map((city) => ({ locale, city: city.slug }))
+    CITIES.filter((city) => !DEDICATED.includes(city.slug)).map((city) => ({ locale, city: city.slug }))
   )
 }
 
@@ -95,6 +96,9 @@ export default async function CityPage({
   params: Promise<{ locale: string; city: string }>
 }) {
   const { city: citySlug } = await params
+  // Cities with dedicated pages must not be handled here
+  const DEDICATED = ['arcachon']
+  if (DEDICATED.includes(citySlug)) notFound()
   const cityData = CITIES.find((c) => c.slug === citySlug)
   if (!cityData) notFound()
 
