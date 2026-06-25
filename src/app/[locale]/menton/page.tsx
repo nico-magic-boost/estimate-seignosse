@@ -1,6 +1,12 @@
 
 import LocationPageTemplate from '@/components/LocationPageTemplate'
+import RevealOnScroll from '@/components/RevealOnScroll'
 
 export default function Page() {
-  return <LocationPageTemplate city="Menton" />
+  return (
+    <>
+      <RevealOnScroll />
+      <LocationPageTemplate city="Menton" />
+    </>
+  )
 }

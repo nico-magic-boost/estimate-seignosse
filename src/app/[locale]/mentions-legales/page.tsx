@@ -28,13 +28,35 @@ export default async function LegalPage() {
         ) : (
           <>
             <h2>Éditeur du site</h2>
-            <p>Estimate Rentals SAS<br />Siège social : France<br />Email : contact@estimate.rentals</p>
+            <p>
+              Estimate Rentals SAS
+              <br />
+              Siège social : France
+              <br />
+              Email :{' '}
+              <a href="mailto:contact@estimate.rentals">contact@estimate.rentals</a>
+            </p>
             <h2>Hébergement</h2>
-            <p>Le site est hébergé par Vercel Inc., 340 Pine Street, Suite 900, San Francisco, CA 94104, USA.</p>
+            <p>
+              Le site est hébergé par Vercel Inc., 340 Pine Street, Suite 900,
+              San Francisco, CA 94104, USA.
+            </p>
             <h2>Propriété intellectuelle</h2>
-            <p>L&apos;ensemble du contenu de ce site est la propriété exclusive d&apos;Estimate Rentals. Toute reproduction est interdite sans autorisation préalable.</p>
+            <p>
+              L&apos;ensemble du contenu de ce site est la propriété exclusive
+              d&apos;Estimate Rentals. Toute reproduction est interdite sans
+              autorisation préalable.
+            </p>
             <h2>Données personnelles</h2>
-            <p>Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression de vos données. Contactez-nous à privacy@estimate.rentals.</p>
+            <p>
+              Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès,
+              de rectification et de suppression de vos données. Contactez-nous
+              à{' '}
+              <a href="mailto:privacy@estimate.rentals">
+                privacy@estimate.rentals
+              </a>
+              .
+            </p>
           </>
         )}
       </div>

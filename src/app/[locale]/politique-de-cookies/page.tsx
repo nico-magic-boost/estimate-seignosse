@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { LexicalRenderer } from '@/components/LexicalRenderer'
+import RevealOnScroll from '@/components/RevealOnScroll'
 
 export default async function CookiesPage() {
   const t = await getTranslations('cookies')
@@ -21,6 +22,7 @@ export default async function CookiesPage() {
 
   return (
     <div className="py-16 px-4">
+      <RevealOnScroll />
       <div className="max-w-3xl mx-auto prose prose-lg">
         <h1 className="text-3xl font-bold text-gray-800 mb-8">{t('title')}</h1>
         {cmsContent ? (
@@ -30,7 +32,7 @@ export default async function CookiesPage() {
             <h2>Qu&apos;est-ce qu&apos;un cookie ?</h2>
             <p>Un cookie est un petit fichier texte stocké sur votre appareil lors de la visite d&apos;un site web.</p>
             <h2>Cookies utilisés</h2>
-            <ul>
+            <ul role="list" aria-label="Types de cookies utilisés">
               <li><strong>Cookies essentiels :</strong> Nécessaires au fonctionnement du site.</li>
               <li><strong>Cookies analytiques :</strong> Nous aident à comprendre comment vous utilisez le site.</li>
               <li><strong>Cookies de personnalisation :</strong> Mémorisent vos préférences de langue et de navigation.</li>

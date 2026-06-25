@@ -4,6 +4,7 @@ import { robots, hreflang, canonical, SITE_URL } from '@/lib/seo'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { PageSectionRenderer } from '@/components/PageSectionRenderer'
+import RevealOnScroll from '@/components/RevealOnScroll'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -85,16 +86,18 @@ export default async function AboutPage() {
 
   return (
     <div>
+      <RevealOnScroll />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
+
       {/* Photo équipe */}
       <section className="bg-white pt-10 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto reveal">
           <Image
             src={`${WP}/2025/09/equie-estimate-rentals-2025-.webp`}
-            alt="L'équipe Estimate Rentals"
+            alt="Photo de l'équipe Estimate Rentals réunie à Biarritz"
             width={900}
             height={500}
-            className="rounded-2xl w-full object-cover"
+            className="rounded-2xl w-full object-cover float"
             priority
           />
         </div>
@@ -102,49 +105,58 @@ export default async function AboutPage() {
 
       {/* Titre + intro */}
       <section className="py-10 px-4 text-center">
-        <h1 className="text-2xl md:text-3xl font-bold text-[#007caa] mb-6">
-          Découvrez l&apos;équipe d&apos;Estimate.rentals
-        </h1>
-        <p className="max-w-3xl mx-auto text-sm text-gray-700 leading-relaxed">
-          <strong>Estimate.rentals</strong> est une marque de{' '}
-          <a href="https://www.popconnect.fr" target="_blank" rel="noopener noreferrer" className="text-[#007caa] hover:underline">
-            Popconnect
-          </a>
-          , basée à Biarritz au Pays basque. Elle réunit une{' '}
-          <strong className="text-[#007caa]">équipe de passionnés</strong> : experts en data,
-          professionnels de l&apos;immobilier et développeurs. En conjuguant{' '}
-          <strong>savoir-faire technique</strong> et <strong>expérience terrain</strong>, nous
-          créons une solution pensée pour répondre aux besoins réels des acteurs professionnels
-          de la <strong className="text-[#007caa]">location saisonnière</strong>.
-        </p>
+        <div className="reveal">
+          <h1 className="text-2xl md:text-3xl font-bold text-[#005f85] mb-6">
+            Découvrez l&apos;équipe d&apos;{' '}
+            <span className="gradient-text">Estimate.rentals</span>
+          </h1>
+          <p className="max-w-3xl mx-auto text-sm text-gray-700 leading-relaxed">
+            <strong>Estimate.rentals</strong> est une marque de{' '}
+            <a href="https://www.popconnect.fr" target="_blank" rel="noopener noreferrer" className="text-[#005f85] hover:underline">
+              Popconnect
+            </a>
+            , basée à Biarritz au Pays basque. Elle réunit une{' '}
+            <strong className="text-[#005f85]">équipe de passionnés</strong> : experts en data,
+            professionnels de l&apos;immobilier et développeurs. En conjuguant{' '}
+            <strong>savoir-faire technique</strong> et <strong>expérience terrain</strong>, nous
+            créons une solution pensée pour répondre aux besoins réels des acteurs professionnels
+            de la <strong className="text-[#005f85]">location saisonnière</strong>.
+          </p>
+        </div>
       </section>
 
       {/* Nos valeurs */}
       <section className="py-10 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-10">Nos valeurs</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {values.map((v) => (
-              <div key={v.title} className="border border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-[#007caa] mb-3">{v.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{v.text}</p>
-              </div>
-            ))}
+          <div className="reveal">
+            <h2 className="text-2xl font-bold text-gray-900 mb-10">Nos valeurs</h2>
           </div>
+          <ul
+            role="list"
+            aria-label="Nos valeurs"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 reveal-stagger"
+          >
+            {values.map((v) => (
+              <li key={v.title} className="border border-gray-200 rounded-xl p-6 card-hover">
+                <h3 className="font-bold text-[#005f85] mb-3">{v.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{v.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Notre mission */}
       <section className="py-12 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#007caa] mb-5">Notre mission</h2>
+        <div className="max-w-4xl mx-auto reveal">
+          <h2 className="text-2xl font-bold text-[#005f85] mb-5">Notre mission</h2>
           <p className="text-sm text-gray-700 leading-relaxed mb-4">
             Estimate.rentals est{' '}
-            <strong className="text-[#007caa]">
+            <strong className="text-[#005f85]">
               l&apos;outil d&apos;estimation locative saisonnière dédié aux professionnels de l&apos;immobilier
             </strong>
             . Notre rôle : vous aider à{' '}
-            <strong className="text-[#007caa]">
+            <strong className="text-[#005f85]">
               transformer chaque estimation en une véritable opportunité de mandat
             </strong>
             , grâce à une solution à la fois simple, rapide et fiable.
