@@ -42,14 +42,19 @@ export function GenerateWithAI() {
         }),
       })
 
-      const data = await res.json()
+      let data: any = {}
+      const text = await res.text()
+      try { data = JSON.parse(text) } catch {
+        setStatus('error')
+        setErrorMsg(`Réponse invalide (${res.status}): ${text.slice(0, 300)}`)
+        return
+      }
       if (!res.ok) {
         setStatus('error')
-        setErrorMsg(data.error ?? 'Erreur inconnue.')
+        setErrorMsg(data.error ?? `Erreur ${res.status}`)
         return
       }
 
-      // Redirect to the new draft
       router.push(`/admin/collections/posts/${data.postId}`)
     } catch (err: any) {
       setStatus('error')
