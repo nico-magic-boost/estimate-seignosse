@@ -101,7 +101,8 @@ async function getPillarPage(citySlug: string) {
 
     // Draft, not logged in → not accessible
     return { doc: null, isAdmin: false }
-  } catch {
+  } catch (err) {
+    console.error('[getPillarPage] erreur pour slug:', citySlug, err)
     return { doc: null, isAdmin: false }
   }
 }
