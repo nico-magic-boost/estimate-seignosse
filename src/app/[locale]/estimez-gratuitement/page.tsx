@@ -62,7 +62,7 @@ export default async function EstimatePage() {
       <section className="mesh-gradient-animated text-white py-14 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Découvrez le <span className="gradient-text">potentiel locatif</span> de vos biens en 30 secondes.
+            Découvrez le <span className="font-extrabold underline decoration-white/60">potentiel locatif</span> de vos biens en 30 secondes.
           </h1>
           <p className="text-base text-white leading-relaxed">
             Données de marché actualisées · Résultat instantané · 100% gratuit
