@@ -47,8 +47,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       limit: 1,
     })
     const page = result.docs[0]
-    if (page?.heroTitle) cmsHeroTitle = page.heroTitle
-    if (page?.heroSubtitle) cmsHeroSubtitle = page.heroSubtitle
+    // heroTitle and heroSubtitle are managed in code, not CMS
+    void page
   } catch {
     // DB unavailable at build time — use hardcoded text
   }
