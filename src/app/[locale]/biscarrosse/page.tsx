@@ -1,1 +1,5 @@
-/home/user/estimate-seignosse/src/app/[locale]/biscarrosse/page.tsx
+import LocationPageTemplate from '@/components/LocationPageTemplate'
+
+export default function Page() {
+  return <LocationPageTemplate city="Biscarrosse" />
+}

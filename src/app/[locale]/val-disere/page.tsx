@@ -1,4 +1,3 @@
-Now I have enough context to write the enhanced page file.
 
 import LocationPageTemplate from '@/components/LocationPageTemplate'
 import RevealOnScroll from '@/components/RevealOnScroll'
