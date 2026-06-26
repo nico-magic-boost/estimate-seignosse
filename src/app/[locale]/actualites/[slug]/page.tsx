@@ -493,45 +493,16 @@ function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-function CheckIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="w-4 h-4 flex-shrink-0 mt-0.5 text-white"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      viewBox="0 0 24 24"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-    </svg>
-  )
-}
-
-function BulletIcon({ color = 'text-[#005f85]' }: { color?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      className={`w-3 h-3 flex-shrink-0 mt-1 ${color}`}
-      fill="currentColor"
-      viewBox="0 0 8 8"
-    >
-      <circle cx="4" cy="4" r="3" />
-    </svg>
-  )
-}
-
 function renderBlock(block: ContentBlock, idx: number) {
   if (block.type === 'paragraph') {
     return <p key={idx} className="text-gray-600 leading-relaxed mb-4">{block.text}</p>
   }
   if (block.type === 'bullets') {
     return (
-      <ul key={idx} className="list-none space-y-1 mb-4" role="list" aria-label="Points clés">
+      <ul key={idx} className="list-none space-y-1 mb-4">
         {block.items.map((item, i) => (
           <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
-            <BulletIcon />
-            {item}
+            <span className="text-[#007caa] mt-0.5 flex-shrink-0">•</span>{item}
           </li>
         ))}
       </ul>
@@ -540,14 +511,11 @@ function renderBlock(block: ContentBlock, idx: number) {
   if (block.type === 'highlight') {
     return (
       <div key={idx} className="my-6 bg-[#f0f8fb] border border-[#cce8f0] rounded-xl p-6">
-        <p className="font-bold text-[#005f85] mb-4 text-base leading-snug">{block.title}</p>
-        <ul className="space-y-2" role="list" aria-label="Avantages">
+        <p className="font-bold text-[#007caa] mb-4 text-base leading-snug">{block.title}</p>
+        <ul className="space-y-2">
           {block.items.map((item, i) => (
             <li key={i} className="flex items-start gap-2 text-gray-700 text-sm">
-              <span aria-hidden="true" className="bg-[#005f85] rounded-full p-0.5 flex-shrink-0 mt-0.5">
-                <CheckIcon />
-              </span>
-              {item}
+              <span className="text-[#007caa] font-bold flex-shrink-0">✓</span>{item}
             </li>
           ))}
         </ul>
@@ -557,16 +525,15 @@ function renderBlock(block: ContentBlock, idx: number) {
   if (block.type === 'subsection') {
     return (
       <div key={idx} className="mb-8">
-        <h3 className="text-[#005f85] font-semibold text-base mb-3">{block.heading}</h3>
+        <h3 className="text-[#007caa] font-semibold text-base mb-3">{block.heading}</h3>
         {block.paragraphs.map((p, i) => (
           <p key={i} className="text-gray-600 leading-relaxed text-sm mb-2">{p}</p>
         ))}
         {block.bullets && (
-          <ul className="list-none mt-2 space-y-1" role="list" aria-label="Détails">
+          <ul className="list-none mt-2 space-y-1">
             {block.bullets.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
-                <BulletIcon />
-                {item}
+                <span className="text-[#007caa] flex-shrink-0">•</span>{item}
               </li>
             ))}
           </ul>
@@ -606,22 +573,20 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="w-full max-h-80 overflow-hidden">
           <Image
             src={post.img}
-            alt={`Illustration de l'article : ${post.title}`}
+            alt={post.title}
             width={1200}
             height={480}
-            className="w-full object-cover"
+            className="w-full object-cover float"
             priority
           />
         </div>
       )}
 
-      <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="max-w-6xl mx-auto px-4 py-10 reveal">
         {/* Title + meta */}
-        <div className="max-w-3xl mx-auto mb-8 text-center md:text-left reveal">
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">
-            <span className="gradient-text">{post.title}</span>
-          </h1>
-          <div className="flex flex-wrap items-center gap-4 text-gray-500 text-xs mb-6">
+        <div className="max-w-3xl mx-auto mb-8 text-center md:text-left">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">{post.title}</h1>
+          <div className="flex flex-wrap items-center gap-4 text-gray-400 text-xs mb-6">
             {/* Auteur */}
             <span className="flex items-center gap-1">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path strokeLinecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
@@ -649,7 +614,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               {readingTime(post)} min de lecture
             </span>
           </div>
-          <hr className="border-[#005f85]/30" />
+          <hr className="border-[#007caa]/30" />
         </div>
 
         {/* 2-col layout */}
@@ -658,17 +623,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           {/* Sidebar */}
           <aside className="lg:w-64 flex-shrink-0 lg:sticky lg:top-24 space-y-5">
             {/* TOC */}
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 reveal-left">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
               <p className="font-bold text-gray-800 text-sm mb-4">Sommaire</p>
-              <nav aria-label="Table des matières">
-                <ul className="space-y-2" role="list">
+              <nav>
+                <ul className="space-y-2">
                   {post.sections.map((s) => (
                     <li key={s.anchor}>
                       <a
                         href={`#${s.anchor}`}
-                        className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#005f85] transition-colors leading-snug"
+                        className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#007caa] transition-colors leading-snug"
                       >
-                        <svg aria-hidden="true" className="w-3 h-3 flex-shrink-0 mt-0.5 text-[#005f85]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+                        <span className="text-[#007caa] flex-shrink-0 mt-0.5">○</span>
                         {s.heading}
                       </a>
                     </li>
@@ -677,9 +642,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     <li>
                       <a
                         href="#ce-qu-il-faut-retenir"
-                        className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#005f85] transition-colors leading-snug"
+                        className="flex items-start gap-2 text-xs text-gray-600 hover:text-[#007caa] transition-colors leading-snug"
                       >
-                        <svg aria-hidden="true" className="w-3 h-3 flex-shrink-0 mt-0.5 text-[#005f85]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+                        <span className="text-[#007caa] flex-shrink-0 mt-0.5">○</span>
                         Ce qu&apos;il faut retenir
                       </a>
                     </li>
@@ -689,13 +654,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
 
             {/* Sticky CTA */}
-            <div className="mesh-gradient rounded-xl p-5 text-white text-center reveal-left">
+            <div className="mesh-gradient rounded-xl p-5 text-white text-center">
               <p className="font-semibold text-sm leading-snug mb-4">
                 Prêt à gagner du temps sur vos estimations et à obtenir plus de mandats ?
               </p>
               <Link
                 href={post.cta.href as ComponentProps<typeof Link>['href']}
-                className="glow-pulse btn-shimmer-auto inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-5 py-2 rounded-full transition-colors text-sm"
+                className="btn-shimmer btn-shimmer-auto glow-pulse inline-block bg-[#e8621a] hover:bg-[#cf5515] text-white font-semibold px-5 py-2 rounded-full transition-colors text-sm"
               >
                 {post.cta.text}
               </Link>
@@ -705,34 +670,29 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           {/* Article content */}
           <article className="flex-1 min-w-0">
             {/* Intro */}
-            <div className="reveal">
-              <p className="text-gray-700 leading-relaxed mb-10 text-base">{post.intro}</p>
-            </div>
+            <p className="text-gray-700 leading-relaxed mb-10 text-base">{post.intro}</p>
 
             {/* Sections */}
             {post.sections.map((section, i) => (
-              <section key={section.anchor} id={section.anchor} className="mb-10">
-                {i > 0 && <hr className="border-[#005f85]/20 mb-8" />}
-                <div className="reveal">
-                  <h2 className="text-xl md:text-2xl font-bold text-[#005f85] mb-6 leading-snug">
-                    {section.heading}
-                  </h2>
-                  <div>
-                    {section.blocks.map((block, idx) => renderBlock(block, idx))}
-                  </div>
+              <section key={section.anchor} id={section.anchor} className="mb-10 reveal">
+                {i > 0 && <hr className="border-[#007caa]/20 mb-8" />}
+                <h2 className="text-xl md:text-2xl font-bold text-[#007caa] mb-6 leading-snug">
+                  {section.heading}
+                </h2>
+                <div>
+                  {section.blocks.map((block, idx) => renderBlock(block, idx))}
                 </div>
               </section>
             ))}
 
             {/* Summary box */}
             {post.summary && (
-              <div id="ce-qu-il-faut-retenir" className="mesh-gradient rounded-xl p-7 text-white mt-10 reveal">
+              <div id="ce-qu-il-faut-retenir" className="mesh-gradient rounded-xl p-7 text-white mt-10">
                 <p className="font-bold text-base mb-4">Ce qu&apos;il faut retenir :</p>
-                <ul className="space-y-2" role="list" aria-label="Points à retenir">
+                <ul className="space-y-2">
                   {post.summary.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-white">
-                      <BulletIcon color="text-white" />
-                      {item}
+                      <span className="flex-shrink-0 mt-0.5">•</span>{item}
                     </li>
                   ))}
                 </ul>

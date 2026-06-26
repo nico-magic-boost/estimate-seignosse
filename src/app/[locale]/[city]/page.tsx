@@ -8,7 +8,6 @@ import ArcachonPage from '@/app/[locale]/arcachon/page'
 import PillarPageRenderer from '@/components/PillarPageRenderer'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import RevealOnScroll from '@/components/RevealOnScroll'
 
 export const dynamic = 'force-dynamic'
 
@@ -180,22 +179,19 @@ export default async function CityPage({
 
   return (
     <div>
-      <RevealOnScroll />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Hero */}
-      <div className="relative h-64 md:h-80 overflow-hidden">
+      <div className="relative h-64 md:h-80 overflow-hidden reveal">
         <Image
           src={cityData.img}
-          alt={`Vue de ${cityData.name}, ${cityData.region}`}
+          alt={cityData.name}
           fill
-          className="object-cover float"
+          className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#007caa]/60 to-[#007caa]/80 flex flex-col items-center justify-center text-white text-center px-4">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">
-            Estimation de revenus locatifs —{' '}
-            <span className="gradient-text">{cityData.name}</span>
+            Estimation de revenus locatifs — {cityData.name}
           </h1>
           <p className="text-lg text-white">{cityData.region}</p>
         </div>
@@ -203,39 +199,24 @@ export default async function CityPage({
 
       <div className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="reveal">
-            <p className="text-xl text-gray-600 text-center mb-12">
-              Estimez le potentiel locatif de votre bien à {cityData.name}.
-              Notre outil analyse les données du marché local pour vous donner une estimation précise et instantanée.
-            </p>
-          </div>
+          <p className="text-xl text-gray-600 text-center mb-12">
+            Estimez le potentiel locatif de votre bien à {cityData.name}.
+            Notre outil analyse les données du marché local pour vous donner une estimation précise et instantanée.
+          </p>
 
           {/* Benefits */}
-          <ul
-            className="grid grid-cols-3 gap-4 mb-12 reveal-stagger"
-            role="list"
-            aria-label="Avantages de notre estimateur"
-          >
+          <div className="grid grid-cols-3 gap-4 mb-12 reveal-stagger">
             {benefits.map((b) => (
-              <li key={b.label} className="bg-[#007caa] rounded-xl p-4 text-center text-white card-hover">
-                <Image
-                  src={b.img}
-                  alt=""
-                  aria-hidden="true"
-                  width={40}
-                  height={40}
-                  className="mx-auto mb-2 h-10 w-10 object-contain brightness-0 invert"
-                />
+              <div key={b.label} className="card-hover bg-[#007caa] rounded-xl p-4 text-center text-white">
+                <Image src={b.img} alt={b.label} width={40} height={40} className="mx-auto mb-2 h-10 w-10 object-contain brightness-0 invert" />
                 <p className="text-xs font-medium leading-snug">{b.label}</p>
-              </li>
+              </div>
             ))}
-          </ul>
-
-          <div className="reveal">
-            <EstimateWidget />
           </div>
 
-          <div className="mt-12 bg-gray-50 rounded-xl p-8 reveal">
+          <EstimateWidget />
+
+          <div className="mt-12 bg-gray-50 rounded-xl p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
               Le marché locatif à {cityData.name}
             </h2>

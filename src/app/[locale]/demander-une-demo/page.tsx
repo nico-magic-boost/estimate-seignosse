@@ -79,21 +79,16 @@ export default function DemoPage() {
   return (
     <div>
       <RevealOnScroll />
-
       {/* Title */}
       <section className="pt-12 pb-4 px-4 text-center bg-white">
-        <div className="reveal">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#005f85]">
-            Demander une <span className="gradient-text">démo</span>
-          </h1>
-        </div>
+        <h1 className="text-2xl md:text-3xl font-bold text-[#007caa]">Demander une démo</h1>
       </section>
 
       {/* 2-col: pitch + form */}
-      <section className="py-10 px-4 bg-white">
+      <section className="py-10 px-4 bg-white reveal">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 items-start">
           {/* Left: pitch */}
-          <div className="flex-1 reveal-left">
+          <div className="flex-1">
             <h2 className="text-2xl font-bold text-gray-900 mb-4 leading-snug">
               Vous êtes à quelques clics de transformer vos estimations de location de vacances
             </h2>
@@ -103,27 +98,11 @@ export default function DemoPage() {
               pour organiser votre démo.
             </p>
             <hr className="border-gray-200 mb-6" />
-            <h3 className="text-[#005f85] font-bold mb-4">Pourquoi choisir Estimate.rentals ?</h3>
-            <ul className="space-y-4 reveal-stagger" role="list" aria-label="Raisons de choisir Estimate.rentals">
+            <h3 className="text-[#007caa] font-bold mb-4">Pourquoi choisir Estimate.rentals ?</h3>
+            <ul className="space-y-4">
               {reasons.map((r) => (
                 <li key={r.title} className="flex items-start gap-3 text-sm text-gray-700">
-                  <svg
-                    aria-hidden="true"
-                    className="mt-0.5 flex-shrink-0 text-[#005f85]"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M3 8l3.5 3.5L13 4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <span className="text-[#007caa] mt-0.5 flex-shrink-0">✓</span>
                   <span><strong>{r.title}</strong> : {r.text}</span>
                 </li>
               ))}
@@ -131,26 +110,11 @@ export default function DemoPage() {
           </div>
 
           {/* Right: Pipedrive form */}
-          <div className="flex-1 border border-gray-200 rounded-2xl p-6 shadow-sm reveal-right">
-            <div className="flex flex-wrap gap-4 justify-center mb-5 text-xs text-gray-600">
-              <span className="flex items-center gap-1">
-                <svg aria-hidden="true" className="text-[#005f85]" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                Démo en 20 min
-              </span>
-              <span className="flex items-center gap-1">
-                <svg aria-hidden="true" className="text-[#005f85]" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                Sans engagement
-              </span>
-              <span className="flex items-center gap-1">
-                <svg aria-hidden="true" className="text-[#005f85]" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M3 8l3.5 3.5L13 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                Réponse sous 24h
-              </span>
+          <div className="flex-1 border border-gray-200 rounded-2xl p-6 shadow-sm">
+            <div className="flex flex-wrap gap-4 justify-center mb-5 text-xs text-gray-500">
+              <span className="flex items-center gap-1"><span className="text-[#007caa]">✓</span> Démo en 20 min</span>
+              <span className="flex items-center gap-1"><span className="text-[#007caa]">✓</span> Sans engagement</span>
+              <span className="flex items-center gap-1"><span className="text-[#007caa]">✓</span> Réponse sous 24h</span>
             </div>
             <PipedriveForm />
           </div>
@@ -160,17 +124,15 @@ export default function DemoPage() {
       {/* Testimonials */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="reveal">
-            <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">
-              Ils ont testé et approuvé Estimate.rentals
-            </h2>
-          </div>
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">
+            Ils ont testé et approuvé Estimate.rentals
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 reveal-stagger">
             {testimonials.map((t) => (
               <div key={t.name} className="card-hover border border-gray-200 rounded-xl p-6">
                 <p className="text-sm text-gray-700 leading-relaxed italic mb-4">{t.quote}</p>
                 <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                <p className="text-xs text-gray-600">{t.role}</p>
+                <p className="text-xs text-gray-500">{t.role}</p>
               </div>
             ))}
           </div>
@@ -179,28 +141,12 @@ export default function DemoPage() {
 
       {/* FAQ */}
       <section className="pb-16 px-4 bg-white">
-        <div className="max-w-3xl mx-auto space-y-3 reveal">
+        <div className="max-w-3xl mx-auto space-y-3">
           {faq.map((item) => (
-            <details key={item.q} className="group border border-gray-200 rounded-xl bg-white">
-              <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-medium text-gray-800 text-sm list-none">
-                <span>{item.q}</span>
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 text-[#005f85] transition-transform duration-200 group-open:rotate-180"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4.5 6.75L9 11.25L13.5 6.75"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            <details key={item.q} className="border border-gray-200 rounded-xl bg-white group reveal">
+              <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-medium text-gray-800 text-sm list-none">
+                {item.q}
+                <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0 ml-4 text-[#007caa] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
               </summary>
               {item.a && <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</p>}
             </details>
