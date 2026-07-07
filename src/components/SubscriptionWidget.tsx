@@ -23,8 +23,10 @@ export default function SubscriptionWidget() {
         type="module"
       />
       <div id="inscription" />
-      {/* @ts-ignore */}
-      <subscription-tunnel-wc lang={locale} />
+      <div style={{ minHeight: '600px' }}>
+        {/* @ts-ignore */}
+        <subscription-tunnel-wc lang={locale} />
+      </div>
     </>
   )
 }

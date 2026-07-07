@@ -25,13 +25,15 @@ export default function EstimateWidget() {
         strategy="afterInteractive"
         type="module"
       />
-      {/* @ts-ignore */}
-      <estimate-wc
-        agency-ids={process.env.NEXT_PUBLIC_AGENCY_ID ?? 'PDu96z5S6eidcbpPXioKlQ%3D%3D'}
-        primary-color="007caa"
-        secondary-color="17a3b5"
-        lang={locale}
-      />
+      <div style={{ minHeight: '480px' }}>
+        {/* @ts-ignore */}
+        <estimate-wc
+          agency-ids={process.env.NEXT_PUBLIC_AGENCY_ID ?? 'PDu96z5S6eidcbpPXioKlQ%3D%3D'}
+          primary-color="007caa"
+          secondary-color="17a3b5"
+          lang={locale}
+        />
+      </div>
     </>
   )
 }

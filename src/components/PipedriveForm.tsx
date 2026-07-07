@@ -8,10 +8,12 @@ export default function PipedriveForm() {
         src="https://webforms.pipedrive.com/f/loader"
         strategy="afterInteractive"
       />
-      <div
-        className="pipedriveWebForms"
-        data-pd-webforms="https://webforms.pipedrive.com/f/6aUclaH7FuS0IxgpXIlaGjkSFgyPYoJLhBlGimgCsiBYzNECFUToxAwYMSA3TFsIKf"
-      />
+      <div style={{ minHeight: '420px' }}>
+        <div
+          className="pipedriveWebForms"
+          data-pd-webforms="https://webforms.pipedrive.com/f/6aUclaH7FuS0IxgpXIlaGjkSFgyPYoJLhBlGimgCsiBYzNECFUToxAwYMSA3TFsIKf"
+        />
+      </div>
     </>
   )
 }
