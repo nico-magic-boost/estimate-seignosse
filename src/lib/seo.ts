@@ -3,8 +3,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://estimate.location-
 export { SITE_URL }
 
 export function canonical(locale: string, path: string) {
-  const prefix = locale === 'fr' ? '' : `/${locale}`
-  return `${SITE_URL}${prefix}${path}`
+  return `${SITE_URL}/${locale}${path}`
 }
 
 // hreflang alternates for a given set of locale→path mappings
@@ -13,7 +12,7 @@ export function hreflang(paths: Record<string, string>) {
     languages: Object.fromEntries(
       Object.entries(paths).map(([locale, path]) => [
         locale,
-        `${SITE_URL}${locale === 'fr' ? '' : `/${locale}`}${path}`,
+        `${SITE_URL}/${locale}${path}`,
       ])
     ) as Record<string, string>,
   }
