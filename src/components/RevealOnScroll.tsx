@@ -4,6 +4,12 @@ import { useEffect } from 'react'
 
 export default function RevealOnScroll() {
   useEffect(() => {
+    // Inject non-critical animation CSS after initial render (non-blocking)
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = '/animations.css'
+    document.head.appendChild(link)
+
     const selector = '.reveal, .reveal-left, .reveal-right, .reveal-stagger'
     const elements = document.querySelectorAll<HTMLElement>(selector)
     if (!elements.length) return

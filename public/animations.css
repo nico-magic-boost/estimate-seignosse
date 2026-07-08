@@ -1,0 +1,49 @@
+/* ── Mesh gradient animé ──────────────────────────────────── */
+.mesh-gradient-animated::before {
+  animation: mesh-move 18s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-move {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(4%, 3%) scale(1.04); }
+  66%  { transform: translate(-3%, 6%) scale(1.02); }
+  100% { transform: translate(6%, -4%) scale(1.06); }
+}
+
+/* ── Shimmer auto ─────────────────────────────────────────── */
+.btn-shimmer-auto::after {
+  animation: shimmer-loop 3.5s ease-in-out infinite;
+}
+
+@keyframes shimmer-loop {
+  0%   { transform: translateX(-100%); }
+  40%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Float ────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+.float      { animation: float 6s ease-in-out infinite; }
+.float-slow { animation: float 9s ease-in-out infinite; }
+.float-delayed { animation: float 7s ease-in-out 1.5s infinite; }
+
+/* ── Glow pulse ───────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,124,170,0); }
+  50%       { box-shadow: 0 0 24px 6px rgba(0,124,170,0.2); }
+}
+.glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-gradient-animated::before,
+  .btn-shimmer-auto::after,
+  .float, .float-slow, .float-delayed,
+  .glow-pulse {
+    animation: none;
+    will-change: auto;
+  }
+}
